@@ -1,21 +1,18 @@
 import React from 'react';
 
 const Tile = (props) => {
-  let {row, col, color} = props;
+  let {row, col, style, id} = props.options;
   return (
     <div
       className="card bg-light"
-      id={`${row},${col}`}
-      style={{
-        width:'48px',
-        height:'48px',
-        color:`${color}`,
-      }}
+      id={id}
+      style={style}
       onClick={() => {
         console.log(`clicked ${row}, ${col}`);
+        props.toggleColor(id);
       }}>
       <div className="card-text">
-        {`${row}, ${col}`}
+        {id}
       </div>
     </div>
   )
