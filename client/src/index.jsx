@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div>
         <h3>Hello World</h3>
-        <div>
+        <div className="container-fluid">
           <Board />
         </div>
       </div>
