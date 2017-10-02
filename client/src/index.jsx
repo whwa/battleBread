@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import Board from './Board.jsx';
+import Board from './components/Board.jsx';
 
 class App extends React.Component {
   constructor(props) {
