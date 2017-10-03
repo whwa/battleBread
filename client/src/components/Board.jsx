@@ -3,21 +3,32 @@ import { connect } from 'react-redux';
 import Tile from './Tile.jsx';
 import { range } from 'lodash';
 
-
 const Board = props => (
   <div className="container">
-  {range(8).map(row => (
-      <div className="row">
-      {range(8).map(col => (
-          <Tile options={props.p1[`${row},${col}`]} />
-        )
-      )}
-      </div>)
-    )}
+    <div className="row">
+      <div className="col-6">
+        {range(8).map(row => (
+          <div className="row">
+            {range(8).map(col => (
+              <Tile options={props.p1[`${row},${col}`]} />
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="col-6">
+        {range(8).map(row => (
+          <div className="row">
+            {range(8).map(col => (
+              <Tile options={props.p2[`${row},${col}`]} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 );
 
-const mapStateToProps = state => ({ p1: state.p1, })
+const mapStateToProps = state => ({...state})
 
 export default connect(mapStateToProps)(Board);
 
