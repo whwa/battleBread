@@ -29,11 +29,13 @@ class Board extends React.Component {
     let {id, row, col, style} = this.state[idNo];
     let newState = {id, row, col};
     let newStyle = {width:'48px', height:'48px'};
+
     if (style.color === 'blue') {
       newStyle.color = 'red';
     } else {
       newStyle.color = 'blue';
     }
+
     newState.style = newStyle;
     this.setState({[idNo]: newState});
     console.log(this.state[idNo]);

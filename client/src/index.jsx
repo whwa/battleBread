@@ -3,6 +3,8 @@ import {render} from 'react-dom';
 
 import Board from './components/Board.jsx';
 
+const tests = require('./store.js');
+
 class App extends React.Component {
   constructor(props) {
     super(props);
