@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import store from '../store.js';
 
 const Tile = (props) => {
-  const { id, row, col, size, color } = props.options;
+  const { id, size, color } = props.options;
   const player = props.player;
   return (
     <div
@@ -23,6 +23,19 @@ const Tile = (props) => {
       </div>
     </div>
   );
+};
+
+Tile.propTypes = {
+  options: PropTypes.shape({
+    id: PropTypes.string,
+    row: PropTypes.number,
+    col: PropTypes.number,
+    width: PropTypes.string,
+    height: PropTypes.string,
+    color: PropTypes.string,
+  }).isRequired,
+  dispatch: PropTypes.func.isRequired,
+  player: PropTypes.number.isRequired,
 };
 
 export default connect()(Tile);
