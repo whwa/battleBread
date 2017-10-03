@@ -2,7 +2,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { range } from 'lodash';
 import { createLogger } from 'redux-logger';
 
-const boardReducer = (state = { p1: {}, p2: {} }, action) => {
+const boardReducer = (state = { p1: {}, p2: {}, turn: 0 }, action) => {
   if (action.type === 'createBoard') {
     const newState = { ...state };
     range(8).map((row) => {
@@ -29,14 +29,17 @@ const boardReducer = (state = { p1: {}, p2: {} }, action) => {
     });
     return newState;
   } else if (action.type === 'guess') {
-    const newState = { ...state };
+    const { turn } = state;
     const { player, id } = action.payload;
-    newState[player][id].guessed = 'true';
-    if (newState[player][id].hasBread) {
-      newState[player][id].color = 'green';
+    const tile = { ...state[player][id] };
+    tile.guessed = 'true';
+    if (tile.hasBread) {
+      tile.color = 'green';
     } else {
-      newState[player][id].color = 'red';
+      tile.color = 'red';
     }
+    const newState = { ...state, turn: (turn + 1) };
+    newState[player][id] = tile;
     return newState;
   }
 };

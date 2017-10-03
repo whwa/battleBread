@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import store from '../store.js';
 
 const Tile = (props) => {
   const { id, row, col, size, color } = props.options;
+  const player = props.player;
   return (
     <div
       className="card bg-light"
@@ -12,7 +15,7 @@ const Tile = (props) => {
         color,
       }}
       onClick={() => {
-        console.log(`clicked ${row}, ${col}`);
+        props.dispatch({ type: 'guess', payload: { id, player } });
       }}
     >
       <div className="card-text">
@@ -22,4 +25,4 @@ const Tile = (props) => {
   );
 };
 
-export default Tile;
+export default connect()(Tile);

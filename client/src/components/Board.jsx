@@ -11,7 +11,10 @@ const Board = props => (
         {range(8).map(row => (
           <div className="row">
             {range(8).map(col => (
-              <Tile options={props.p1[`${row},${col}`]} />
+              <Tile
+                options={props.p1[`${row},${col}`]}
+                player="p1"
+              />
             ))}
           </div>
         ))}
@@ -21,7 +24,10 @@ const Board = props => (
         {range(8).map(row => (
           <div className="row">
             {range(8).map(col => (
-              <Tile options={props.p2[`${row},${col}`]} />
+              <Tile
+                options={props.p2[`${row},${col}`]}
+                player="p2"
+              />
             ))}
           </div>
         ))}
