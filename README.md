@@ -1,13 +1,13 @@
-# Project Name
+# Battle Bread!
 
-> Pithy project description
+> A bread-themed Battleship clone
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Devon Yu
+  - Stephanie Wong
+  - Ephraim Glick
+  - Ben Stephens
 
 ## Table of Contents
 
@@ -21,26 +21,44 @@
 
 ## Usage
 
-> Some usage instructions
+> Use it! Woot
 
 ## Requirements
 
-- Node 6.4.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node ^6.4.0
+- Express ^4.16.1
+- Lodash ^4.17.4
+- Prop-types ^15.6.0
+- Random-int ^1.0.0
+- React ^16.0.0
+- React-dom ^16.0.0
+- React-redux ^5.0.6
+- Redux ^3.7.2
+- Redux-logger ^3.0.6
+- Sequelize ^4.13.2"
 
 ## Development
+
+### Resuming Your Work
+
+From within the root directory:
+
+```sh
+npm run update
+```
+
+If working with React:
+
+```sh
+npm run react-dev
+```
 
 ### Installing Dependencies
 
 From within the root directory:
 
 ```sh
-npm install -g bower
 npm install
-bower install
 ```
 
 ### Roadmap

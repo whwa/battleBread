@@ -8,7 +8,8 @@
     "node": ">=6.4.0"
   },
   "scripts": {
-    "dev": "webpack -d --watch"
+    "react-dev": "webpack -d --watch",
+    "update": "git pull upstream master && npm install"
   },
   "dependencies": {
     "express": "^4.16.1",
