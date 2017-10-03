@@ -45,7 +45,7 @@ const boardReducer = (state = { p1: {}, p2: {}, turn: 0 }, action) => {
   } else if (action.type === 'randomPieces') {
     const newState = { ...state };
     range(14).forEach(() => {
-      const [row1, row2, col1, col2] = range(4).map(() => randomInt(4));
+      const [row1, row2, col1, col2] = range(4).map(() => randomInt(8));
       const tile1 = { ...newState.p1[`${row1},${col1}`] };
       const tile2 = { ...newState.p2[`${row2},${col2}`] };
 

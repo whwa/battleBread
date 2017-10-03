@@ -14,8 +14,8 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h3>Hello World</h3>
+      <div className="container">
+        <h3>BattleBread boards</h3>
         <div className="container-fluid">
           <Provider store={store}>
             <Board />

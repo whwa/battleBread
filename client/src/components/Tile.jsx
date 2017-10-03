@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { range } from 'lodash';
+import randomInt from 'random-int';
 
 const Tile = (props) => {
   const { id, size, color } = props.options;
@@ -15,7 +17,17 @@ const Tile = (props) => {
         color,
       }}
       onClick={() => {
-        props.dispatch({ type: 'guess', payload: { id, player } });
+        if (props.player === 'p2') {
+          props.dispatch({ type: 'guess', payload: { id, player } });
+
+          const [row, col] = range(2).map(() => randomInt(8));
+          props.dispatch({ type: 'guess',
+            payload: {
+              id: `${row},${col}`,
+              player: 'p1',
+            },
+          });
+        }
       }}
     >
       <div className="card-text">
