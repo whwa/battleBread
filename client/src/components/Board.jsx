@@ -1,6 +1,6 @@
 import React from 'react';
-import {range} from 'lodash';
 import Tile from './Tile.jsx';
+import { range } from 'lodash';
 
 
 class Board extends React.Component {

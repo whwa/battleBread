@@ -1,20 +1,23 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { store } from './store.js';
 
 import Board from './components/Board.jsx';
-
-const tests = require('./store.js');
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    store.dispatch({type: 'createBoard'});
   }
   render() {
     return (
       <div>
         <h3>Hello World</h3>
         <div className="container-fluid">
-          <Board />
+          <Provider store={store}>
+            <Board />
+          </Provider>
         </div>
       </div>
     );
