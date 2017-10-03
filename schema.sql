@@ -10,7 +10,7 @@ CREATE TABLE users (
   password varchar(50) NOT NULL,
   wins int NOT NULL DEFAULT 0,
   losses int NOT NULL DEFAULT 0,
-  playerLevel int NOT NULL DEFAULT 0,
+  playerLevel int NOT NULL DEFAULT 1,
   avatarUrl varchar(100) DEFAULT 'http://oi40.tinypic.com/i5sy1u.jpg',
   PRIMARY KEY (id)
 );
