@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore } from 'redux';
 import { range } from 'lodash';
 import { createLogger } from 'redux-logger';
+import randomInt from 'random-int';
 
 const boardReducer = (state = { p1: {}, p2: {}, turn: 0 }, action) => {
   if (action.type === 'createBoard') {
@@ -40,6 +41,23 @@ const boardReducer = (state = { p1: {}, p2: {}, turn: 0 }, action) => {
     }
     const newState = { ...state, turn: (turn + 1) };
     newState[player][id] = tile;
+    return newState;
+  } else if (action.type === 'randomPieces') {
+    const newState = { ...state };
+    range(14).forEach(() => {
+      const [row1, row2, col1, col2] = range(4).map(() => randomInt(4));
+      const tile1 = { ...newState.p1[`${row1},${col1}`] };
+      const tile2 = { ...newState.p2[`${row2},${col2}`] };
+
+      newState.p1[`${row1},${col1}`] = {
+        ...tile1,
+        hasBread: true,
+      };
+      newState.p2[`${row2},${col2}`] = {
+        ...tile2,
+        hasBread: true,
+      };
+    });
     return newState;
   }
 };

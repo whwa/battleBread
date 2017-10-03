@@ -35,7 +35,7 @@ Tile.propTypes = {
     color: PropTypes.string,
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
-  player: PropTypes.number.isRequired,
+  player: PropTypes.string.isRequired,
 };
 
 export default connect()(Tile);

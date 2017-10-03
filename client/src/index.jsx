@@ -9,6 +9,9 @@ class App extends React.Component {
     super(props);
     store.dispatch({ type: 'createBoard' });
   }
+  componentDidMount() {
+    store.dispatch({ type: 'randomPieces' });
+  }
   render() {
     return (
       <div>
