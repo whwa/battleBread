@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Tile from './Tile.jsx';
 import { range } from 'lodash';
+import Tile from './Tile.jsx';
 
 const Board = props => (
   <div className="container">
     <div className="row">
       <div className="col-6">
+        <h4>You:</h4>
         {range(8).map(row => (
           <div className="row">
             {range(8).map(col => (
@@ -16,6 +17,7 @@ const Board = props => (
         ))}
       </div>
       <div className="col-6">
+        <h4>Opponent:</h4>
         {range(8).map(row => (
           <div className="row">
             {range(8).map(col => (
@@ -28,7 +30,7 @@ const Board = props => (
   </div>
 );
 
-const mapStateToProps = state => ({...state})
+const mapStateToProps = state => ({ ...state });
 
 export default connect(mapStateToProps)(Board);
 

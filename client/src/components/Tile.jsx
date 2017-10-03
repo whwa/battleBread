@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Tile = (props) => {
-  let {id, row, col, size, color} = props.options;
+  const { id, row, col, size, color } = props.options;
   return (
     <div
       className="card bg-light"
@@ -9,16 +9,17 @@ const Tile = (props) => {
       style={{
         width: size,
         height: size,
-        color: color,
+        color,
       }}
       onClick={() => {
         console.log(`clicked ${row}, ${col}`);
-      }}>
+      }}
+    >
       <div className="card-text">
         {id}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Tile;

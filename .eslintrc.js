@@ -11,5 +11,10 @@
 // };
 
 module.exports = {
-  extends: 'airbnb'
+  extends: 'airbnb',
+  rules: {
+    "array-callback-return": "off",
+    "import-extensions": "off",
+    "consistent-return": "off",
+  }
 }
