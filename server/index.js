@@ -8,39 +8,40 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
- // log user in
+  // log user in
 });
 
 app.post('/games', (req, res) => {
- // add to games table
+  // add to games table
+  // update all games from store??
 });
 
 app.get('/games/:gameId', (req, res) => {
- // get from games table
+  // get from games table
 });
 
 app.post('/games/:gameId', (req, res) => {
- // add to games table
+  // add to games table
 });
 
 app.post('/users', (req, res) => {
- // add to users table
+  // add to users table
 });
 
 app.get('/users/:userId', (req, res) => {
- // get info from users table
+  // get info from users table
 });
 
 app.post('/users/:userId', (req, res) => {
- // add to users table
+  // add to users table
 });
 
 app.get('/scores', (req, res) => {
- // get from scores table
+  // get from scores table
 });
 
 app.post('/scores', (req, res) => {
- // add to scores table
+  // add to scores table
 });
 
 app.listen(3000, () => console.log(`Express listening on port 3000`));
