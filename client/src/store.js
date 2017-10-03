@@ -7,26 +7,36 @@ const boardReducer = (state = { p1: {}, p2: {} }, action) => {
     const newState = { ...state };
     range(8).map((row) => {
       range(8).map((col) => {
-        newState.p1[`${row},${col}`] = {
-          row,
-          col,
-          id: `${row},${col}`,
+        const defaults = {
           size: '48px',
           guessed: false,
-          hit: null,
+          hasBread: false,
           color: 'blue',
         };
-        newState.p2[`${row},${col}`] = {
+        newState.p1[`${row},${col}`] = {
+          ...defaults,
           row,
           col,
           id: `${row},${col}`,
-          size: '48px',
-          guessed: false,
-          hit: null,
-          color: 'blue',
+        };
+        newState.p2[`${row},${col}`] = {
+          ...defaults,
+          row,
+          col,
+          id: `${row},${col}`,
         };
       });
     });
+    return newState;
+  } else if (action.type === 'guess') {
+    const newState = { ...state };
+    const { player, id } = action.payload;
+    newState[player][id].guessed = 'true';
+    if (newState[player][id].hasBread) {
+      newState[player][id].color = 'green';
+    } else {
+      newState[player][id].color = 'red';
+    }
     return newState;
   }
 };
