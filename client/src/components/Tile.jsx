@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import randomInt from 'random-int';
 import { connect } from 'react-redux';
 import { range } from 'lodash';
-import randomInt from 'random-int';
+import { guess } from '../actions.js';
 
 const Tile = (props) => {
-  const { id, size, color } = props.options;
+  const { id, size, color, guessed } = props.options;
   const player = props.player;
   return (
     <div
@@ -17,16 +18,11 @@ const Tile = (props) => {
         color,
       }}
       onClick={() => {
-        if (props.player === 'p2') {
-          props.dispatch({ type: 'guess', payload: { id, player } });
-
-          const [row, col] = range(2).map(() => randomInt(8));
-          props.dispatch({ type: 'guess',
-            payload: {
-              id: `${row},${col}`,
-              player: 'p1',
-            },
-          });
+        if (props.player === 'p2' && !guessed) {
+          guess(player, id);
+          const [row, col] = range(2).map(() => randomInt(7));
+          const tile = `${row},${col}`;
+          guess('p1', tile);
         }
       }}
     >
@@ -37,6 +33,7 @@ const Tile = (props) => {
   );
 };
 
+//TODO: update this
 Tile.propTypes = {
   options: PropTypes.shape({
     id: PropTypes.string,

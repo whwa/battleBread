@@ -36,7 +36,7 @@ const Board = props => (
   </div>
 );
 
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = ({ board }) => ({ ...board });
 
 export default connect(mapStateToProps)(Board);
 
