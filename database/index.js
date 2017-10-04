@@ -1,6 +1,4 @@
 const mysql = require('mysql');
-const sequelize = require('sequelize');
-const db = require ('database-helpers.js');
 
 const connection = mysql.createConnection({
   host     : 'localhost',
@@ -8,3 +6,7 @@ const connection = mysql.createConnection({
   password : '',
   database : 'battlebread'
 });
+
+connection.connect();
+
+module.exports = connection;
