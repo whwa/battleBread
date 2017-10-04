@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store.js';
 import { chats } from './reducers/chatReducer.js';
 import Board from './components/Board.jsx';
-import { createBoard } from './actions.js';
+import { createBoard, setPiece } from './actions.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,17 +14,14 @@ class App extends React.Component {
   }
   componentDidMount() {
     // store.dispatch({ type: 'randomPieces' });
-    store.dispatch({
-      type: 'setPiece', 
-      payload: { 
-        player: 'p2',
-        piece: [
-          [0, 0],
-          [0, 1],
-          [0, 2],
-        ],
-      }
-    });
+    setPiece('p2', ['0,0', '0,1', '0,2']);
+    // store.dispatch({
+    //   type: 'setPiece', 
+    //   payload: { 
+    //     player: 'p2',
+    //     piece: ['0,0', '0,1', '0,2'],
+    //   }
+    // });
     store.dispatch({
       type: 'setChat',
       payload: {

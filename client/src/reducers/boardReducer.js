@@ -38,6 +38,7 @@ const boardReducer = (state = {
     const { player, id } = action.payload;
     const { turn } = state;
     const { hasBread } = state[player][id];
+    const numPieces = state[`${player}Pieces`];
 
     const newState = update(state, {
       turn: {$set: (turn + 1)},
@@ -46,7 +47,8 @@ const boardReducer = (state = {
           guessed: {$set: true},
           color: {$apply: () => (hasBread) ? 'green' : 'red'}
         }
-      }
+      },
+      [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },
     });
     // newState[player][id] = tile;
     return newState;
@@ -75,17 +77,18 @@ const boardReducer = (state = {
   } else if (action.type === 'setPiece') {
       const { player, piece } = action.payload;
       const thePiece = {};
+      const numPieces = state[`${player}Pieces`] + piece.length;
 
-      piece.forEach(coord => {
-        const tileId = `${coord[0]},${coord[1]}`
-        thePiece[tileId] = update(
-          state[player][tileId],
+      piece.forEach(idString => {
+        thePiece[idString] = update(
+          state[player][idString],
           { hasBread: { $set: true }}
         );
       });
 
       return update(state, {
         [player]: { $merge: thePiece },
+        [`${player}Pieces`]: { $set: numPieces },
       });
   } else {
     return state;
