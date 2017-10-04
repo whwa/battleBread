@@ -18,7 +18,10 @@ const config = {
         loader: 'babel-loader'
       }
     ]
-  }
+  },
+  devServer: {
+    port: 8181,
+  },
 };
 
 module.exports = config;

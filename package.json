@@ -8,7 +8,7 @@
     "node": ">=6.4.0"
   },
   "scripts": {
-    "react-dev": "webpack -d --watch",
+    "react-dev": "open http://localhost:8181/client && webpack-dev-server",
     "update": "git pull upstream master && npm install"
   },
   "dependencies": {
@@ -37,7 +37,8 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.4.0",
-    "webpack": "^3.6.0"
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   },
   "babel": {
     "presets": [
