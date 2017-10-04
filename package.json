@@ -1,8 +1,8 @@
 {
-  "name": "",
-  "version": "",
+  "name": "Battle Bread",
+  "version": "0.0.2",
   "description": "",
-  "author": "",
+  "author": "Battle Bread Team",
   "license": "",
   "engines": {
     "node": ">=6.4.0"
