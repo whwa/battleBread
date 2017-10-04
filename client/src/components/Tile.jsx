@@ -36,6 +36,7 @@ const Tile = (props) => {
   );
 };
 
+//TODO: update this
 Tile.propTypes = {
   options: PropTypes.shape({
     id: PropTypes.string,

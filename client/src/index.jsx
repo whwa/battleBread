@@ -11,8 +11,25 @@ class App extends React.Component {
     store.dispatch({ type: 'createBoard' });
   }
   componentDidMount() {
-    store.dispatch({ type: 'randomPieces' });
-    store.dispatch({ type: 'setChat', payload: { player:'p1', text: 'hi' }});
+    // store.dispatch({ type: 'randomPieces' });
+    store.dispatch({
+      type: 'setPiece', 
+      payload: { 
+        player: 'p2',
+        piece: [
+          [0, 0],
+          [0, 1],
+          [0, 2],
+        ],
+      }
+    });
+    store.dispatch({
+      type: 'setChat',
+      payload: {
+        player: 'p1',
+        text: 'hi'
+      }
+    });
   }
   render() {
     return (
