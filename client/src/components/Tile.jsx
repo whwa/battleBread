@@ -5,7 +5,7 @@ import { range } from 'lodash';
 import randomInt from 'random-int';
 
 const Tile = (props) => {
-  const { id, size, color } = props.options;
+  const { id, size, color, guessed } = props.options;
   const player = props.player;
   return (
     <div
@@ -17,9 +17,8 @@ const Tile = (props) => {
         color,
       }}
       onClick={() => {
-        if (props.player === 'p2') {
+        if (props.player === 'p2' && !guessed) {
           props.dispatch({ type: 'guess', payload: { id, player } });
-
           const [row, col] = range(2).map(() => randomInt(7));
           props.dispatch({ type: 'guess',
             payload: {

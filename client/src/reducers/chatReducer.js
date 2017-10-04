@@ -1,5 +1,5 @@
-import { applyMiddleware, createStore } from 'redux';
-import { createLogger } from 'redux-logger';
+// import { applyMiddleware, createStore } from 'redux';
+// import { createLogger } from 'redux-logger';
 import update from 'immutability-helper';
 
 const chatReducer = (state = [], action) => {
@@ -13,7 +13,7 @@ const chatReducer = (state = [], action) => {
   }
 };
 
-const middleware = applyMiddleware(createLogger());
+// const middleware = applyMiddleware(createLogger());
 // export const chats = createStore(chatReducer, middleware);
 
 // export default chats;
