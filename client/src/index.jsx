@@ -4,11 +4,13 @@ import { Provider } from 'react-redux';
 import store from './store.js';
 import { chats } from './reducers/chatReducer.js';
 import Board from './components/Board.jsx';
+import { createBoard } from './actions.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    store.dispatch({ type: 'createBoard' });
+    createBoard();
+    // store.dispatch({ type: 'createBoard' });
   }
   componentDidMount() {
     // store.dispatch({ type: 'randomPieces' });
