@@ -20,7 +20,7 @@ const Tile = (props) => {
         if (props.player === 'p2') {
           props.dispatch({ type: 'guess', payload: { id, player } });
 
-          const [row, col] = range(2).map(() => randomInt(8));
+          const [row, col] = range(2).map(() => randomInt(7));
           props.dispatch({ type: 'guess',
             payload: {
               id: `${row},${col}`,
