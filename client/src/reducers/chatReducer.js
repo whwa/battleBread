@@ -13,8 +13,4 @@ const chatReducer = (state = [], action) => {
   }
 };
 
-// const middleware = applyMiddleware(createLogger());
-// export const chats = createStore(chatReducer, middleware);
-
-// export default chats;
 export default chatReducer;

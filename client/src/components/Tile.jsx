@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import randomInt from 'random-int';
 import { connect } from 'react-redux';
 import { range } from 'lodash';
-import randomInt from 'random-int';
 import { guess } from '../actions.js';
 
 const Tile = (props) => {

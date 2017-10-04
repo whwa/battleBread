@@ -11,3 +11,12 @@ export const setPiece = (player, piece) => store.dispatch({
   type: 'setPiece',
   payload: { player, piece },
 });
+
+export const randomPieces = () => store.dispatch({ type: 'randomPieces' });
+
+export const setChat = (player, text) => store.dispatch({
+  type: 'setChat',
+  payload: { player, text },
+});
+
+export const getChats = () => store.dispatch({ type: 'getChats' });
