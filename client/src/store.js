@@ -7,4 +7,3 @@ const middleware = applyMiddleware(createLogger());
 const store = createStore(reducers, middleware);
 
 export default store;
-// console.log(store.getState())

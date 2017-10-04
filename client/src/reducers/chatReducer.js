@@ -6,7 +6,7 @@ const chatReducer = (state = [], action) => {
   const {type, payload} = action;
   if (type === 'setChat') {
     return update(state, { $push: [payload] });
-  } else if (type==='getChats') {
+  } else if (type === 'getChats') {
     return state;
   } else {
     return state;
