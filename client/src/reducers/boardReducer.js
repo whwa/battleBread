@@ -5,31 +5,32 @@ import { range } from 'lodash';
 /**
  * This function handles changes to the board state resulting from a state.dispatch(action)
  * @param { object } state state is an object representing each players' board. Example:
- * @param { object } state.board
- * @param { number } state.board.turn Turn counter
- * @param { number } state.board.p1Pieces Number of remaining pieces for player 1
- * @param { number } state.board.p2Pieces Number of remaining pieces for player 2
- * @param { object } state.board.p1 Tile states for player 1
- * @param { object } state.board.p1[tileId] Tile object, indexed by id string
- * @param { object } state.board.p1[tileId].id Id string (ex: '1,1' or '6,5')
- * @param { number } state.board.p1[tileId].row
- * @param { number } state.board.p1[tileId].col
- * @param { boolean } state.board.p1[tileId].hasBread
- * @param { boolean } state.board.p1[tileId].guessed
- * @param { string } state.board.p1[tileId].color 'red' || 'green' || 'blue'
- * @param { object } state.board.p2 Tile states for player 2
- * @param { object } state.board.p2[tileId] Tile object, indexed by id string
- * @param { object } state.board.p2[tileId].id Id string (ex: '1,1' or '6,5')
- * @param { number } state.board.p2[tileId].row
- * @param { number } state.board.p2[tileId].col
- * @param { boolean } state.board.p2[tileId].hasBread
- * @param { boolean } state.board.p2[tileId].guessed
- * @param { string } state.board.p2[tileId].color 'red' || 'green' || 'blue'
+ * @property { object } state
+ * @property { number } state.turn Turn counter
+ * @property { number } state.p1Pieces Number of remaining pieces for player 1
+ * @property { number } state.p2Pieces Number of remaining pieces for player 2
+ * @property { object } state.p1 Tile states for player 1
+ * @property { object } state.p1[tileId] Tile object, indexed by id string
+ * @property { object } state.p1[tileId].id Id string (ex: '1,1' or '6,5')
+ * @property { number } state.p1[tileId].row
+ * @property { number } state.p1[tileId].col
+ * @property { boolean } state.p1[tileId].hasBread
+ * @property { boolean } state.p1[tileId].guessed
+ * @property { string } state.p1[tileId].color 'red' || 'green' || 'blue'
+ * @property { object } state.p2 Tile states for player 2
+ * @property { object } state.p2[tileId] Tile object, indexed by id string
+ * @property { object } state.p2[tileId].id Id string (ex: '1,1' or '6,5')
+ * @property { number } state.p2[tileId].row
+ * @property { number } state.p2[tileId].col
+ * @property { boolean } state.p2[tileId].hasBread
+ * @property { boolean } state.p2[tileId].guessed
+ * @property { string } state.p2[tileId].color 'red' || 'green' || 'blue'
  *
  * 
  * @param { object } action an action dispatched via an action creator from ../actions.js
  * @property { string } type 'guess' || 'randomPieces' || 'setPiece
  * @property { object } payload varies in shape for each action
+ * @returns a new state, based on the type of action it receives
  */
 const boardReducer = (state = {}, action) => {
   if (action.type === 'createBoard') {

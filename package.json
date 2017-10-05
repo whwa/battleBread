@@ -9,6 +9,7 @@
   },
   "scripts": {
     "react-dev": "open ./client/index.html && webpack -d --watch",
+    "react-doc": "./node_modules/.bin/esdoc && open docs/index.html",
     "update": "git pull upstream master && npm install"
   },
   "dependencies": {

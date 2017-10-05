@@ -7,7 +7,10 @@ import { range } from 'lodash';
  * No params necessary.
  * Invoke to create a new board state from scratch. 
  */
-export const createBoard = () => store.dispatch({ type: 'createBoard' });
+export const createBoard = () => {
+  store.dispatch({ type: 'createBoard' });
+  store.dispatch({ type: 'infoInit' });
+};
 
 /**
  * Performs a 'guess' action on a single tile. Depending on whether or not there is

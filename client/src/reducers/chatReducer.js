@@ -4,6 +4,7 @@ import update from 'immutability-helper';
  * This function handles changes to the chats state resulting from a state.dispatch(action)
  * @param { array } state chat state is an array of chat objects. Default: []
  * @param { object } action an action obj with shape { type: { string }, payload: { obj }}
+ * @returns a new state, based on the type of action it receives
  */
 const chatReducer = (state = [], action) => {
   const {type, payload} = action;
