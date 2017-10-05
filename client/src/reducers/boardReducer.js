@@ -2,6 +2,11 @@ import update from 'immutability-helper';
 import randomInt from 'random-int';
 import { range } from 'lodash';
 
+/**
+ * This function handles changes to the board state resulting from a state.dispatch(action)
+ * @param {object} state Board state is an object representing each players' board. For shape, see store.js
+ * @param {object} action an action obj with shape {type: {string}, payload: {obj}}
+ */
 const boardReducer = (state = { 
   p1: {}, 
   p2: {}, 
@@ -10,6 +15,11 @@ const boardReducer = (state = {
   p2Pieces: 0,
 }, action) => {
   if (action.type === 'createBoard') {
+    /**
+     * We start a new board from scratch. 
+     * 1. Generate an 8x8 array for each player
+     * 2. Map a tile object to each index by extending the defaults object with row and col info.
+     */
     const newState = { ...state };
     range(8).map((row) => {
       range(8).map((col) => {
@@ -35,6 +45,18 @@ const boardReducer = (state = {
     });
     return newState;
   } else if (action.type === 'guess') {
+    /**
+     * @param action.payload shape: { 
+     *  player: {'p1' or 'p2'},
+     *  id: { string (ex:'1,1' or '3,4') }
+     * }
+     * We update the state for one tile on a particular player's board
+     * 1. Increment the turn count
+     * 2. Set the guessed property for that tile to true
+     * 3. Change the color property to green if it was a hit, or red if it was a miss
+     * 4. If it was a hit, we decrement that player's piece count
+     * 
+     */
     const { player, id } = action.payload;
     const { turn } = state;
     const { hasBread } = state[player][id];
@@ -53,6 +75,9 @@ const boardReducer = (state = {
     // newState[player][id] = tile;
     return newState;
   } else if (action.type === 'randomPieces') {
+    /**
+     * This is mostly just for testing. Updates 14 random tiles to contain bread.
+     */
     const player1 = {};
     const player2 = {};
 
@@ -73,6 +98,12 @@ const boardReducer = (state = {
       p2: { $merge: player2 },
     });
   } else if (action.type === 'setPiece') {
+    /**
+     * @param action.payload shape: { 
+     *  player: { 'p1' or 'p2' },
+     *  piece: { array of tile id strings (ex: ['1,1', '2,4']) }
+     * }
+     */
       const { player, piece } = action.payload;
       const thePiece = {};
       const numPieces = state[`${player}Pieces`] + piece.length;
@@ -89,6 +120,9 @@ const boardReducer = (state = {
         [`${player}Pieces`]: { $set: numPieces },
       });
   } else {
+    /**
+     * Fallback case
+     */
     return state;
   }
 };
