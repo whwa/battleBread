@@ -42,12 +42,9 @@ app.get('/games/:gameId', (req, res) => {
   });
 });
 
-// This endpoint updates games (e.g. hits, update misses, etc.)
-// Needs fixing to update multiple values at once
+// This endpoint updates games (e.g. hits, misses, etc.)
 app.post('/games/:gameId', (req, res) => {
-  let key = Object.keys(req.body)[0];
-  let val = req.body[key];
-  db.updateGame(req.params.gameId, key, val, (err, results) => {
+  db.updateGame(req.params.gameId, req.body, (err, results) => {
     if (err) { 
       console.error(err); 
     } else {
@@ -82,11 +79,8 @@ app.get('/users/:userId', (req, res) => {
 });
 
 // This endpoint is for updating user profiles
-// Needs fixing to update multiple values at once
 app.post('/users/:userId', (req, res) => {
-  let key = Object.keys(req.body)[0];
-  let val = req.body[key];
-  db.updateUser(req.params.userId, key, val, (err, results) => {
+  db.updateUser(req.params.userId, req.body, (err, results) => {
     if (err) { 
       console.error(err); 
     } else {
