@@ -26,7 +26,7 @@ CREATE TABLE games (
   player2Placement varchar(100),
   player2Hits varchar(100),
   player2Misses varchar(100),
-  allMoves varchar(300) DEFAULT '[]',
+  allMoves varchar(400) DEFAULT '{"p1guess":[],"p2guess":[]}',
   chats varchar(10000),
   result ENUM('In progress', 'Complete'),
   PRIMARY KEY (id),
@@ -47,7 +47,6 @@ INSERT into users (username, password, wins, losses, playerLevel, streak, avatar
 Values ('sniperSouffleSteph', 'password4', 8, 2, 3, 'LWWLWWWWWW', 'http://oi43.tinypic.com/5twb9d.jpg');
 
 
-
 INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, 
 player2Placement, player2Hits, player2Misses, allMoves, chats, result)
 Values (1, 
@@ -64,17 +63,17 @@ Values (1,
 
 INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, 
 player2Placement, player2Hits, player2Misses, allMoves, chats, result)
-Values (3, 
-       '[]', 
-       '[]', 
-       '[]', 
-       4, 
-       '[]', 
-       '[]', 
-       '[]', 
-       '{"p1guess": [], "p2guess": []}',
-       '{"p1chat": [], "p2chat": []}', 
-       'In progress'); 
+Values (3,
+        '["1,1","2,1","0,7","1,7","2,7","6,6","6,7","7,6","7,7","6,0","6,1","6,2","6,3"]',
+        '["0,6","0,7","0,0","1,0","2,0","6,5","6,6","7,5","7,6","5,0","5,1","5,2","5,3"]',
+        '["0,2","1,3","4,2","7,2","3,6","3,1","4,7"]',
+        4, 
+        '["0,6","0,7","0,0","1,0","2,0","6,5","6,6","7,5","7,6","5,0","5,1","5,2","5,3"]', 
+        '["1,1","2,1","0,7","1,7","2,7","6,6"]',
+        '["0,0","0,1","0,5","1,2","1,4","3,2","3,3","4,4","4,5","5,0","5,2","5,5","7,5"]', 
+        '{"p1guess":["0,2","1,3","4,2","7,2","3,6","3,1","4,7","0,6","0,7","0,0","1,0","2,0","6,5","6,6","7,5","7,6","5,0","5,1","5,2","5,3"],"p2guess":["1,1","2,1","0,7","1,7","2,7","6,6","0,0","0,1","0,5","1,2","1,4","3,2","3,3","4,4","4,5","5,0","5,2","5,5","7,5"]}', 
+        '{"p1chat": ["hey", "u suk", "asl", "not today", "nice try", "srs", "bye", "eight", "nine", "10", "11", "12", "thirteen", "14", "15", "16", "17", "18", "one more", "gameover"], "p2chat": ["hi", "hey", "brb", "pls", "miss", "nice", "haha", "ez", "gg", "ttyl", "b2b", "cant touch this", "13", "i need to hit", "cmon", "16", "close", "almost", "think i lost.."]}',
+        'Complete');
 
 
 

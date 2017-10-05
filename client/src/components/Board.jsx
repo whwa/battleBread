@@ -3,8 +3,16 @@ import { connect } from 'react-redux';
 import { range } from 'lodash';
 import Tile from './Tile.jsx';
 import GameInfo from './GameInfo.jsx';
-import Chat from './Chat.jsx';
+import ChatInput from './ChatInput.jsx';
 
+/**
+ * Uses bootstrap cards to render 2 8x8 grids of Tile components which receive props from the board state
+ * Uses Chat and GameInfo components
+ * 
+ * @param { object } props the state
+ * @see reducers/boardReducer.js for shape of + more info on the board state
+ * @see reducers/chatReducer.js for shape of + more info on the chat state
+ */
 const Board = props => (
   <div className="container">
     <div className="row">
@@ -35,17 +43,15 @@ const Board = props => (
         ))}
       </div>
       <GameInfo />
-      <Chat />
+      <ChatInput />
     </div>
   </div>
 );
 
+/**
+ * mapStateToProps takes a state and defines the data which gets passed into props from the store.
+ * @param { object } board Here, we destructure the the board property out of the state and set it to props
+ */
 const mapStateToProps = ({ board }) => ({ ...board });
 
 export default connect(mapStateToProps)(Board);
-
-/*
-<svg width="16" height="16">
-  <rect x={(row+1)*16} y={(col+1)*16} width="16" height="16" fill="blue" />
-</svg>
-*/

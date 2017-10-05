@@ -2,10 +2,19 @@ import store from './store.js';
 import randomInt from 'random-int';
 import { range } from 'lodash';
 
+///////////////////
+// BOARD ACTIONS //
+///////////////////
+
 /**
- * generates a game board and saves it to state
+ * Dispatches a createBoard action to the state via boardReducer
+ * No params necessary.
+ * Invoke to create a new board state from scratch. 
  */
-export const createBoard = () => store.dispatch({ type: 'createBoard' });
+export const createBoard = () => {
+  store.dispatch({ type: 'createBoard' });
+  store.dispatch({ type: 'infoInit' });
+};
 
 /**
  * Performs a 'guess' action on a single tile. Depending on whether or not there is
@@ -13,24 +22,33 @@ export const createBoard = () => store.dispatch({ type: 'createBoard' });
  * @param {string} player either 'p1' or 'p2'. Represents TARGET player's board.
  * @param {string} id the ID of the guessed tile, ex: '1,1' or '4,3'
  */
-export const guess = (player, id) => store.dispatch({
-  type: 'guess', 
-  payload: { player, id },
-});
+export const guess = (player, id) => {
+  store.dispatch({
+    type: 'guess', 
+    payload: { player, id },
+  });
+  store.dispatch({ type: 'toggleTurn' });
+};
 
 /**
  * Sets a single piece, which is represented by an array of its coordinates
  * @param {string} player either 'p1' or 'p2'
  * @param {array} piece an array of tile ID strings, ex: ['1,1','4,3']
  */
-export const setPiece = (player, piece) => store.dispatch({
-  type: 'setPiece',
-  payload: { player, piece },
-});
+export const setPiece = (player, piece) => {
+  store.dispatch({
+    type: 'setPiece',
+    payload: { player, piece },
+  });
+  store.dispatch({
+    type: 'updatePieces',
+    payload: { player, pieces: piece.length },
+  });
+};
 
 /**
  * Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.
- * @param {str} player  either 'p1' or 'p2'
+ * @param {string} player  either 'p1' or 'p2'
  */
 export const setRandomPieces = (player) => {
   const pieces = range(2, 6)
@@ -47,6 +65,10 @@ export const setRandomPieces = (player) => {
  */
 export const randomPieces = () => store.dispatch({ type: 'randomPieces' });
 
+//////////////////
+// CHAT ACTIONS //
+//////////////////
+
 /**
  * Adds a chat to the chat store
  * @param {string} player either 'p1' or 'p2'
@@ -61,3 +83,22 @@ export const setChat = (player, text) => store.dispatch({
  * Returns the entire chat store
  */
 export const getChats = () => store.dispatch({ type: 'getChats' });
+
+///////////////////////
+// GAME INFO ACTIONS //
+///////////////////////
+
+/**
+ * Simply returns entire gameInfo state
+ */
+export const getInfo = () => store.dispatch({ type: 'getInfo' });
+
+/**
+ * Updates a player's piece count in the state
+ * @param { string } player 'p1' || 'p2'
+ * @param { number } pieces The updated piece count total
+ */
+export const updatePieces = (player, pieces) => store.dispatch({
+  type: 'updatePieces',
+  payload: { player, pieces },
+});
