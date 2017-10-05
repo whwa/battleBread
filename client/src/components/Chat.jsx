@@ -20,8 +20,9 @@ class Chat extends React.Component {
 
   render() {
     return(
-        <div className="chat-box">
-            <div>
+        <div className='chatBox'>
+            <div className='chatWindow'>
+              Display chats here
             </div>
             <form action="#" id="send" method="post">
                 <input type="text" name="chat" id="chat"/>
