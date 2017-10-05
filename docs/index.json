@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/actions.js",
-    "content": "import store from './store.js';\nimport randomInt from 'random-int';\nimport { range } from 'lodash';\n\n/**\n * Dispatches a createBoard action to the state via boardReducer\n * No params necessary.\n * Invoke to create a new board state from scratch. \n */\nexport const createBoard = () => store.dispatch({ type: 'createBoard' });\n\n/**\n * Performs a 'guess' action on a single tile. Depending on whether or not there is\n * bread on that tile, different actions will occur.\n * @param {string} player either 'p1' or 'p2'. Represents TARGET player's board.\n * @param {string} id the ID of the guessed tile, ex: '1,1' or '4,3'\n */\nexport const guess = (player, id) => store.dispatch({\n  type: 'guess', \n  payload: { player, id },\n});\n\n/**\n * Sets a single piece, which is represented by an array of its coordinates\n * @param {string} player either 'p1' or 'p2'\n * @param {array} piece an array of tile ID strings, ex: ['1,1','4,3']\n */\nexport const setPiece = (player, piece) => store.dispatch({\n  type: 'setPiece',\n  payload: { player, piece },\n});\n\n/**\n * Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.\n * @param {string} player  either 'p1' or 'p2'\n */\nexport const setRandomPieces = (player) => {\n  const pieces = range(2, 6)\n    .map((len) => {\n      const rotate = randomInt(0, 1);\n      const scalar = randomInt(0, 7);\n      return range(0, len).map((el, j) => (rotate) ? [scalar, j] : [j, scalar]);\n    })\n    .forEach(piece => setPiece(player, piece));\n};\n\n/**\n * OLD/FOR TESTING ONLY: randomly selects 14 tiles to have bread\n */\nexport const randomPieces = () => store.dispatch({ type: 'randomPieces' });\n\n/**\n * Adds a chat to the chat store\n * @param {string} player either 'p1' or 'p2'\n * @param {string} text the text of the message\n */\nexport const setChat = (player, text) => store.dispatch({\n  type: 'setChat',\n  payload: { player, text },\n});\n\n/**\n * Returns the entire chat store\n */\nexport const getChats = () => store.dispatch({ type: 'getChats' });\n",
+    "content": "import store from './store.js';\nimport randomInt from 'random-int';\nimport { range } from 'lodash';\n\n/**\n * Dispatches a createBoard action to the state via boardReducer\n * No params necessary.\n * Invoke to create a new board state from scratch. \n */\nexport const createBoard = () => {\n  store.dispatch({ type: 'createBoard' });\n  store.dispatch({ type: 'infoInit' });\n};\n\n/**\n * Performs a 'guess' action on a single tile. Depending on whether or not there is\n * bread on that tile, different actions will occur.\n * @param {string} player either 'p1' or 'p2'. Represents TARGET player's board.\n * @param {string} id the ID of the guessed tile, ex: '1,1' or '4,3'\n */\nexport const guess = (player, id) => store.dispatch({\n  type: 'guess', \n  payload: { player, id },\n});\n\n/**\n * Sets a single piece, which is represented by an array of its coordinates\n * @param {string} player either 'p1' or 'p2'\n * @param {array} piece an array of tile ID strings, ex: ['1,1','4,3']\n */\nexport const setPiece = (player, piece) => store.dispatch({\n  type: 'setPiece',\n  payload: { player, piece },\n});\n\n/**\n * Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.\n * @param {string} player  either 'p1' or 'p2'\n */\nexport const setRandomPieces = (player) => {\n  const pieces = range(2, 6)\n    .map((len) => {\n      const rotate = randomInt(0, 1);\n      const scalar = randomInt(0, 7);\n      return range(0, len).map((el, j) => (rotate) ? [scalar, j] : [j, scalar]);\n    })\n    .forEach(piece => setPiece(player, piece));\n};\n\n/**\n * OLD/FOR TESTING ONLY: randomly selects 14 tiles to have bread\n */\nexport const randomPieces = () => store.dispatch({ type: 'randomPieces' });\n\n/**\n * Adds a chat to the chat store\n * @param {string} player either 'p1' or 'p2'\n * @param {string} text the text of the message\n */\nexport const setChat = (player, text) => store.dispatch({\n  type: 'setChat',\n  payload: { player, text },\n});\n\n/**\n * Returns the entire chat store\n */\nexport const getChats = () => store.dispatch({ type: 'getChats' });\n",
     "static": true,
     "longname": "/Users/bs/Desktop/hr/battleBread/client/src/actions.js",
     "access": "public",
@@ -606,7 +606,7 @@
     "importPath": "battlebread/src/actions.js",
     "importStyle": "{guess}",
     "description": "Performs a 'guess' action on a single tile. Depending on whether or not there is\nbread on that tile, different actions will occur.",
-    "lineNumber": 18,
+    "lineNumber": 21,
     "params": [
       {
         "nullable": null,
@@ -645,7 +645,7 @@
     "importPath": "battlebread/src/actions.js",
     "importStyle": "{setPiece}",
     "description": "Sets a single piece, which is represented by an array of its coordinates",
-    "lineNumber": 28,
+    "lineNumber": 31,
     "params": [
       {
         "nullable": null,
@@ -684,7 +684,7 @@
     "importPath": "battlebread/src/actions.js",
     "importStyle": "{setRandomPieces}",
     "description": "Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.",
-    "lineNumber": 37,
+    "lineNumber": 40,
     "params": [
       {
         "nullable": null,
@@ -713,7 +713,7 @@
     "importPath": "battlebread/src/actions.js",
     "importStyle": "{randomPieces}",
     "description": "OLD/FOR TESTING ONLY: randomly selects 14 tiles to have bread",
-    "lineNumber": 50,
+    "lineNumber": 53,
     "params": [],
     "return": null
   },
@@ -731,7 +731,7 @@
     "importPath": "battlebread/src/actions.js",
     "importStyle": "{setChat}",
     "description": "Adds a chat to the chat store",
-    "lineNumber": 57,
+    "lineNumber": 60,
     "params": [
       {
         "nullable": null,
@@ -770,7 +770,7 @@
     "importPath": "battlebread/src/actions.js",
     "importStyle": "{getChats}",
     "description": "Returns the entire chat store",
-    "lineNumber": 65,
+    "lineNumber": 68,
     "params": [],
     "return": null
   },
@@ -778,7 +778,7 @@
     "__docId__": 56,
     "kind": "file",
     "name": "src/reducers/boardReducer.js",
-    "content": "import update from 'immutability-helper';\nimport randomInt from 'random-int';\nimport { range } from 'lodash';\n\n/**\n * This function handles changes to the board state resulting from a state.dispatch(action)\n * @param { object } state state is an object representing each players' board. Example:\n * @param { object } state.board\n * @param { number } state.board.turn Turn counter\n * @param { number } state.board.p1Pieces Number of remaining pieces for player 1\n * @param { number } state.board.p2Pieces Number of remaining pieces for player 2\n * @param { object } state.board.p1 Tile states for player 1\n * @param { object } state.board.p1[tileId] Tile object, indexed by id string\n * @param { object } state.board.p1[tileId].id Id string (ex: '1,1' or '6,5')\n * @param { number } state.board.p1[tileId].row\n * @param { number } state.board.p1[tileId].col\n * @param { boolean } state.board.p1[tileId].hasBread\n * @param { boolean } state.board.p1[tileId].guessed\n * @param { string } state.board.p1[tileId].color 'red' || 'green' || 'blue'\n * @param { object } state.board.p2 Tile states for player 2\n * @param { object } state.board.p2[tileId] Tile object, indexed by id string\n * @param { object } state.board.p2[tileId].id Id string (ex: '1,1' or '6,5')\n * @param { number } state.board.p2[tileId].row\n * @param { number } state.board.p2[tileId].col\n * @param { boolean } state.board.p2[tileId].hasBread\n * @param { boolean } state.board.p2[tileId].guessed\n * @param { string } state.board.p2[tileId].color 'red' || 'green' || 'blue'\n *\n * \n * @param { object } action an action dispatched via an action creator from ../actions.js\n * @property { string } type 'guess' || 'randomPieces' || 'setPiece\n * @property { object } payload varies in shape for each action\n */\nconst boardReducer = (state = {}, action) => {\n  if (action.type === 'createBoard') {\n    /**\n     * We start a new board from scratch. \n     * 1. Generate an 8x8 array for each player\n     * 2. Map a tile object to each index by extending the defaults object with row and col info.\n     */\n    const newState = { \n      p1: {}, \n      p2: {}, \n      turn: 0, \n      p1Pieces: 0,\n      p2Pieces: 0,\n    };\n    range(8).map((row) => {\n      range(8).map((col) => {\n        const defaults = {\n          size: '48px',\n          guessed: false,\n          hasBread: false,\n          color: 'blue',\n        };\n        newState.p1[`${row},${col}`] = {\n          ...defaults,\n          row,\n          col,\n          id: `${row},${col}`,\n        };\n        newState.p2[`${row},${col}`] = {\n          ...defaults,\n          row,\n          col,\n          id: `${row},${col}`,\n        };\n      });\n    });\n    return update(state, {$merge: newState});\n  } else if (action.type === 'guess') {\n    /**\n     * @param action.payload shape: { \n     *  player: {'p1' or 'p2'},\n     *  id: { string (ex:'1,1' or '3,4') }\n     * }\n     * We update the state for one tile on a particular player's board\n     * 1. Increment the turn count\n     * 2. Set the guessed property for that tile to true\n     * 3. Change the color property to green if it was a hit, or red if it was a miss\n     * 4. If it was a hit, we decrement that player's piece count\n     * \n     */\n    const { player, id } = action.payload;\n    const { turn } = state;\n    const { hasBread } = state[player][id];\n    const numPieces = state[`${player}Pieces`];\n\n    const newState = update(state, {\n      turn: {$set: (turn + 1)},\n      [player]: {\n        [id]: {\n          guessed: {$set: true},\n          color: {$apply: () => (hasBread) ? 'green' : 'red'}\n        }\n      },\n      [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },\n    });\n    // newState[player][id] = tile;\n    return newState;\n  } else if (action.type === 'randomPieces') {\n    /**\n     * This is mostly just for testing. Updates 14 random tiles to contain bread.\n     */\n    const player1 = {};\n    const player2 = {};\n\n    range(14).forEach(() => {\n      const [row1, row2, col1, col2] = range(4).map(() => randomInt(7));\n      \n      player1[`${row1},${col1}`] = update(state.p1[`${row1},${col1}`], {\n        hasBread: {$set: true}\n      });\n      player2[`${row2},${col2}`] = update(state.p2[`${row2},${col2}`], {\n        hasBread: {$set: true}\n      });\n\n    });\n    return update(state, {\n      turn: { $set: 0 },\n      p1: { $merge: player1 },\n      p2: { $merge: player2 },\n    });\n  } else if (action.type === 'setPiece') {\n    /**\n     * @param action.payload\n     *  @property { string } player 'p1' || 'p2'\n     *  @property { array } piece array of tile id strings (ex: ['1,1', '2,4'])\n     * Place a piece by setting hasBread for each tile to true\n     */\n      const { player, piece } = action.payload;\n      const thePiece = {};\n      const numPieces = state[`${player}Pieces`] + piece.length;\n\n      piece.forEach(idString => {\n        thePiece[idString] = update(\n          state[player][idString],\n          { hasBread: { $set: true }}\n        );\n      });\n\n      return update(state, {\n        [player]: { $merge: thePiece },\n        [`${player}Pieces`]: { $set: numPieces },\n      });\n  } else {\n    /**\n     * Fallback case\n     */\n    return state;\n  }\n};\n\nexport default boardReducer;",
+    "content": "import update from 'immutability-helper';\nimport randomInt from 'random-int';\nimport { range } from 'lodash';\n\n/**\n * This function handles changes to the board state resulting from a state.dispatch(action)\n * @param { object } state state is an object representing each players' board. Example:\n * @property { object } state\n * @property { number } state.turn Turn counter\n * @property { number } state.p1Pieces Number of remaining pieces for player 1\n * @property { number } state.p2Pieces Number of remaining pieces for player 2\n * @property { object } state.p1 Tile states for player 1\n * @property { object } state.p1[tileId] Tile object, indexed by id string\n * @property { object } state.p1[tileId].id Id string (ex: '1,1' or '6,5')\n * @property { number } state.p1[tileId].row\n * @property { number } state.p1[tileId].col\n * @property { boolean } state.p1[tileId].hasBread\n * @property { boolean } state.p1[tileId].guessed\n * @property { string } state.p1[tileId].color 'red' || 'green' || 'blue'\n * @property { object } state.p2 Tile states for player 2\n * @property { object } state.p2[tileId] Tile object, indexed by id string\n * @property { object } state.p2[tileId].id Id string (ex: '1,1' or '6,5')\n * @property { number } state.p2[tileId].row\n * @property { number } state.p2[tileId].col\n * @property { boolean } state.p2[tileId].hasBread\n * @property { boolean } state.p2[tileId].guessed\n * @property { string } state.p2[tileId].color 'red' || 'green' || 'blue'\n *\n * \n * @param { object } action an action dispatched via an action creator from ../actions.js\n * @property { string } type 'guess' || 'randomPieces' || 'setPiece\n * @property { object } payload varies in shape for each action\n * @returns a new state, based on the type of action it receives\n */\nconst boardReducer = (state = {}, action) => {\n  if (action.type === 'createBoard') {\n    /**\n     * We start a new board from scratch. \n     * 1. Generate an 8x8 array for each player\n     * 2. Map a tile object to each index by extending the defaults object with row and col info.\n     */\n    const newState = { \n      p1: {}, \n      p2: {}, \n      turn: 0, \n      p1Pieces: 0,\n      p2Pieces: 0,\n    };\n    range(8).map((row) => {\n      range(8).map((col) => {\n        const defaults = {\n          size: '48px',\n          guessed: false,\n          hasBread: false,\n          color: 'blue',\n        };\n        newState.p1[`${row},${col}`] = {\n          ...defaults,\n          row,\n          col,\n          id: `${row},${col}`,\n        };\n        newState.p2[`${row},${col}`] = {\n          ...defaults,\n          row,\n          col,\n          id: `${row},${col}`,\n        };\n      });\n    });\n    return update(state, {$merge: newState});\n  } else if (action.type === 'guess') {\n    /**\n     * @param action.payload shape: { \n     *  player: {'p1' or 'p2'},\n     *  id: { string (ex:'1,1' or '3,4') }\n     * }\n     * We update the state for one tile on a particular player's board\n     * 1. Increment the turn count\n     * 2. Set the guessed property for that tile to true\n     * 3. Change the color property to green if it was a hit, or red if it was a miss\n     * 4. If it was a hit, we decrement that player's piece count\n     * \n     */\n    const { player, id } = action.payload;\n    const { turn } = state;\n    const { hasBread } = state[player][id];\n    const numPieces = state[`${player}Pieces`];\n\n    const newState = update(state, {\n      turn: {$set: (turn + 1)},\n      [player]: {\n        [id]: {\n          guessed: {$set: true},\n          color: {$apply: () => (hasBread) ? 'green' : 'red'}\n        }\n      },\n      [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },\n    });\n    // newState[player][id] = tile;\n    return newState;\n  } else if (action.type === 'randomPieces') {\n    /**\n     * This is mostly just for testing. Updates 14 random tiles to contain bread.\n     */\n    const player1 = {};\n    const player2 = {};\n\n    range(14).forEach(() => {\n      const [row1, row2, col1, col2] = range(4).map(() => randomInt(7));\n      \n      player1[`${row1},${col1}`] = update(state.p1[`${row1},${col1}`], {\n        hasBread: {$set: true}\n      });\n      player2[`${row2},${col2}`] = update(state.p2[`${row2},${col2}`], {\n        hasBread: {$set: true}\n      });\n\n    });\n    return update(state, {\n      turn: { $set: 0 },\n      p1: { $merge: player1 },\n      p2: { $merge: player2 },\n    });\n  } else if (action.type === 'setPiece') {\n    /**\n     * @param action.payload\n     *  @property { string } player 'p1' || 'p2'\n     *  @property { array } piece array of tile id strings (ex: ['1,1', '2,4'])\n     * Place a piece by setting hasBread for each tile to true\n     */\n      const { player, piece } = action.payload;\n      const thePiece = {};\n      const numPieces = state[`${player}Pieces`] + piece.length;\n\n      piece.forEach(idString => {\n        thePiece[idString] = update(\n          state[player][idString],\n          { hasBread: { $set: true }}\n        );\n      });\n\n      return update(state, {\n        [player]: { $merge: thePiece },\n        [`${player}Pieces`]: { $set: numPieces },\n      });\n  } else {\n    /**\n     * Fallback case\n     */\n    return state;\n  }\n};\n\nexport default boardReducer;",
     "static": true,
     "longname": "/Users/bs/Desktop/hr/battleBread/client/src/reducers/boardReducer.js",
     "access": "public",
@@ -799,7 +799,13 @@
     "importPath": "battlebread/src/reducers/boardReducer.js",
     "importStyle": "boardReducer",
     "description": "This function handles changes to the board state resulting from a state.dispatch(action)",
-    "lineNumber": 34,
+    "lineNumber": 35,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "a new state, based on the type of action it receives"
+      }
+    ],
     "params": [
       {
         "nullable": null,
@@ -818,7 +824,19 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board",
+        "name": "action",
+        "description": "an action dispatched via an action creator from ../actions.js"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
         "description": ""
       },
       {
@@ -828,7 +846,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.turn",
+        "name": "state.turn",
         "description": "Turn counter"
       },
       {
@@ -838,7 +856,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1Pieces",
+        "name": "state.p1Pieces",
         "description": "Number of remaining pieces for player 1"
       },
       {
@@ -848,7 +866,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2Pieces",
+        "name": "state.p2Pieces",
         "description": "Number of remaining pieces for player 2"
       },
       {
@@ -858,7 +876,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1",
+        "name": "state.p1",
         "description": "Tile states for player 1"
       },
       {
@@ -868,7 +886,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1[tileId]",
+        "name": "state.p1[tileId]",
         "description": "Tile object, indexed by id string"
       },
       {
@@ -878,7 +896,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1[tileId].id",
+        "name": "state.p1[tileId].id",
         "description": "Id string (ex: '1,1' or '6,5')"
       },
       {
@@ -888,7 +906,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1[tileId].row",
+        "name": "state.p1[tileId].row",
         "description": ""
       },
       {
@@ -898,7 +916,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1[tileId].col",
+        "name": "state.p1[tileId].col",
         "description": ""
       },
       {
@@ -908,7 +926,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1[tileId].hasBread",
+        "name": "state.p1[tileId].hasBread",
         "description": ""
       },
       {
@@ -918,7 +936,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1[tileId].guessed",
+        "name": "state.p1[tileId].guessed",
         "description": ""
       },
       {
@@ -928,7 +946,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p1[tileId].color",
+        "name": "state.p1[tileId].color",
         "description": "'red' || 'green' || 'blue'"
       },
       {
@@ -938,7 +956,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2",
+        "name": "state.p2",
         "description": "Tile states for player 2"
       },
       {
@@ -948,7 +966,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2[tileId]",
+        "name": "state.p2[tileId]",
         "description": "Tile object, indexed by id string"
       },
       {
@@ -958,7 +976,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2[tileId].id",
+        "name": "state.p2[tileId].id",
         "description": "Id string (ex: '1,1' or '6,5')"
       },
       {
@@ -968,7 +986,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2[tileId].row",
+        "name": "state.p2[tileId].row",
         "description": ""
       },
       {
@@ -978,7 +996,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2[tileId].col",
+        "name": "state.p2[tileId].col",
         "description": ""
       },
       {
@@ -988,7 +1006,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2[tileId].hasBread",
+        "name": "state.p2[tileId].hasBread",
         "description": ""
       },
       {
@@ -998,7 +1016,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2[tileId].guessed",
+        "name": "state.p2[tileId].guessed",
         "description": ""
       },
       {
@@ -1008,21 +1026,9 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "state.board.p2[tileId].color",
+        "name": "state.p2[tileId].color",
         "description": "'red' || 'green' || 'blue'"
       },
-      {
-        "nullable": null,
-        "types": [
-          " object "
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "action",
-        "description": "an action dispatched via an action creator from ../actions.js"
-      }
-    ],
-    "properties": [
       {
         "nullable": null,
         "types": [
@@ -1045,16 +1051,19 @@
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
         "*"
-      ]
+      ],
+      "spread": false,
+      "description": "a new state, based on the type of action it receives"
     }
   },
   {
     "__docId__": 58,
     "kind": "file",
     "name": "src/reducers/chatReducer.js",
-    "content": "import update from 'immutability-helper';\n\n/**\n * This function handles changes to the chats state resulting from a state.dispatch(action)\n * @param { array } state chat state is an array of chat objects. Default: []\n * @param { object } action an action obj with shape { type: { string }, payload: { obj }}\n */\nconst chatReducer = (state = [], action) => {\n  const {type, payload} = action;\n  if (type === 'setChat') {\n    /**\n     * @param payload shape: { player: { 'p1' || 'p2' }, text{ string } }\n     * @returns a new state array with the chat obj passed in appended to the end\n     */\n    return update(state, { $push: [payload] });\n  } else if (type === 'getChats') {\n    /**\n     * @returns the entire state array\n     */\n    return state;\n  } else {\n    /**\n     * fallback case\n     */\n    return state;\n  }\n};\n\nexport default chatReducer;\n",
+    "content": "import update from 'immutability-helper';\n\n/**\n * This function handles changes to the chats state resulting from a state.dispatch(action)\n * @param { array } state chat state is an array of chat objects. Default: []\n * @param { object } action an action obj with shape { type: { string }, payload: { obj }}\n * @returns a new state, based on the type of action it receives\n */\nconst chatReducer = (state = [], action) => {\n  const {type, payload} = action;\n  if (type === 'setChat') {\n    /**\n     * @param payload shape: { player: { 'p1' || 'p2' }, text{ string } }\n     * @returns a new state array with the chat obj passed in appended to the end\n     */\n    return update(state, { $push: [payload] });\n  } else if (type === 'getChats') {\n    /**\n     * @returns the entire state array\n     */\n    return state;\n  } else {\n    /**\n     * fallback case\n     */\n    return state;\n  }\n};\n\nexport default chatReducer;\n",
     "static": true,
     "longname": "/Users/bs/Desktop/hr/battleBread/client/src/reducers/chatReducer.js",
     "access": "public",
@@ -1075,7 +1084,13 @@
     "importPath": "battlebread/src/reducers/chatReducer.js",
     "importStyle": "chatReducer",
     "description": "This function handles changes to the chats state resulting from a state.dispatch(action)",
-    "lineNumber": 8,
+    "lineNumber": 9,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "a new state, based on the type of action it receives"
+      }
+    ],
     "params": [
       {
         "nullable": null,
@@ -1099,16 +1114,112 @@
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
         "*"
-      ]
+      ],
+      "spread": false,
+      "description": "a new state, based on the type of action it receives"
     }
   },
   {
     "__docId__": 60,
     "kind": "file",
+    "name": "src/reducers/gameInfoReducer.js",
+    "content": "import update from 'immutability-helper';\n\n/**\n * @param { object } state\n * @param { string } state.status 'active' || 'inactive'\n * @param { string } state.turn 'p1' || 'p2'\n * @param { number } state.p1Pieces number of pieces remaining for p1\n * @param { number } state.p2Pieces number of pieces remaining for p2\n * @returns a new state, based on the type of action it receives\n */\nconst gameInfoReducer = (state = {}, { type, payload } = action) => {\n  if (type === 'infoInit') {\n    return ({\n      status: 'inactive',\n      turn: 'p1',\n      p1Pieces: 0,\n      p2Pieces: 0,\n    });\n  } else if (type === 'toggleStatus') {\n    const { status } = payload;\n    return update(state, {\n      status: {\n        $apply: () => (status === 'active') ? 'inactive' : 'active' \n      }\n    });\n  } else if (type === 'toggleTurn') {\n    const { turn } = payload;\n    return update(state, {\n      turn: {\n        $apply: () => (turn === 'p1') ? 'p2' : 'p1' \n      }\n    });\n  }else {\n    return state;\n  }\n};\n\nexport default gameInfoReducer;",
+    "static": true,
+    "longname": "/Users/bs/Desktop/hr/battleBread/client/src/reducers/gameInfoReducer.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "name": "gameInfoReducer",
+    "memberof": "src/reducers/gameInfoReducer.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/reducers/gameInfoReducer.js~gameInfoReducer",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/reducers/gameInfoReducer.js",
+    "importStyle": "gameInfoReducer",
+    "description": "",
+    "lineNumber": 11,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "a new state, based on the type of action it receives"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " string "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.status",
+        "description": "'active' || 'inactive'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " string "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.turn",
+        "description": "'p1' || 'p2'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1Pieces",
+        "description": "number of pieces remaining for p1"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2Pieces",
+        "description": "number of pieces remaining for p2"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "a new state, based on the type of action it receives"
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "file",
     "name": "src/reducers/index.js",
-    "content": "import { combineReducers } from 'redux';\nimport boardReducer from './boardReducer.js';\nimport chatReducer from './chatReducer.js';\n\n/**\n * Combines boardReducer and chatReducer into reducers for exporting\n */\nconst reducers = combineReducers({\n  chats: chatReducer,\n  board: boardReducer,\n});\n\nexport default reducers;",
+    "content": "import { combineReducers } from 'redux';\nimport boardReducer from './boardReducer.js';\nimport chatReducer from './chatReducer.js';\nimport gameInfoReducer from './gameInfoReducer.js';\n\n/**\n * Combines boardReducer and chatReducer into reducers for exporting\n */\nconst reducers = combineReducers({\n  chats: chatReducer,\n  board: boardReducer,\n  gameInfo: gameInfoReducer,\n});\n\nexport default reducers;",
     "static": true,
     "longname": "/Users/bs/Desktop/hr/battleBread/client/src/reducers/index.js",
     "access": "public",
@@ -1116,7 +1227,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 61,
+    "__docId__": 63,
     "kind": "variable",
     "name": "reducers",
     "memberof": "src/reducers/index.js",
@@ -1127,7 +1238,7 @@
     "importPath": "battlebread/src/reducers/index.js",
     "importStyle": "reducers",
     "description": "Combines boardReducer and chatReducer into reducers for exporting",
-    "lineNumber": 8,
+    "lineNumber": 9,
     "type": {
       "types": [
         "*"
@@ -1135,7 +1246,7 @@
     }
   },
   {
-    "__docId__": 62,
+    "__docId__": 64,
     "kind": "file",
     "name": "src/store.js",
     "content": "import { applyMiddleware, createStore } from 'redux';\nimport { range } from 'lodash';\nimport { createLogger } from 'redux-logger';\nimport reducers from './reducers/index.js';\n\nconst middleware = applyMiddleware(createLogger());\nconst store = createStore(reducers, middleware);\n\nexport default store;",
@@ -1146,7 +1257,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 63,
+    "__docId__": 65,
     "kind": "variable",
     "name": "middleware",
     "memberof": "src/store.js",
@@ -1167,7 +1278,7 @@
     "ignore": true
   },
   {
-    "__docId__": 64,
+    "__docId__": 66,
     "kind": "variable",
     "name": "store",
     "memberof": "src/store.js",
@@ -1196,7 +1307,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"battlebread\",\n  \"version\": \"0.0.2\",\n  \"description\": \"\",\n  \"author\": \"Battle Bread Team\",\n  \"license\": \"\",\n  \"engines\": {\n    \"node\": \">=6.4.0\"\n  },\n  \"scripts\": {\n    \"react-dev\": \"open ./client/index.html && webpack -d --watch\",\n    \"update\": \"git pull upstream master && npm install\"\n  },\n  \"dependencies\": {\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"express\": \"^4.16.1\",\n    \"immutability-helper\": \"^2.4.0\",\n    \"lodash\": \"^4.17.4\",\n    \"mysql\": \"^2.14.1\",\n    \"prop-types\": \"^15.6.0\",\n    \"random-int\": \"^1.0.0\",\n    \"react\": \"^16.0.0\",\n    \"react-dom\": \"^16.0.0\",\n    \"react-redux\": \"^5.0.6\",\n    \"redux\": \"^3.7.2\",\n    \"redux-logger\": \"^3.0.6\",\n    \"sequelize\": \"^4.13.2\"\n  },\n  \"devDependencies\": {\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-plugin-transform-decorators\": \"^6.24.1\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.0\",\n    \"babel-preset-es2015\": \"^6.6.0\",\n    \"babel-preset-react\": \"^6.24.1\",\n    \"babel-register\": \"^6.7.2\",\n    \"esdoc\": \"^1.0.3\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.8.0\",\n    \"eslint-config-airbnb\": \"^15.1.0\",\n    \"eslint-config-hackreactor\": \"git://github.com/reactorcore/eslint-config-hackreactor\",\n    \"eslint-plugin-import\": \"^2.7.0\",\n    \"eslint-plugin-react\": \"^7.4.0\",\n    \"webpack\": \"^3.6.0\",\n    \"webpack-dev-server\": \"^2.9.1\"\n  },\n  \"babel\": {\n    \"presets\": [\n      \"es2015\"\n    ]\n  }\n}\n",
+    "content": "{\n  \"name\": \"battlebread\",\n  \"version\": \"0.0.2\",\n  \"description\": \"\",\n  \"author\": \"Battle Bread Team\",\n  \"license\": \"\",\n  \"engines\": {\n    \"node\": \">=6.4.0\"\n  },\n  \"scripts\": {\n    \"react-dev\": \"open ./client/index.html && webpack -d --watch\",\n    \"react-doc\": \"./node_modules/.bin/esdoc && open docs/index.html\",\n    \"update\": \"git pull upstream master && npm install\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.16.1\",\n    \"immutability-helper\": \"^2.4.0\",\n    \"lodash\": \"^4.17.4\",\n    \"mysql\": \"^2.14.1\",\n    \"prop-types\": \"^15.6.0\",\n    \"random-int\": \"^1.0.0\",\n    \"react\": \"^16.0.0\",\n    \"react-dom\": \"^16.0.0\",\n    \"react-redux\": \"^5.0.6\",\n    \"redux\": \"^3.7.2\",\n    \"redux-logger\": \"^3.0.6\",\n    \"sequelize\": \"^4.13.2\"\n  },\n  \"devDependencies\": {\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-plugin-transform-decorators\": \"^6.24.1\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.0\",\n    \"babel-preset-es2015\": \"^6.6.0\",\n    \"babel-preset-react\": \"^6.24.1\",\n    \"babel-register\": \"^6.7.2\",\n    \"esdoc\": \"^1.0.3\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.8.0\",\n    \"eslint-config-airbnb\": \"^15.1.0\",\n    \"eslint-config-hackreactor\": \"git://github.com/reactorcore/eslint-config-hackreactor\",\n    \"eslint-plugin-import\": \"^2.7.0\",\n    \"eslint-plugin-react\": \"^7.4.0\",\n    \"webpack\": \"^3.6.0\",\n    \"webpack-dev-server\": \"^2.9.1\"\n  },\n  \"babel\": {\n    \"presets\": [\n      \"es2015\"\n    ]\n  }\n}\n",
     "longname": "/Users/bs/Desktop/hr/battleBread/package.json",
     "name": "package.json",
     "static": true,

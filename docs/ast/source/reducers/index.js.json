@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 318,
+  "end": 399,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 13,
+      "line": 15,
       "column": 24
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 318,
+    "end": 399,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 13,
+        "line": 15,
         "column": 24
       }
     },
@@ -250,20 +250,89 @@
             "raw": "'./chatReducer.js'"
           },
           "value": "./chatReducer.js"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 131,
+        "end": 182,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 51
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
+            "start": 138,
+            "end": 153,
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 22
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 138,
+              "end": 153,
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 7
+                },
+                "end": {
+                  "line": 4,
+                  "column": 22
+                },
+                "identifierName": "gameInfoReducer"
+              },
+              "name": "gameInfoReducer"
+            }
+          }
+        ],
+        "source": {
+          "type": "StringLiteral",
+          "start": 159,
+          "end": 181,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 28
+            },
+            "end": {
+              "line": 4,
+              "column": 50
+            }
+          },
+          "extra": {
+            "rawValue": "./gameInfoReducer.js",
+            "raw": "'./gameInfoReducer.js'"
+          },
+          "value": "./gameInfoReducer.js"
         },
         "trailingComments": [
           {
             "type": "CommentBlock",
             "value": "*\n * Combines boardReducer and chatReducer into reducers for exporting\n ",
-            "start": 132,
-            "end": 208,
+            "start": 184,
+            "end": 260,
             "loc": {
               "start": {
-                "line": 5,
+                "line": 6,
                 "column": 0
               },
               "end": {
-                "line": 7,
+                "line": 8,
                 "column": 3
               }
             }
@@ -272,44 +341,44 @@
       },
       {
         "type": "Identifier",
-        "start": 209,
-        "end": 292,
+        "start": 261,
+        "end": 373,
         "loc": {
           "start": {
-            "line": 8,
+            "line": 9,
             "column": 0
           },
           "end": {
-            "line": 11,
+            "line": 13,
             "column": 3
           }
         },
         "declarations": [
           {
             "type": "VariableDeclarator",
-            "start": 215,
-            "end": 291,
+            "start": 267,
+            "end": 372,
             "loc": {
               "start": {
-                "line": 8,
+                "line": 9,
                 "column": 6
               },
               "end": {
-                "line": 11,
+                "line": 13,
                 "column": 2
               }
             },
             "id": {
               "type": "Identifier",
-              "start": 215,
-              "end": 223,
+              "start": 267,
+              "end": 275,
               "loc": {
                 "start": {
-                  "line": 8,
+                  "line": 9,
                   "column": 6
                 },
                 "end": {
-                  "line": 8,
+                  "line": 9,
                   "column": 14
                 },
                 "identifierName": "reducers"
@@ -319,29 +388,29 @@
             },
             "init": {
               "type": "CallExpression",
-              "start": 226,
-              "end": 291,
+              "start": 278,
+              "end": 372,
               "loc": {
                 "start": {
-                  "line": 8,
+                  "line": 9,
                   "column": 17
                 },
                 "end": {
-                  "line": 11,
+                  "line": 13,
                   "column": 2
                 }
               },
               "callee": {
                 "type": "Identifier",
-                "start": 226,
-                "end": 241,
+                "start": 278,
+                "end": 293,
                 "loc": {
                   "start": {
-                    "line": 8,
+                    "line": 9,
                     "column": 17
                   },
                   "end": {
-                    "line": 8,
+                    "line": 9,
                     "column": 32
                   },
                   "identifierName": "combineReducers"
@@ -351,30 +420,30 @@
               "arguments": [
                 {
                   "type": "ObjectExpression",
-                  "start": 242,
-                  "end": 290,
+                  "start": 294,
+                  "end": 371,
                   "loc": {
                     "start": {
-                      "line": 8,
+                      "line": 9,
                       "column": 33
                     },
                     "end": {
-                      "line": 11,
+                      "line": 13,
                       "column": 1
                     }
                   },
                   "properties": [
                     {
                       "type": "ObjectProperty",
-                      "start": 246,
-                      "end": 264,
+                      "start": 298,
+                      "end": 316,
                       "loc": {
                         "start": {
-                          "line": 9,
+                          "line": 10,
                           "column": 2
                         },
                         "end": {
-                          "line": 9,
+                          "line": 10,
                           "column": 20
                         }
                       },
@@ -383,15 +452,15 @@
                       "computed": false,
                       "key": {
                         "type": "Identifier",
-                        "start": 246,
-                        "end": 251,
+                        "start": 298,
+                        "end": 303,
                         "loc": {
                           "start": {
-                            "line": 9,
+                            "line": 10,
                             "column": 2
                           },
                           "end": {
-                            "line": 9,
+                            "line": 10,
                             "column": 7
                           },
                           "identifierName": "chats"
@@ -400,15 +469,15 @@
                       },
                       "value": {
                         "type": "Identifier",
-                        "start": 253,
-                        "end": 264,
+                        "start": 305,
+                        "end": 316,
                         "loc": {
                           "start": {
-                            "line": 9,
+                            "line": 10,
                             "column": 9
                           },
                           "end": {
-                            "line": 9,
+                            "line": 10,
                             "column": 20
                           },
                           "identifierName": "chatReducer"
@@ -418,15 +487,15 @@
                     },
                     {
                       "type": "ObjectProperty",
-                      "start": 268,
-                      "end": 287,
+                      "start": 320,
+                      "end": 339,
                       "loc": {
                         "start": {
-                          "line": 10,
+                          "line": 11,
                           "column": 2
                         },
                         "end": {
-                          "line": 10,
+                          "line": 11,
                           "column": 21
                         }
                       },
@@ -435,15 +504,15 @@
                       "computed": false,
                       "key": {
                         "type": "Identifier",
-                        "start": 268,
-                        "end": 273,
+                        "start": 320,
+                        "end": 325,
                         "loc": {
                           "start": {
-                            "line": 10,
+                            "line": 11,
                             "column": 2
                           },
                           "end": {
-                            "line": 10,
+                            "line": 11,
                             "column": 7
                           },
                           "identifierName": "board"
@@ -452,20 +521,72 @@
                       },
                       "value": {
                         "type": "Identifier",
-                        "start": 275,
-                        "end": 287,
+                        "start": 327,
+                        "end": 339,
                         "loc": {
                           "start": {
-                            "line": 10,
+                            "line": 11,
                             "column": 9
                           },
                           "end": {
-                            "line": 10,
+                            "line": 11,
                             "column": 21
                           },
                           "identifierName": "boardReducer"
                         },
                         "name": "boardReducer"
+                      }
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "start": 343,
+                      "end": 368,
+                      "loc": {
+                        "start": {
+                          "line": 12,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 27
+                        }
+                      },
+                      "method": false,
+                      "shorthand": false,
+                      "computed": false,
+                      "key": {
+                        "type": "Identifier",
+                        "start": 343,
+                        "end": 351,
+                        "loc": {
+                          "start": {
+                            "line": 12,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 10
+                          },
+                          "identifierName": "gameInfo"
+                        },
+                        "name": "gameInfo"
+                      },
+                      "value": {
+                        "type": "Identifier",
+                        "start": 353,
+                        "end": 368,
+                        "loc": {
+                          "start": {
+                            "line": 12,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 27
+                          },
+                          "identifierName": "gameInfoReducer"
+                        },
+                        "name": "gameInfoReducer"
                       }
                     }
                   ]
@@ -482,29 +603,29 @@
       },
       {
         "type": "Identifier",
-        "start": 294,
-        "end": 318,
+        "start": 375,
+        "end": 399,
         "loc": {
           "start": {
-            "line": 13,
+            "line": 15,
             "column": 0
           },
           "end": {
-            "line": 13,
+            "line": 15,
             "column": 24
           }
         },
         "declaration": {
           "type": "Identifier",
-          "start": 309,
-          "end": 317,
+          "start": 390,
+          "end": 398,
           "loc": {
             "start": {
-              "line": 13,
+              "line": 15,
               "column": 15
             },
             "end": {
-              "line": 13,
+              "line": 15,
               "column": 23
             },
             "identifierName": "reducers"
@@ -517,58 +638,58 @@
       },
       {
         "type": "ExportDefaultDeclaration",
-        "start": 294,
-        "end": 318,
+        "start": 375,
+        "end": 399,
         "loc": {
           "start": {
-            "line": 13,
+            "line": 15,
             "column": 0
           },
           "end": {
-            "line": 13,
+            "line": 15,
             "column": 24
           }
         },
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 209,
-          "end": 292,
+          "start": 261,
+          "end": 373,
           "loc": {
             "start": {
-              "line": 8,
+              "line": 9,
               "column": 0
             },
             "end": {
-              "line": 11,
+              "line": 13,
               "column": 3
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 215,
-              "end": 291,
+              "start": 267,
+              "end": 372,
               "loc": {
                 "start": {
-                  "line": 8,
+                  "line": 9,
                   "column": 6
                 },
                 "end": {
-                  "line": 11,
+                  "line": 13,
                   "column": 2
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 215,
-                "end": 223,
+                "start": 267,
+                "end": 275,
                 "loc": {
                   "start": {
-                    "line": 8,
+                    "line": 9,
                     "column": 6
                   },
                   "end": {
-                    "line": 8,
+                    "line": 9,
                     "column": 14
                   },
                   "identifierName": "reducers"
@@ -578,29 +699,29 @@
               },
               "init": {
                 "type": "CallExpression",
-                "start": 226,
-                "end": 291,
+                "start": 278,
+                "end": 372,
                 "loc": {
                   "start": {
-                    "line": 8,
+                    "line": 9,
                     "column": 17
                   },
                   "end": {
-                    "line": 11,
+                    "line": 13,
                     "column": 2
                   }
                 },
                 "callee": {
                   "type": "Identifier",
-                  "start": 226,
-                  "end": 241,
+                  "start": 278,
+                  "end": 293,
                   "loc": {
                     "start": {
-                      "line": 8,
+                      "line": 9,
                       "column": 17
                     },
                     "end": {
-                      "line": 8,
+                      "line": 9,
                       "column": 32
                     },
                     "identifierName": "combineReducers"
@@ -610,30 +731,30 @@
                 "arguments": [
                   {
                     "type": "ObjectExpression",
-                    "start": 242,
-                    "end": 290,
+                    "start": 294,
+                    "end": 371,
                     "loc": {
                       "start": {
-                        "line": 8,
+                        "line": 9,
                         "column": 33
                       },
                       "end": {
-                        "line": 11,
+                        "line": 13,
                         "column": 1
                       }
                     },
                     "properties": [
                       {
                         "type": "ObjectProperty",
-                        "start": 246,
-                        "end": 264,
+                        "start": 298,
+                        "end": 316,
                         "loc": {
                           "start": {
-                            "line": 9,
+                            "line": 10,
                             "column": 2
                           },
                           "end": {
-                            "line": 9,
+                            "line": 10,
                             "column": 20
                           }
                         },
@@ -642,15 +763,15 @@
                         "computed": false,
                         "key": {
                           "type": "Identifier",
-                          "start": 246,
-                          "end": 251,
+                          "start": 298,
+                          "end": 303,
                           "loc": {
                             "start": {
-                              "line": 9,
+                              "line": 10,
                               "column": 2
                             },
                             "end": {
-                              "line": 9,
+                              "line": 10,
                               "column": 7
                             },
                             "identifierName": "chats"
@@ -659,15 +780,15 @@
                         },
                         "value": {
                           "type": "Identifier",
-                          "start": 253,
-                          "end": 264,
+                          "start": 305,
+                          "end": 316,
                           "loc": {
                             "start": {
-                              "line": 9,
+                              "line": 10,
                               "column": 9
                             },
                             "end": {
-                              "line": 9,
+                              "line": 10,
                               "column": 20
                             },
                             "identifierName": "chatReducer"
@@ -677,15 +798,15 @@
                       },
                       {
                         "type": "ObjectProperty",
-                        "start": 268,
-                        "end": 287,
+                        "start": 320,
+                        "end": 339,
                         "loc": {
                           "start": {
-                            "line": 10,
+                            "line": 11,
                             "column": 2
                           },
                           "end": {
-                            "line": 10,
+                            "line": 11,
                             "column": 21
                           }
                         },
@@ -694,15 +815,15 @@
                         "computed": false,
                         "key": {
                           "type": "Identifier",
-                          "start": 268,
-                          "end": 273,
+                          "start": 320,
+                          "end": 325,
                           "loc": {
                             "start": {
-                              "line": 10,
+                              "line": 11,
                               "column": 2
                             },
                             "end": {
-                              "line": 10,
+                              "line": 11,
                               "column": 7
                             },
                             "identifierName": "board"
@@ -711,20 +832,72 @@
                         },
                         "value": {
                           "type": "Identifier",
-                          "start": 275,
-                          "end": 287,
+                          "start": 327,
+                          "end": 339,
                           "loc": {
                             "start": {
-                              "line": 10,
+                              "line": 11,
                               "column": 9
                             },
                             "end": {
-                              "line": 10,
+                              "line": 11,
                               "column": 21
                             },
                             "identifierName": "boardReducer"
                           },
                           "name": "boardReducer"
+                        }
+                      },
+                      {
+                        "type": "ObjectProperty",
+                        "start": 343,
+                        "end": 368,
+                        "loc": {
+                          "start": {
+                            "line": 12,
+                            "column": 2
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 27
+                          }
+                        },
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 343,
+                          "end": 351,
+                          "loc": {
+                            "start": {
+                              "line": 12,
+                              "column": 2
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 10
+                            },
+                            "identifierName": "gameInfo"
+                          },
+                          "name": "gameInfo"
+                        },
+                        "value": {
+                          "type": "Identifier",
+                          "start": 353,
+                          "end": 368,
+                          "loc": {
+                            "start": {
+                              "line": 12,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 27
+                            },
+                            "identifierName": "gameInfoReducer"
+                          },
+                          "name": "gameInfoReducer"
                         }
                       }
                     ]
@@ -739,15 +912,15 @@
             {
               "type": "CommentBlock",
               "value": "*\n * Combines boardReducer and chatReducer into reducers for exporting\n ",
-              "start": 132,
-              "end": 208,
+              "start": 184,
+              "end": 260,
               "loc": {
                 "start": {
-                  "line": 5,
+                  "line": 6,
                   "column": 0
                 },
                 "end": {
-                  "line": 7,
+                  "line": 8,
                   "column": 3
                 }
               }
@@ -763,15 +936,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n * Combines boardReducer and chatReducer into reducers for exporting\n ",
-      "start": 132,
-      "end": 208,
+      "start": 184,
+      "end": 260,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 6,
           "column": 0
         },
         "end": {
-          "line": 7,
+          "line": 8,
           "column": 3
         }
       }
@@ -1228,17 +1401,150 @@
       }
     },
     {
-      "type": "CommentBlock",
-      "value": "*\n * Combines boardReducer and chatReducer into reducers for exporting\n ",
-      "start": 132,
-      "end": 208,
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 131,
+      "end": 137,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 4,
           "column": 0
         },
         "end": {
-          "line": 7,
+          "line": 4,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "gameInfoReducer",
+      "start": 138,
+      "end": 153,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 7
+        },
+        "end": {
+          "line": 4,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 154,
+      "end": 158,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 23
+        },
+        "end": {
+          "line": 4,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./gameInfoReducer.js",
+      "start": 159,
+      "end": 181,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 28
+        },
+        "end": {
+          "line": 4,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 181,
+      "end": 182,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 50
+        },
+        "end": {
+          "line": 4,
+          "column": 51
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Combines boardReducer and chatReducer into reducers for exporting\n ",
+      "start": 184,
+      "end": 260,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
           "column": 3
         }
       }
@@ -1258,15 +1564,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 209,
-      "end": 214,
+      "start": 261,
+      "end": 266,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 9,
           "column": 0
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 5
         }
       }
@@ -1284,15 +1590,15 @@
         "binop": null
       },
       "value": "reducers",
-      "start": 215,
-      "end": 223,
+      "start": 267,
+      "end": 275,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 9,
           "column": 6
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 14
         }
       }
@@ -1311,15 +1617,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 224,
-      "end": 225,
+      "start": 276,
+      "end": 277,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 9,
           "column": 15
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 16
         }
       }
@@ -1337,15 +1643,15 @@
         "binop": null
       },
       "value": "combineReducers",
-      "start": 226,
-      "end": 241,
+      "start": 278,
+      "end": 293,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 9,
           "column": 17
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 32
         }
       }
@@ -1362,15 +1668,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 241,
-      "end": 242,
+      "start": 293,
+      "end": 294,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 9,
           "column": 32
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 33
         }
       }
@@ -1387,15 +1693,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 242,
-      "end": 243,
+      "start": 294,
+      "end": 295,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 9,
           "column": 33
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 34
         }
       }
@@ -1413,15 +1719,15 @@
         "binop": null
       },
       "value": "chats",
-      "start": 246,
-      "end": 251,
+      "start": 298,
+      "end": 303,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 2
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 7
         }
       }
@@ -1439,15 +1745,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 251,
-      "end": 252,
+      "start": 303,
+      "end": 304,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 7
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 8
         }
       }
@@ -1465,15 +1771,15 @@
         "binop": null
       },
       "value": "chatReducer",
-      "start": 253,
-      "end": 264,
+      "start": 305,
+      "end": 316,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 9
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 20
         }
       }
@@ -1491,15 +1797,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 264,
-      "end": 265,
+      "start": 316,
+      "end": 317,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 20
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 21
         }
       }
@@ -1517,15 +1823,15 @@
         "binop": null
       },
       "value": "board",
-      "start": 268,
-      "end": 273,
+      "start": 320,
+      "end": 325,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 11,
           "column": 2
         },
         "end": {
-          "line": 10,
+          "line": 11,
           "column": 7
         }
       }
@@ -1543,15 +1849,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 273,
-      "end": 274,
+      "start": 325,
+      "end": 326,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 11,
           "column": 7
         },
         "end": {
-          "line": 10,
+          "line": 11,
           "column": 8
         }
       }
@@ -1569,15 +1875,15 @@
         "binop": null
       },
       "value": "boardReducer",
-      "start": 275,
-      "end": 287,
+      "start": 327,
+      "end": 339,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 11,
           "column": 9
         },
         "end": {
-          "line": 10,
+          "line": 11,
           "column": 21
         }
       }
@@ -1595,16 +1901,120 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 287,
-      "end": 288,
+      "start": 339,
+      "end": 340,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 11,
           "column": 21
         },
         "end": {
-          "line": 10,
+          "line": 11,
           "column": 22
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "gameInfo",
+      "start": 343,
+      "end": 351,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 2
+        },
+        "end": {
+          "line": 12,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 351,
+      "end": 352,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 10
+        },
+        "end": {
+          "line": 12,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "gameInfoReducer",
+      "start": 353,
+      "end": 368,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 12
+        },
+        "end": {
+          "line": 12,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 368,
+      "end": 369,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 27
+        },
+        "end": {
+          "line": 12,
+          "column": 28
         }
       }
     },
@@ -1620,15 +2030,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 289,
-      "end": 290,
+      "start": 370,
+      "end": 371,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 13,
           "column": 0
         },
         "end": {
-          "line": 11,
+          "line": 13,
           "column": 1
         }
       }
@@ -1645,15 +2055,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 290,
-      "end": 291,
+      "start": 371,
+      "end": 372,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 13,
           "column": 1
         },
         "end": {
-          "line": 11,
+          "line": 13,
           "column": 2
         }
       }
@@ -1671,15 +2081,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 291,
-      "end": 292,
+      "start": 372,
+      "end": 373,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 13,
           "column": 2
         },
         "end": {
-          "line": 11,
+          "line": 13,
           "column": 3
         }
       }
@@ -1699,15 +2109,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 294,
-      "end": 300,
+      "start": 375,
+      "end": 381,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 15,
           "column": 0
         },
         "end": {
-          "line": 13,
+          "line": 15,
           "column": 6
         }
       }
@@ -1727,15 +2137,15 @@
         "updateContext": null
       },
       "value": "default",
-      "start": 301,
-      "end": 308,
+      "start": 382,
+      "end": 389,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 15,
           "column": 7
         },
         "end": {
-          "line": 13,
+          "line": 15,
           "column": 14
         }
       }
@@ -1753,15 +2163,15 @@
         "binop": null
       },
       "value": "reducers",
-      "start": 309,
-      "end": 317,
+      "start": 390,
+      "end": 398,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 15,
           "column": 15
         },
         "end": {
-          "line": 13,
+          "line": 15,
           "column": 23
         }
       }
@@ -1779,15 +2189,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 317,
-      "end": 318,
+      "start": 398,
+      "end": 399,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 15,
           "column": 23
         },
         "end": {
-          "line": 13,
+          "line": 15,
           "column": 24
         }
       }
@@ -1805,15 +2215,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 318,
-      "end": 318,
+      "start": 399,
+      "end": 399,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 15,
           "column": 24
         },
         "end": {
-          "line": 13,
+          "line": 15,
           "column": 24
         }
       }
