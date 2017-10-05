@@ -27,6 +27,7 @@ CREATE TABLE games (
   player2Hits varchar(100),
   player2Misses varchar(100),
   allMoves varchar(300) DEFAULT '[]',
+  chats varchar(10000),
   result ENUM('In progress', 'Complete'),
   PRIMARY KEY (id),
   FOREIGN KEY (player1ID) REFERENCES users(id),
@@ -48,12 +49,32 @@ Values ('sniperSouffleSteph', 'password4', 8, 2, 3, 'LWWLWWWWWW', 'http://oi43.t
 
 
 INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, 
-player2Placement, player2Hits, player2Misses, result)
-Values (1, '[]', '[]', '[]', 2, '[]', '[]', '[{p1guess: [3,3]}, {p2guess: [2,6]}]', 'In progress');
+player2Placement, player2Hits, player2Misses, allMoves, chats, result)
+Values (1, 
+        '["3,1", "4,1", "6,5", "6,6", "6,7"]', 
+        '["3,3"]', 
+        '["5,7", "2,3"]', 
+        2, 
+        '["3,3", "3,4", "7,6", "7,7", "7,8"]', 
+        '["4,1"]', 
+        '["2,6"]', 
+        '{"player1Guess": ["3,3", "5,7", "2,3"], "player2Guess": ["2,6", "4,1"]}',
+        '{"player1Chat": ["hi", "i donut think you can win, you batard!", "you are toast!"], "player2Chat": ["dang you got me!", "i am too baked for this..."]}', 
+        'In progress'); 
 
 INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, 
-player2Placement, player2Hits, player2Misses, result)
-Values (3, '[]', '[]', '[]', 4, '[]', '[]', '[]', 'In progress');
+player2Placement, player2Hits, player2Misses, allMoves, chats, result)
+Values (3, 
+       '[]', 
+       '[]', 
+       '[]', 
+       4, 
+       '[]', 
+       '[]', 
+       '[]', 
+       '{"player1Guess": [], "player2Guess": []}',
+       '{"player1Chat": [], "player2Chat": []}', 
+       'In progress'); 
 
 
 

@@ -1,10 +1,12 @@
 const express = require('express');
 const db = require('../database/database-helpers.js');
 const dbi = require('../database/index.js');
+const clientHelpers = require('./client-helpers.js');
 const bodyParser = require('body-parser');
-const app = express(); 
+const app = express();  
 
 // EG note to self: to start sql, brew services restart mysql
+// mysql -u root < database/schema.sql
 
 app.use(express.static(__dirname + '/../client/'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,8 +38,9 @@ app.get('/games/:gameId', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Retrieved game info: ', results);
-      res.send(results);
+      console.log('Retrieved game info: ', results[0]);
+      res.send(clientHelpers.buildStateForClient(results[0]));
+      //res.send(results);  
     }    
   });
 });
@@ -60,7 +63,7 @@ app.post('/users', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Created new user: ', results);
+      //console.log('Created new user: ', results);
       res.send(results);
     }
   }); 
