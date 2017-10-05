@@ -22,20 +22,29 @@ export const createBoard = () => {
  * @param {string} player either 'p1' or 'p2'. Represents TARGET player's board.
  * @param {string} id the ID of the guessed tile, ex: '1,1' or '4,3'
  */
-export const guess = (player, id) => store.dispatch({
-  type: 'guess', 
-  payload: { player, id },
-});
+export const guess = (player, id) => {
+  store.dispatch({
+    type: 'guess', 
+    payload: { player, id },
+  });
+  store.dispatch({ type: 'toggleTurn' });
+};
 
 /**
  * Sets a single piece, which is represented by an array of its coordinates
  * @param {string} player either 'p1' or 'p2'
  * @param {array} piece an array of tile ID strings, ex: ['1,1','4,3']
  */
-export const setPiece = (player, piece) => store.dispatch({
-  type: 'setPiece',
-  payload: { player, piece },
-});
+export const setPiece = (player, piece) => {
+  store.dispatch({
+    type: 'setPiece',
+    payload: { player, piece },
+  });
+  store.dispatch({
+    type: 'updatePieces',
+    payload: { player, pieces: piece.length },
+  });
+};
 
 /**
  * Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.
