@@ -4,6 +4,9 @@
 #VSCode
 .vscode
 
+#Webpack
+bundle.js
+
 # Logs
 logs
 *.log
