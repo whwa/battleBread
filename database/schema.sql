@@ -58,8 +58,8 @@ Values (1,
         '["3,3", "3,4", "7,6", "7,7", "7,8"]', 
         '["4,1"]', 
         '["2,6"]', 
-        '{"player1Guess": ["3,3", "5,7", "2,3"], "player2Guess": ["2,6", "4,1"]}',
-        '{"player1Chat": ["hi", "i donut think you can win, you batard!", "you are toast!"], "player2Chat": ["dang you got me!", "i am too baked for this..."]}', 
+        '{"p1guess": ["3,3", "5,7", "2,3"], "p2guess": ["2,6", "4,1"]}',
+        '{"p1chat": ["hi", "i donut think you can win, you batard!", "you are toast!"], "p2chat": ["dang you got me!", "i am too baked for this..."]}', 
         'In progress'); 
 
 INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, 
@@ -72,8 +72,8 @@ Values (3,
        '[]', 
        '[]', 
        '[]', 
-       '{"player1Guess": [], "player2Guess": []}',
-       '{"player1Chat": [], "player2Chat": []}', 
+       '{"p1guess": [], "p2guess": []}',
+       '{"p1chat": [], "p2chat": []}', 
        'In progress'); 
 
 

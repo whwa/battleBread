@@ -3,7 +3,7 @@ const buildStateForClient = results => {
   let state = {};
   state.board = {};
   state.allMoves = JSON.parse(results.allMoves);
-  state.board.turn = JSON.parse(results.allMoves).player1Guess.length;
+  state.board.turn = JSON.parse(results.allMoves).p1guess.length;
   state.board.p1Pieces = 0; // not sure what this should be
   state.board.p2Pieces = 0; 
   state.board.p1 = buildGridForClient(results, 1);
@@ -14,14 +14,14 @@ const buildStateForClient = results => {
 
 const buildChatsForClient = results => {
   let chats = [];
-  let player1Chat = JSON.parse(results.chats).player1Chat;
-  let player2Chat = JSON.parse(results.chats).player2Chat;
-  for (let i = 0; i < player1Chat.length; i++) {
+  let p1chat = JSON.parse(results.chats).p1chat;
+  let p2chat = JSON.parse(results.chats).p2chat;
+  for (let i = 0; i < p1chat.length; i++) {
     if (i % 2 === 0) {
-      chats.push({"player": "p1", "text": player1Chat[i]});
+      chats.push({"player": "p1", "text": p1chat[i]});
     } else {
-      if (player2Chat[i] !== undefined) {
-        chats.push({"player": "p2", "text": player2Chat[i]});
+      if (p2chat[i] !== undefined) {
+        chats.push({"player": "p2", "text": p2chat[i]});
       }
     }
   }
@@ -38,11 +38,6 @@ const buildGridForClient = (results, player) => {
     JSON.parse(results['player' + otherPlayer + 'Misses'])
   );
   let placeArr = JSON.parse(results['player' + player + 'Placement']);
-
-  // let guessArr = JSON.parse(results['player' + player + 'Hits']).concat(
-  //   JSON.parse(results['player' + player + 'Misses'])
-  // );
-  // let placeArr = JSON.parse(results['player' + player + 'Placement']);
 
   // Assume results.player1Placement will look like this:
   // [{'0,0': true}, {'0,1': false}, ...]
