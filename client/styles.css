@@ -1,0 +1,29 @@
+.gameInfo {
+  width: 388px;
+  height: 250px;
+  background-color: #F3F3F3;
+  margin-top: 20px;
+}
+
+.infoColOne, .infoColTwo {
+  background-color: #FFFFFF; 
+  width: 170px;
+  height: 150px; 
+  margin: 10px;
+  float: left;
+}
+
+.chatBox {
+  width: 388px;
+  height: 250px;
+  background-color: #F3F3F3;
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+.chatWindow {
+  background-color: #FFFFFF; 
+  width: 360px;
+  height: 150px; 
+  margin: 10px;
+}

@@ -1,6 +1,12 @@
 #MACOS
 .DS_Store
 
+#VSCode
+.vscode
+
+#Webpack
+bundle.js
+
 # Logs
 logs
 *.log

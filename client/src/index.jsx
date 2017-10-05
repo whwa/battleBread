@@ -1,16 +1,21 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
 import store from './store.js';
 import Board from './components/Board.jsx';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createBoard, setPiece, setChat, setRandomPieces } from './actions.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    store.dispatch({ type: 'createBoard' });
+    createBoard();
   }
   componentDidMount() {
-    store.dispatch({ type: 'randomPieces' });
+    // setPiece('p2', ['0,0', '0,1', '0,2']);
+    setRandomPieces('p2');
+    setRandomPieces('p1');
+    setChat('p1', 'glhf');
+    setChat('p2', 'you\'re toast!');
   }
   render() {
     return (
