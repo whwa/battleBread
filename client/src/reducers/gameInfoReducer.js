@@ -1,11 +1,12 @@
 import update from 'immutability-helper';
 
 /**
+ * Reducer function for the gameInfo portion of the redux state
  * @param { object } state
- * @param { string } state.status 'active' || 'inactive'
- * @param { string } state.turn 'p1' || 'p2'
- * @param { number } state.p1Pieces number of pieces remaining for p1
- * @param { number } state.p2Pieces number of pieces remaining for p2
+ * @property { string } state.status 'active' || 'inactive'
+ * @property { string } state.turn 'p1' || 'p2'
+ * @property { number } state.p1Pieces number of pieces remaining for p1
+ * @property { number } state.p2Pieces number of pieces remaining for p2
  * @returns a new state, based on the type of action it receives
  */
 const gameInfoReducer = (state = {}, { type, payload } = action) => {
@@ -30,7 +31,14 @@ const gameInfoReducer = (state = {}, { type, payload } = action) => {
         $apply: () => (turn === 'p1') ? 'p2' : 'p1' 
       }
     });
-  }else {
+  } else if (type === 'updatePieces') {
+    const { player, pieces } = payload;
+    return update(state, {
+      [`${player}Pieces`]: { $set: pieces },
+    });
+  } else if (type === 'getInfo') {
+    return state;
+  } else {
     return state;
   }
 };

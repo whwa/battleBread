@@ -2,6 +2,10 @@ import store from './store.js';
 import randomInt from 'random-int';
 import { range } from 'lodash';
 
+///////////////////
+// BOARD ACTIONS //
+///////////////////
+
 /**
  * Dispatches a createBoard action to the state via boardReducer
  * No params necessary.
@@ -52,6 +56,10 @@ export const setRandomPieces = (player) => {
  */
 export const randomPieces = () => store.dispatch({ type: 'randomPieces' });
 
+//////////////////
+// CHAT ACTIONS //
+//////////////////
+
 /**
  * Adds a chat to the chat store
  * @param {string} player either 'p1' or 'p2'
@@ -66,3 +74,22 @@ export const setChat = (player, text) => store.dispatch({
  * Returns the entire chat store
  */
 export const getChats = () => store.dispatch({ type: 'getChats' });
+
+///////////////////////
+// GAME INFO ACTIONS //
+///////////////////////
+
+/**
+ * Simply returns entire gameInfo state
+ */
+export const getInfo = () => store.dispatch({ type: 'getInfo' });
+
+/**
+ * Updates a player's piece count in the state
+ * @param { string } player 'p1' || 'p2'
+ * @param { number } pieces The updated piece count total
+ */
+export const updatePieces = (player, pieces) => store.dispatch({
+  type: 'updatePieces',
+  payload: { player, pieces },
+});
