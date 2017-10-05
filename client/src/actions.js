@@ -30,7 +30,7 @@ export const setPiece = (player, piece) => store.dispatch({
 
 /**
  * Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.
- * @param {str} player  either 'p1' or 'p2'
+ * @param {string} player  either 'p1' or 'p2'
  */
 export const setRandomPieces = (player) => {
   const pieces = range(2, 6)

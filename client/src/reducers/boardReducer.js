@@ -4,8 +4,26 @@ import { range } from 'lodash';
 
 /**
  * This function handles changes to the board state resulting from a state.dispatch(action)
- * @param {object} state Board state is an object representing each players' board. For shape, see store.js
- * @param {object} action an action obj with shape {type: {string}, payload: {obj}}
+ * @param {object} state Board state is an object representing each players' board.
+ * board: {
+ *   turn: 0,
+ *   p1Pieces: 0,
+ *   p2Pieces: 0,
+ *   p1: {
+ *     '0,0': {
+ *       id: '0,0',
+ *       row: 0,
+ *       col: 0,
+ *       hasBread: false,
+ *       guessed: false,
+ *       color: 'blue'
+ *     },
+ *     '0,1': { ... },
+ *     ...etc, for all coords in board
+ *   },
+ *   p2: { same shape as p1} ,
+ * }
+ * @param {object} action an action obj with shape { type: { string }, payload: { obj }}
  */
 const boardReducer = (state = { 
   p1: {}, 

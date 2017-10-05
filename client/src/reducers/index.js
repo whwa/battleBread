@@ -3,7 +3,7 @@ import boardReducer from './boardReducer.js';
 import chatReducer from './chatReducer.js';
 
 /**
- * Takes in all reducers and exports them as one
+ * Combines boardReducer and chatReducer into reducers for exporting
  */
 const reducers = combineReducers({
   chats: chatReducer,
