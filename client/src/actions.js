@@ -16,10 +16,10 @@ export const setPiece = (player, piece) => store.dispatch({
 
 export const setRandomPieces = (player) => {
   const pieces = range(2, 6)
-    .map((piece, i) => {
+    .map((len) => {
       const rotate = randomInt(0, 1);
-      const scalar = randomInt(0, i);
-      return range(0, i+1).map((el, j) => (rotate) ? [scalar, j] : [j, scalar]);
+      const scalar = randomInt(0, 7);
+      return range(0, len).map((el, j) => (rotate) ? [scalar, j] : [j, scalar]);
     }).forEach(piece => setPiece(player, piece));
 };
 
