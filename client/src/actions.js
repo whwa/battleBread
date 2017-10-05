@@ -3,7 +3,9 @@ import randomInt from 'random-int';
 import { range } from 'lodash';
 
 /**
- * generates a game board and saves it to state
+ * Dispatches a createBoard action to the state via boardReducer
+ * No params necessary.
+ * Invoke to create a new board state from scratch. 
  */
 export const createBoard = () => store.dispatch({ type: 'createBoard' });
 

@@ -4,7 +4,7 @@ import { range } from 'lodash';
 
 /**
  * This function handles changes to the board state resulting from a state.dispatch(action)
- * @param {object} state Board state is an object representing each players' board.
+ * @param { object } stateBoard state is an object representing each players' board. Example:
  * board: {
  *   turn: 0,
  *   p1Pieces: 0,
@@ -23,22 +23,24 @@ import { range } from 'lodash';
  *   },
  *   p2: { same shape as p1} ,
  * }
- * @param {object} action an action obj with shape { type: { string }, payload: { obj }}
+ * @param { object } action an action dispatched via an action creator from ../actions.js
+ * @property { string } type 'guess' || 'randomPieces' || 'setPiece
+ * @property { object } payload varies in shape for each action
  */
-const boardReducer = (state = { 
-  p1: {}, 
-  p2: {}, 
-  turn: 0, 
-  p1Pieces: 0,
-  p2Pieces: 0,
-}, action) => {
+const boardReducer = (state = {}, action) => {
   if (action.type === 'createBoard') {
     /**
      * We start a new board from scratch. 
      * 1. Generate an 8x8 array for each player
      * 2. Map a tile object to each index by extending the defaults object with row and col info.
      */
-    const newState = { ...state };
+    const newState = { 
+      p1: {}, 
+      p2: {}, 
+      turn: 0, 
+      p1Pieces: 0,
+      p2Pieces: 0,
+    };
     range(8).map((row) => {
       range(8).map((col) => {
         const defaults = {
@@ -61,7 +63,7 @@ const boardReducer = (state = {
         };
       });
     });
-    return newState;
+    return update(state, {$merge: newState});
   } else if (action.type === 'guess') {
     /**
      * @param action.payload shape: { 
@@ -117,10 +119,10 @@ const boardReducer = (state = {
     });
   } else if (action.type === 'setPiece') {
     /**
-     * @param action.payload shape: { 
-     *  player: { 'p1' or 'p2' },
-     *  piece: { array of tile id strings (ex: ['1,1', '2,4']) }
-     * }
+     * @param action.payload
+     *  @property { string } player 'p1' || 'p2'
+     *  @property { array } piece array of tile id strings (ex: ['1,1', '2,4'])
+     * Place a piece by setting hasBread for each tile to true
      */
       const { player, piece } = action.payload;
       const thePiece = {};
