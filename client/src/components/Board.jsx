@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { range } from 'lodash';
 import Tile from './Tile.jsx';
+import GameInfo from './GameInfo.jsx';
+import Chat from './Chat.jsx';
 
 const Board = props => (
   <div className="container">
@@ -32,6 +34,8 @@ const Board = props => (
           </div>
         ))}
       </div>
+      <GameInfo />
+      {/* <Chat /> */}
     </div>
   </div>
 );
