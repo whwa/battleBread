@@ -35,7 +35,7 @@ const Board = props => (
         ))}
       </div>
       <GameInfo />
-      {/* <Chat /> */}
+      <Chat />
     </div>
   </div>
 );
