@@ -4,25 +4,29 @@ import { range } from 'lodash';
 
 /**
  * This function handles changes to the board state resulting from a state.dispatch(action)
- * @param { object } stateBoard state is an object representing each players' board. Example:
- * board: {
- *   turn: 0,
- *   p1Pieces: 0,
- *   p2Pieces: 0,
- *   p1: {
- *     '0,0': {
- *       id: '0,0',
- *       row: 0,
- *       col: 0,
- *       hasBread: false,
- *       guessed: false,
- *       color: 'blue'
- *     },
- *     '0,1': { ... },
- *     ...etc, for all coords in board
- *   },
- *   p2: { same shape as p1} ,
- * }
+ * @param { object } state state is an object representing each players' board. Example:
+ * @param { object } state.board
+ * @param { number } state.board.turn Turn counter
+ * @param { number } state.board.p1Pieces Number of remaining pieces for player 1
+ * @param { number } state.board.p2Pieces Number of remaining pieces for player 2
+ * @param { object } state.board.p1 Tile states for player 1
+ * @param { object } state.board.p1[tileId] Tile object, indexed by id string
+ * @param { object } state.board.p1[tileId].id Id string (ex: '1,1' or '6,5')
+ * @param { number } state.board.p1[tileId].row
+ * @param { number } state.board.p1[tileId].col
+ * @param { boolean } state.board.p1[tileId].hasBread
+ * @param { boolean } state.board.p1[tileId].guessed
+ * @param { string } state.board.p1[tileId].color 'red' || 'green' || 'blue'
+ * @param { object } state.board.p2 Tile states for player 2
+ * @param { object } state.board.p2[tileId] Tile object, indexed by id string
+ * @param { object } state.board.p2[tileId].id Id string (ex: '1,1' or '6,5')
+ * @param { number } state.board.p2[tileId].row
+ * @param { number } state.board.p2[tileId].col
+ * @param { boolean } state.board.p2[tileId].hasBread
+ * @param { boolean } state.board.p2[tileId].guessed
+ * @param { string } state.board.p2[tileId].color 'red' || 'green' || 'blue'
+ *
+ * 
  * @param { object } action an action dispatched via an action creator from ../actions.js
  * @property { string } type 'guess' || 'randomPieces' || 'setPiece
  * @property { object } payload varies in shape for each action
