@@ -26,6 +26,7 @@ CREATE TABLE games (
   player2Placement varchar(100),
   player2Hits varchar(100),
   player2Misses varchar(100),
+  allMoves varchar(300) DEFAULT '[]',
   result ENUM('In progress', 'Complete'),
   PRIMARY KEY (id),
   FOREIGN KEY (player1ID) REFERENCES users(id),
@@ -38,7 +39,7 @@ Values ('boxingBakerBen', 'password1', 6, 4, 2, 'WLWWLLWWWL', 'http://oi46.tinyp
 INSERT into users (username, password, wins, losses, playerLevel, streak, avatarUrl)
 Values ('doughDudeDevon', 'password2', 3, 7, 1, 'WLWWLLLLLL', 'http://oi48.tinypic.com/2n9z89k.jpg');
 
-INSERT into users (username, password, wins, losses, playerLevel, streak,avatarUrl)
+INSERT into users (username, password, wins, losses, playerLevel, streak, avatarUrl)
 Values ('empanadaEaterEphraim', 'password3', 5, 5, 2, 'WWLWWLWLL', 'http://oi50.tinypic.com/241jksn.jpg');
 
 INSERT into users (username, password, wins, losses, playerLevel, streak, avatarUrl)
@@ -48,11 +49,11 @@ Values ('sniperSouffleSteph', 'password4', 8, 2, 3, 'LWWLWWWWWW', 'http://oi43.t
 
 INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, 
 player2Placement, player2Hits, player2Misses, result)
-Values (1, '[]', '[]', '[]', 2, '[]', '[]', '[]', null);
+Values (1, '[]', '[]', '[]', 2, '[]', '[]', '[{p1guess: [3,3]}, {p2guess: [2,6]}]', 'In progress');
 
 INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, 
 player2Placement, player2Hits, player2Misses, result)
-Values (3, '[]', '[]', '[]', 4, '[]', '[]', '[]', null);
+Values (3, '[]', '[]', '[]', 4, '[]', '[]', '[]', 'In progress');
 
 
 
