@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { range } from 'lodash';
 import Tile from './Tile.jsx';
 import GameInfo from './GameInfo.jsx';
-import Chat from './Chat.jsx';
+import ChatInput from './ChatInput.jsx';
 
 /**
  * Uses bootstrap cards to render 2 8x8 grids of Tile components which receive props from the board state
@@ -43,7 +43,7 @@ const Board = props => (
         ))}
       </div>
       <GameInfo />
-      <Chat />
+      <ChatInput />
     </div>
   </div>
 );
