@@ -20,7 +20,8 @@ export const setRandomPieces = (player) => {
       const rotate = randomInt(0, 1);
       const scalar = randomInt(0, 7);
       return range(0, len).map((el, j) => (rotate) ? [scalar, j] : [j, scalar]);
-    }).forEach(piece => setPiece(player, piece));
+    })
+    .forEach(piece => setPiece(player, piece));
 };
 
 export const randomPieces = () => store.dispatch({ type: 'randomPieces' });
