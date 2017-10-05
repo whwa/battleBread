@@ -1,0 +1,1316 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/actions.js",
+    "content": "import store from './store.js';\nimport randomInt from 'random-int';\nimport { range } from 'lodash';\n\n/**\n * Dispatches a createBoard action to the state via boardReducer\n * No params necessary.\n * Invoke to create a new board state from scratch. \n */\nexport const createBoard = () => {\n  store.dispatch({ type: 'createBoard' });\n  store.dispatch({ type: 'infoInit' });\n};\n\n/**\n * Performs a 'guess' action on a single tile. Depending on whether or not there is\n * bread on that tile, different actions will occur.\n * @param {string} player either 'p1' or 'p2'. Represents TARGET player's board.\n * @param {string} id the ID of the guessed tile, ex: '1,1' or '4,3'\n */\nexport const guess = (player, id) => store.dispatch({\n  type: 'guess', \n  payload: { player, id },\n});\n\n/**\n * Sets a single piece, which is represented by an array of its coordinates\n * @param {string} player either 'p1' or 'p2'\n * @param {array} piece an array of tile ID strings, ex: ['1,1','4,3']\n */\nexport const setPiece = (player, piece) => store.dispatch({\n  type: 'setPiece',\n  payload: { player, piece },\n});\n\n/**\n * Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.\n * @param {string} player  either 'p1' or 'p2'\n */\nexport const setRandomPieces = (player) => {\n  const pieces = range(2, 6)\n    .map((len) => {\n      const rotate = randomInt(0, 1);\n      const scalar = randomInt(0, 7);\n      return range(0, len).map((el, j) => (rotate) ? [scalar, j] : [j, scalar]);\n    })\n    .forEach(piece => setPiece(player, piece));\n};\n\n/**\n * OLD/FOR TESTING ONLY: randomly selects 14 tiles to have bread\n */\nexport const randomPieces = () => store.dispatch({ type: 'randomPieces' });\n\n/**\n * Adds a chat to the chat store\n * @param {string} player either 'p1' or 'p2'\n * @param {string} text the text of the message\n */\nexport const setChat = (player, text) => store.dispatch({\n  type: 'setChat',\n  payload: { player, text },\n});\n\n/**\n * Returns the entire chat store\n */\nexport const getChats = () => store.dispatch({ type: 'getChats' });\n",
+    "static": true,
+    "longname": "/Users/bs/Desktop/hr/battleBread/client/src/actions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "function",
+    "name": "createBoard",
+    "memberof": "src/actions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions.js~createBoard",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/actions.js",
+    "importStyle": "{createBoard}",
+    "description": "Dispatches a createBoard action to the state via boardReducer\nNo params necessary.\nInvoke to create a new board state from scratch. ",
+    "lineNumber": 10,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 50,
+    "kind": "function",
+    "name": "guess",
+    "memberof": "src/actions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions.js~guess",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/actions.js",
+    "importStyle": "{guess}",
+    "description": "Performs a 'guess' action on a single tile. Depending on whether or not there is\nbread on that tile, different actions will occur.",
+    "lineNumber": 21,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "player",
+        "description": "either 'p1' or 'p2'. Represents TARGET player's board."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "the ID of the guessed tile, ex: '1,1' or '4,3'"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 51,
+    "kind": "function",
+    "name": "setPiece",
+    "memberof": "src/actions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions.js~setPiece",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/actions.js",
+    "importStyle": "{setPiece}",
+    "description": "Sets a single piece, which is represented by an array of its coordinates",
+    "lineNumber": 31,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "player",
+        "description": "either 'p1' or 'p2'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "piece",
+        "description": "an array of tile ID strings, ex: ['1,1','4,3']"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 52,
+    "kind": "function",
+    "name": "setRandomPieces",
+    "memberof": "src/actions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions.js~setRandomPieces",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/actions.js",
+    "importStyle": "{setRandomPieces}",
+    "description": "Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.",
+    "lineNumber": 40,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "player",
+        "description": "either 'p1' or 'p2'"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 53,
+    "kind": "function",
+    "name": "randomPieces",
+    "memberof": "src/actions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions.js~randomPieces",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/actions.js",
+    "importStyle": "{randomPieces}",
+    "description": "OLD/FOR TESTING ONLY: randomly selects 14 tiles to have bread",
+    "lineNumber": 53,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 54,
+    "kind": "function",
+    "name": "setChat",
+    "memberof": "src/actions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions.js~setChat",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/actions.js",
+    "importStyle": "{setChat}",
+    "description": "Adds a chat to the chat store",
+    "lineNumber": 60,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "player",
+        "description": "either 'p1' or 'p2'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "text",
+        "description": "the text of the message"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 55,
+    "kind": "function",
+    "name": "getChats",
+    "memberof": "src/actions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions.js~getChats",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/actions.js",
+    "importStyle": "{getChats}",
+    "description": "Returns the entire chat store",
+    "lineNumber": 68,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 56,
+    "kind": "file",
+    "name": "src/reducers/boardReducer.js",
+    "content": "import update from 'immutability-helper';\nimport randomInt from 'random-int';\nimport { range } from 'lodash';\n\n/**\n * This function handles changes to the board state resulting from a state.dispatch(action)\n * @param { object } state state is an object representing each players' board. Example:\n * @property { object } state\n * @property { number } state.turn Turn counter\n * @property { number } state.p1Pieces Number of remaining pieces for player 1\n * @property { number } state.p2Pieces Number of remaining pieces for player 2\n * @property { object } state.p1 Tile states for player 1\n * @property { object } state.p1[tileId] Tile object, indexed by id string\n * @property { object } state.p1[tileId].id Id string (ex: '1,1' or '6,5')\n * @property { number } state.p1[tileId].row\n * @property { number } state.p1[tileId].col\n * @property { boolean } state.p1[tileId].hasBread\n * @property { boolean } state.p1[tileId].guessed\n * @property { string } state.p1[tileId].color 'red' || 'green' || 'blue'\n * @property { object } state.p2 Tile states for player 2\n * @property { object } state.p2[tileId] Tile object, indexed by id string\n * @property { object } state.p2[tileId].id Id string (ex: '1,1' or '6,5')\n * @property { number } state.p2[tileId].row\n * @property { number } state.p2[tileId].col\n * @property { boolean } state.p2[tileId].hasBread\n * @property { boolean } state.p2[tileId].guessed\n * @property { string } state.p2[tileId].color 'red' || 'green' || 'blue'\n *\n * \n * @param { object } action an action dispatched via an action creator from ../actions.js\n * @property { string } type 'guess' || 'randomPieces' || 'setPiece\n * @property { object } payload varies in shape for each action\n * @returns a new state, based on the type of action it receives\n */\nconst boardReducer = (state = {}, action) => {\n  if (action.type === 'createBoard') {\n    /**\n     * We start a new board from scratch. \n     * 1. Generate an 8x8 array for each player\n     * 2. Map a tile object to each index by extending the defaults object with row and col info.\n     */\n    const newState = { \n      p1: {}, \n      p2: {}, \n      turn: 0, \n      p1Pieces: 0,\n      p2Pieces: 0,\n    };\n    range(8).map((row) => {\n      range(8).map((col) => {\n        const defaults = {\n          size: '48px',\n          guessed: false,\n          hasBread: false,\n          color: 'blue',\n        };\n        newState.p1[`${row},${col}`] = {\n          ...defaults,\n          row,\n          col,\n          id: `${row},${col}`,\n        };\n        newState.p2[`${row},${col}`] = {\n          ...defaults,\n          row,\n          col,\n          id: `${row},${col}`,\n        };\n      });\n    });\n    return update(state, {$merge: newState});\n  } else if (action.type === 'guess') {\n    /**\n     * @param action.payload shape: { \n     *  player: {'p1' or 'p2'},\n     *  id: { string (ex:'1,1' or '3,4') }\n     * }\n     * We update the state for one tile on a particular player's board\n     * 1. Increment the turn count\n     * 2. Set the guessed property for that tile to true\n     * 3. Change the color property to green if it was a hit, or red if it was a miss\n     * 4. If it was a hit, we decrement that player's piece count\n     * \n     */\n    const { player, id } = action.payload;\n    const { turn } = state;\n    const { hasBread } = state[player][id];\n    const numPieces = state[`${player}Pieces`];\n\n    const newState = update(state, {\n      turn: {$set: (turn + 1)},\n      [player]: {\n        [id]: {\n          guessed: {$set: true},\n          color: {$apply: () => (hasBread) ? 'green' : 'red'}\n        }\n      },\n      [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },\n    });\n    // newState[player][id] = tile;\n    return newState;\n  } else if (action.type === 'randomPieces') {\n    /**\n     * This is mostly just for testing. Updates 14 random tiles to contain bread.\n     */\n    const player1 = {};\n    const player2 = {};\n\n    range(14).forEach(() => {\n      const [row1, row2, col1, col2] = range(4).map(() => randomInt(7));\n      \n      player1[`${row1},${col1}`] = update(state.p1[`${row1},${col1}`], {\n        hasBread: {$set: true}\n      });\n      player2[`${row2},${col2}`] = update(state.p2[`${row2},${col2}`], {\n        hasBread: {$set: true}\n      });\n\n    });\n    return update(state, {\n      turn: { $set: 0 },\n      p1: { $merge: player1 },\n      p2: { $merge: player2 },\n    });\n  } else if (action.type === 'setPiece') {\n    /**\n     * @param action.payload\n     *  @property { string } player 'p1' || 'p2'\n     *  @property { array } piece array of tile id strings (ex: ['1,1', '2,4'])\n     * Place a piece by setting hasBread for each tile to true\n     */\n      const { player, piece } = action.payload;\n      const thePiece = {};\n      const numPieces = state[`${player}Pieces`] + piece.length;\n\n      piece.forEach(idString => {\n        thePiece[idString] = update(\n          state[player][idString],\n          { hasBread: { $set: true }}\n        );\n      });\n\n      return update(state, {\n        [player]: { $merge: thePiece },\n        [`${player}Pieces`]: { $set: numPieces },\n      });\n  } else {\n    /**\n     * Fallback case\n     */\n    return state;\n  }\n};\n\nexport default boardReducer;",
+    "static": true,
+    "longname": "/Users/bs/Desktop/hr/battleBread/client/src/reducers/boardReducer.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "name": "boardReducer",
+    "memberof": "src/reducers/boardReducer.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/reducers/boardReducer.js~boardReducer",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/reducers/boardReducer.js",
+    "importStyle": "boardReducer",
+    "description": "This function handles changes to the board state resulting from a state.dispatch(action)",
+    "lineNumber": 35,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "a new state, based on the type of action it receives"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": "state is an object representing each players' board. Example:"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "action",
+        "description": "an action dispatched via an action creator from ../actions.js"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.turn",
+        "description": "Turn counter"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1Pieces",
+        "description": "Number of remaining pieces for player 1"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2Pieces",
+        "description": "Number of remaining pieces for player 2"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1",
+        "description": "Tile states for player 1"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1[tileId]",
+        "description": "Tile object, indexed by id string"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1[tileId].id",
+        "description": "Id string (ex: '1,1' or '6,5')"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1[tileId].row",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1[tileId].col",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " boolean "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1[tileId].hasBread",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " boolean "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1[tileId].guessed",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " string "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1[tileId].color",
+        "description": "'red' || 'green' || 'blue'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2",
+        "description": "Tile states for player 2"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2[tileId]",
+        "description": "Tile object, indexed by id string"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2[tileId].id",
+        "description": "Id string (ex: '1,1' or '6,5')"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2[tileId].row",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2[tileId].col",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " boolean "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2[tileId].hasBread",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " boolean "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2[tileId].guessed",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " string "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2[tileId].color",
+        "description": "'red' || 'green' || 'blue'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " string "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "type",
+        "description": "'guess' || 'randomPieces' || 'setPiece"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "payload",
+        "description": "varies in shape for each action"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "a new state, based on the type of action it receives"
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "file",
+    "name": "src/reducers/chatReducer.js",
+    "content": "import update from 'immutability-helper';\n\n/**\n * This function handles changes to the chats state resulting from a state.dispatch(action)\n * @param { array } state chat state is an array of chat objects. Default: []\n * @param { object } action an action obj with shape { type: { string }, payload: { obj }}\n * @returns a new state, based on the type of action it receives\n */\nconst chatReducer = (state = [], action) => {\n  const {type, payload} = action;\n  if (type === 'setChat') {\n    /**\n     * @param payload shape: { player: { 'p1' || 'p2' }, text{ string } }\n     * @returns a new state array with the chat obj passed in appended to the end\n     */\n    return update(state, { $push: [payload] });\n  } else if (type === 'getChats') {\n    /**\n     * @returns the entire state array\n     */\n    return state;\n  } else {\n    /**\n     * fallback case\n     */\n    return state;\n  }\n};\n\nexport default chatReducer;\n",
+    "static": true,
+    "longname": "/Users/bs/Desktop/hr/battleBread/client/src/reducers/chatReducer.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 59,
+    "kind": "function",
+    "name": "chatReducer",
+    "memberof": "src/reducers/chatReducer.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/reducers/chatReducer.js~chatReducer",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/reducers/chatReducer.js",
+    "importStyle": "chatReducer",
+    "description": "This function handles changes to the chats state resulting from a state.dispatch(action)",
+    "lineNumber": 9,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "a new state, based on the type of action it receives"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          " array "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": "chat state is an array of chat objects. Default: []"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "action",
+        "description": "an action obj with shape { type: { string }, payload: { obj }}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "a new state, based on the type of action it receives"
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "file",
+    "name": "src/reducers/gameInfoReducer.js",
+    "content": "import update from 'immutability-helper';\n\n/**\n * @param { object } state\n * @param { string } state.status 'active' || 'inactive'\n * @param { string } state.turn 'p1' || 'p2'\n * @param { number } state.p1Pieces number of pieces remaining for p1\n * @param { number } state.p2Pieces number of pieces remaining for p2\n * @returns a new state, based on the type of action it receives\n */\nconst gameInfoReducer = (state = {}, { type, payload } = action) => {\n  if (type === 'infoInit') {\n    return ({\n      status: 'inactive',\n      turn: 'p1',\n      p1Pieces: 0,\n      p2Pieces: 0,\n    });\n  } else if (type === 'toggleStatus') {\n    const { status } = payload;\n    return update(state, {\n      status: {\n        $apply: () => (status === 'active') ? 'inactive' : 'active' \n      }\n    });\n  } else if (type === 'toggleTurn') {\n    const { turn } = payload;\n    return update(state, {\n      turn: {\n        $apply: () => (turn === 'p1') ? 'p2' : 'p1' \n      }\n    });\n  }else {\n    return state;\n  }\n};\n\nexport default gameInfoReducer;",
+    "static": true,
+    "longname": "/Users/bs/Desktop/hr/battleBread/client/src/reducers/gameInfoReducer.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "name": "gameInfoReducer",
+    "memberof": "src/reducers/gameInfoReducer.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/reducers/gameInfoReducer.js~gameInfoReducer",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/reducers/gameInfoReducer.js",
+    "importStyle": "gameInfoReducer",
+    "description": "",
+    "lineNumber": 11,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "a new state, based on the type of action it receives"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          " object "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          " string "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.status",
+        "description": "'active' || 'inactive'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " string "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.turn",
+        "description": "'p1' || 'p2'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p1Pieces",
+        "description": "number of pieces remaining for p1"
+      },
+      {
+        "nullable": null,
+        "types": [
+          " number "
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "state.p2Pieces",
+        "description": "number of pieces remaining for p2"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "a new state, based on the type of action it receives"
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "file",
+    "name": "src/reducers/index.js",
+    "content": "import { combineReducers } from 'redux';\nimport boardReducer from './boardReducer.js';\nimport chatReducer from './chatReducer.js';\nimport gameInfoReducer from './gameInfoReducer.js';\n\n/**\n * Combines boardReducer and chatReducer into reducers for exporting\n */\nconst reducers = combineReducers({\n  chats: chatReducer,\n  board: boardReducer,\n  gameInfo: gameInfoReducer,\n});\n\nexport default reducers;",
+    "static": true,
+    "longname": "/Users/bs/Desktop/hr/battleBread/client/src/reducers/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 63,
+    "kind": "variable",
+    "name": "reducers",
+    "memberof": "src/reducers/index.js",
+    "static": true,
+    "longname": "src/reducers/index.js~reducers",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/reducers/index.js",
+    "importStyle": "reducers",
+    "description": "Combines boardReducer and chatReducer into reducers for exporting",
+    "lineNumber": 9,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "file",
+    "name": "src/store.js",
+    "content": "import { applyMiddleware, createStore } from 'redux';\nimport { range } from 'lodash';\nimport { createLogger } from 'redux-logger';\nimport reducers from './reducers/index.js';\n\nconst middleware = applyMiddleware(createLogger());\nconst store = createStore(reducers, middleware);\n\nexport default store;",
+    "static": true,
+    "longname": "/Users/bs/Desktop/hr/battleBread/client/src/store.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 65,
+    "kind": "variable",
+    "name": "middleware",
+    "memberof": "src/store.js",
+    "static": true,
+    "longname": "src/store.js~middleware",
+    "access": "public",
+    "export": false,
+    "importPath": "battlebread/src/store.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "variable",
+    "name": "store",
+    "memberof": "src/store.js",
+    "static": true,
+    "longname": "src/store.js~store",
+    "access": "public",
+    "export": true,
+    "importPath": "battlebread/src/store.js",
+    "importStyle": "store",
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "index",
+    "content": "# Battle Bread!\n\n> A bread-themed Battleship clone\n\n## Team\n\n  - Devon Yu\n  - Stephanie Wong\n  - Ephraim Glick\n  - Ben Stephens\n\n## Table of Contents\n\n1. [Usage](#Usage)\n1. [Requirements](#requirements)\n1. [Development](#development)\n    1. [Installing Dependencies](#installing-dependencies)\n    1. [Tasks](#tasks)\n1. [Roadmap](#roadmap)\n1. [Contributing](#contributing)\n\n## Usage\n\n> Use it! Woot\n\n## Requirements\n\n- Node ^6.4.0\n- Express ^4.16.1\n- Lodash ^4.17.4\n- Prop-types ^15.6.0\n- Random-int ^1.0.0\n- React ^16.0.0\n- React-dom ^16.0.0\n- React-redux ^5.0.6\n- Redux ^3.7.2\n- Redux-logger ^3.0.6\n- Sequelize ^4.13.2\"\n\n## Development\n\n### Resuming Your Work\n\nFrom within the root directory:\n\n```sh\nnpm run update\n```\n\nIf working with React:\n\n```sh\nnpm run react-dev\n```\n\n### Installing Dependencies\n\nFrom within the root directory:\n\n```sh\nnpm install\n```\n\n### Roadmap\n\nView the project roadmap [here](LINK_TO_DOC)\n\n\n## Contributing\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.\n",
+    "longname": "/Users/bs/Desktop/hr/battleBread/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"battlebread\",\n  \"version\": \"0.0.2\",\n  \"description\": \"\",\n  \"author\": \"Battle Bread Team\",\n  \"license\": \"\",\n  \"engines\": {\n    \"node\": \">=6.4.0\"\n  },\n  \"scripts\": {\n    \"react-dev\": \"open ./client/index.html && webpack -d --watch\",\n    \"react-doc\": \"./node_modules/.bin/esdoc && open docs/index.html\",\n    \"update\": \"git pull upstream master && npm install\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.16.1\",\n    \"immutability-helper\": \"^2.4.0\",\n    \"lodash\": \"^4.17.4\",\n    \"mysql\": \"^2.14.1\",\n    \"prop-types\": \"^15.6.0\",\n    \"random-int\": \"^1.0.0\",\n    \"react\": \"^16.0.0\",\n    \"react-dom\": \"^16.0.0\",\n    \"react-redux\": \"^5.0.6\",\n    \"redux\": \"^3.7.2\",\n    \"redux-logger\": \"^3.0.6\",\n    \"sequelize\": \"^4.13.2\"\n  },\n  \"devDependencies\": {\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-plugin-transform-decorators\": \"^6.24.1\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.0\",\n    \"babel-preset-es2015\": \"^6.6.0\",\n    \"babel-preset-react\": \"^6.24.1\",\n    \"babel-register\": \"^6.7.2\",\n    \"esdoc\": \"^1.0.3\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.8.0\",\n    \"eslint-config-airbnb\": \"^15.1.0\",\n    \"eslint-config-hackreactor\": \"git://github.com/reactorcore/eslint-config-hackreactor\",\n    \"eslint-plugin-import\": \"^2.7.0\",\n    \"eslint-plugin-react\": \"^7.4.0\",\n    \"webpack\": \"^3.6.0\",\n    \"webpack-dev-server\": \"^2.9.1\"\n  },\n  \"babel\": {\n    \"presets\": [\n      \"es2015\"\n    ]\n  }\n}\n",
+    "longname": "/Users/bs/Desktop/hr/battleBread/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

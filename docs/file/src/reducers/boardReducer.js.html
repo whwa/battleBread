@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/reducers/boardReducer.js | battlebread</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createBoard">createBoard</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getChats">getChats</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-guess">guess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-randomPieces">randomPieces</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setChat">setChat</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPiece">setPiece</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setRandomPieces">setRandomPieces</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-store">store</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#reducers">reducers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-boardReducer">boardReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chatReducer">chatReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-reducers">reducers</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/reducers/boardReducer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import update from &apos;immutability-helper&apos;;
+import randomInt from &apos;random-int&apos;;
+import { range } from &apos;lodash&apos;;
+
+/**
+ * This function handles changes to the board state resulting from a state.dispatch(action)
+ * @param { object } state state is an object representing each players&apos; board. Example:
+ * @param { object } state.board
+ * @param { number } state.board.turn Turn counter
+ * @param { number } state.board.p1Pieces Number of remaining pieces for player 1
+ * @param { number } state.board.p2Pieces Number of remaining pieces for player 2
+ * @param { object } state.board.p1 Tile states for player 1
+ * @param { object } state.board.p1[tileId] Tile object, indexed by id string
+ * @param { object } state.board.p1[tileId].id Id string (ex: &apos;1,1&apos; or &apos;6,5&apos;)
+ * @param { number } state.board.p1[tileId].row
+ * @param { number } state.board.p1[tileId].col
+ * @param { boolean } state.board.p1[tileId].hasBread
+ * @param { boolean } state.board.p1[tileId].guessed
+ * @param { string } state.board.p1[tileId].color &apos;red&apos; || &apos;green&apos; || &apos;blue&apos;
+ * @param { object } state.board.p2 Tile states for player 2
+ * @param { object } state.board.p2[tileId] Tile object, indexed by id string
+ * @param { object } state.board.p2[tileId].id Id string (ex: &apos;1,1&apos; or &apos;6,5&apos;)
+ * @param { number } state.board.p2[tileId].row
+ * @param { number } state.board.p2[tileId].col
+ * @param { boolean } state.board.p2[tileId].hasBread
+ * @param { boolean } state.board.p2[tileId].guessed
+ * @param { string } state.board.p2[tileId].color &apos;red&apos; || &apos;green&apos; || &apos;blue&apos;
+ *
+ * 
+ * @param { object } action an action dispatched via an action creator from ../actions.js
+ * @property { string } type &apos;guess&apos; || &apos;randomPieces&apos; || &apos;setPiece
+ * @property { object } payload varies in shape for each action
+ */
+const boardReducer = (state = {}, action) =&gt; {
+  if (action.type === &apos;createBoard&apos;) {
+    /**
+     * We start a new board from scratch. 
+     * 1. Generate an 8x8 array for each player
+     * 2. Map a tile object to each index by extending the defaults object with row and col info.
+     */
+    const newState = { 
+      p1: {}, 
+      p2: {}, 
+      turn: 0, 
+      p1Pieces: 0,
+      p2Pieces: 0,
+    };
+    range(8).map((row) =&gt; {
+      range(8).map((col) =&gt; {
+        const defaults = {
+          size: &apos;48px&apos;,
+          guessed: false,
+          hasBread: false,
+          color: &apos;blue&apos;,
+        };
+        newState.p1[`${row},${col}`] = {
+          ...defaults,
+          row,
+          col,
+          id: `${row},${col}`,
+        };
+        newState.p2[`${row},${col}`] = {
+          ...defaults,
+          row,
+          col,
+          id: `${row},${col}`,
+        };
+      });
+    });
+    return update(state, {$merge: newState});
+  } else if (action.type === &apos;guess&apos;) {
+    /**
+     * @param action.payload shape: { 
+     *  player: {&apos;p1&apos; or &apos;p2&apos;},
+     *  id: { string (ex:&apos;1,1&apos; or &apos;3,4&apos;) }
+     * }
+     * We update the state for one tile on a particular player&apos;s board
+     * 1. Increment the turn count
+     * 2. Set the guessed property for that tile to true
+     * 3. Change the color property to green if it was a hit, or red if it was a miss
+     * 4. If it was a hit, we decrement that player&apos;s piece count
+     * 
+     */
+    const { player, id } = action.payload;
+    const { turn } = state;
+    const { hasBread } = state[player][id];
+    const numPieces = state[`${player}Pieces`];
+
+    const newState = update(state, {
+      turn: {$set: (turn + 1)},
+      [player]: {
+        [id]: {
+          guessed: {$set: true},
+          color: {$apply: () =&gt; (hasBread) ? &apos;green&apos; : &apos;red&apos;}
+        }
+      },
+      [`${player}Pieces`]: {$apply: () =&gt; (hasBread) ? numPieces - 1 : numPieces },
+    });
+    // newState[player][id] = tile;
+    return newState;
+  } else if (action.type === &apos;randomPieces&apos;) {
+    /**
+     * This is mostly just for testing. Updates 14 random tiles to contain bread.
+     */
+    const player1 = {};
+    const player2 = {};
+
+    range(14).forEach(() =&gt; {
+      const [row1, row2, col1, col2] = range(4).map(() =&gt; randomInt(7));
+      
+      player1[`${row1},${col1}`] = update(state.p1[`${row1},${col1}`], {
+        hasBread: {$set: true}
+      });
+      player2[`${row2},${col2}`] = update(state.p2[`${row2},${col2}`], {
+        hasBread: {$set: true}
+      });
+
+    });
+    return update(state, {
+      turn: { $set: 0 },
+      p1: { $merge: player1 },
+      p2: { $merge: player2 },
+    });
+  } else if (action.type === &apos;setPiece&apos;) {
+    /**
+     * @param action.payload
+     *  @property { string } player &apos;p1&apos; || &apos;p2&apos;
+     *  @property { array } piece array of tile id strings (ex: [&apos;1,1&apos;, &apos;2,4&apos;])
+     * Place a piece by setting hasBread for each tile to true
+     */
+      const { player, piece } = action.payload;
+      const thePiece = {};
+      const numPieces = state[`${player}Pieces`] + piece.length;
+
+      piece.forEach(idString =&gt; {
+        thePiece[idString] = update(
+          state[player][idString],
+          { hasBread: { $set: true }}
+        );
+      });
+
+      return update(state, {
+        [player]: { $merge: thePiece },
+        [`${player}Pieces`]: { $set: numPieces },
+      });
+  } else {
+    /**
+     * Fallback case
+     */
+    return state;
+  }
+};
+
+export default boardReducer;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

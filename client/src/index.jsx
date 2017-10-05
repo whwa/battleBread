@@ -5,13 +5,20 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createBoard, setPiece, setChat, setRandomPieces } from './actions.js';
 
+/**
+ * Entry point into the app, and renders the app to the DOM
+ * Redux store is passed in via the Provider higher-order container
+ * Initializes with an empty state, then creates+populates 2 boards with random piece placements
+ * Sends 2 test chat messages
+ */
 class App extends React.Component {
   constructor(props) {
     super(props);
+  }
+  componentWillMount() {
     createBoard();
   }
   componentDidMount() {
-    // setPiece('p2', ['0,0', '0,1', '0,2']);
     setRandomPieces('p2');
     setRandomPieces('p1');
     setChat('p1', 'glhf');

@@ -3,9 +3,14 @@ import randomInt from 'random-int';
 import { range } from 'lodash';
 
 /**
- * generates a game board and saves it to state
+ * Dispatches a createBoard action to the state via boardReducer
+ * No params necessary.
+ * Invoke to create a new board state from scratch. 
  */
-export const createBoard = () => store.dispatch({ type: 'createBoard' });
+export const createBoard = () => {
+  store.dispatch({ type: 'createBoard' });
+  store.dispatch({ type: 'infoInit' });
+};
 
 /**
  * Performs a 'guess' action on a single tile. Depending on whether or not there is
@@ -30,7 +35,7 @@ export const setPiece = (player, piece) => store.dispatch({
 
 /**
  * Sets a 2x1, 3x1, 4x1, and 5x1 piece on one player's board. TODO - prevent overlaps.
- * @param {str} player  either 'p1' or 'p2'
+ * @param {string} player  either 'p1' or 'p2'
  */
 export const setRandomPieces = (player) => {
   const pieces = range(2, 6)
