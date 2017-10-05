@@ -1,0 +1,14 @@
+.gameInfo {
+  width: 388px;
+  height: 200px;
+  background-color: #F3F3F3;
+  margin-top: 20px;
+}
+
+.infoColOne, .infoColTwo {
+  background-color: #FFFFFF; 
+  width: 170px;
+  height: 150px; 
+  margin: 10px;
+  float: left;
+}
