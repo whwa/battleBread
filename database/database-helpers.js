@@ -5,7 +5,7 @@ const connection = require('../database/index.js');
 // Updated syntax to simplify code and use built-in escaping functionality,
 // preventing SQL injection attacks
 const createNewPlayer = (obj, callback) => {
-  connection.query( `INSERT into users SET ?`, obj, (err, results, fields) => {
+  connection.query(`INSERT into users SET ?`, obj, (err, results, fields) => {
     if (err) {
       callback(err, null);
     } else {
@@ -54,8 +54,8 @@ const createNewGame = (obj, callback) => {
 // preventing SQL injection attacks
 const updateGame = (gameId, obj, callback) => {
   connection.query(`UPDATE games SET ? WHERE id = ${gameId}`, obj, (err, results, fields) => {
-    if(err) {
-     callback(err, null); 
+    if (err) {
+      callback(err, null); 
     } else {
       callback(null, results);
     }    
@@ -66,16 +66,16 @@ const updateGame = (gameId, obj, callback) => {
 // preventing SQL injection attacks
 const updateUser = (userId, obj, callback) => {
   connection.query(`UPDATE users SET ? WHERE id = ${userId}`, obj, (err, results, fields) => {
-    if(err) {
-     callback(err, null); 
+    if (err) {
+      callback(err, null); 
     } else {
       callback(null, results);
     }    
   });
 };
 
-const getUser = (userId, callback) => {
-  connection.query(`SELECT * FROM users WHERE id = ${userId}`, (err, results) => {
+const getUser = (userName, callback) => {
+  connection.query(`SELECT * FROM users WHERE username = ${userName}`, (err, results) => {
     if (err) {
       callback(err, null);
     } else {
