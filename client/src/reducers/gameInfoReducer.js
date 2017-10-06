@@ -11,11 +11,11 @@ import update from 'immutability-helper';
  */
 const gameInfoReducer = (state = {}, { type, payload } = action) => {
   if (type === 'infoInit') {
-    return ({
-      status: 'inactive',
-      turn: 'p1',
-      p1Pieces: 0,
-      p2Pieces: 0,
+    return update(state, {
+      status: {$set: 'inactive'},
+      turn: {$set: 'p1'},
+      p1Pieces: {$set: 0},
+      p2Pieces: {$set: 0},
     });
   } else if (type === 'toggleStatus') {
     /**
@@ -33,7 +33,7 @@ const gameInfoReducer = (state = {}, { type, payload } = action) => {
      * Toggles which player's turn it is
      * @param { string } payload.turn 'p1' || 'p2'
      */
-    const { turn } = payload;
+    const { turn } = state;
     return update(state, {
       turn: {
         $apply: () => (turn === 'p1') ? 'p2' : 'p1' 
