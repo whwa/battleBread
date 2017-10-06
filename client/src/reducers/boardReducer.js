@@ -71,7 +71,11 @@ const boardReducer = (state = {}, action) => {
     return update(state, {$merge: newState});
   } else if (action.type === 'guess') {
     /**
-     * @param action.payload shape: { 
+     * @param { object } action.payload
+     * @property { string } player 'p1' || 'p2'
+     * @property { string } id ex: '1,1' or '3,4'
+     * 
+     * shape: { 
      *  player: {'p1' or 'p2'},
      *  id: { string (ex:'1,1' or '3,4') }
      * }

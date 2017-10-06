@@ -1,17 +1,17 @@
-import $ from ('jquery');
+import $ from 'jquery';
 
 const baseUrl = 'http://localhost:3000/';
 
 export const createNewUser = (username, password) => {
   $.ajax({
-    "url": baseUrl + "users/",
-    "method": "POST",
-    "headers": {
-      "content-type": "application/x-www-form-urlencoded",
+    'url': baseUrl + 'users/',
+    'method': 'POST',
+    'headers': {
+      'content-type': 'application/x-www-form-urlencoded',
     },
-    "data": {
-      "password": password,
-      "username": username
+    'data': {
+      'password': password,
+      'username': username
     }
   }).done(response => {
     // do something with response...
@@ -23,12 +23,12 @@ export const createNewUser = (username, password) => {
 // Keys must be fields in users table
 export const updateUser = (userId, obj) => {
   $.ajax({
-    "url": baseUrl + "users/" + userId,
-    "method": "POST",
-    "headers": {
-      "content-type": "application/x-www-form-urlencoded",
+    'url': baseUrl + 'users/' + userId,
+    'method': 'POST',
+    'headers': {
+      'content-type': 'application/x-www-form-urlencoded',
     },
-    "data": obj
+    'data': obj
   }).done(response => {
     // do something with response...
     console.log(response);
@@ -37,8 +37,8 @@ export const updateUser = (userId, obj) => {
 
 export const getUser = userId => {
   $.ajax({
-    "url": baseUrl + "users/" + userId,
-    "method": "GET"
+    'url': baseUrl + 'users/' + userId,
+    'method': 'GET'
   }).done(response => {
     // do something with response...
     console.log(response);
@@ -47,14 +47,14 @@ export const getUser = userId => {
 
 export const createNewGame = (user1Id, user2Id) => {
   $.ajax({
-    "url": baseUrl + "games/",
-    "method": "POST",
-    "headers": {
-      "content-type": "application/x-www-form-urlencoded",
+    'url': baseUrl + 'games/',
+    'method': 'POST',
+    'headers': {
+      'content-type': 'application/x-www-form-urlencoded',
     },
-    "data": {
-      "user1Id": user1Id,
-      "user2Id": user2Id
+    'data': {
+      'user1Id': user1Id,
+      'user2Id': user2Id
     }
   }).done(response => {
     // do something with response...
@@ -67,12 +67,12 @@ export const createNewGame = (user1Id, user2Id) => {
 // rather than concatenated.
 export const updateGame = (gameId, obj) => {
   $.ajax({
-    "url": baseUrl + "games/" + gameId,
-    "method": "POST",
-    "headers": {
-      "content-type": "application/x-www-form-urlencoded",
+    'url': baseUrl + 'games/' + gameId,
+    'method': 'POST',
+    'headers': {
+      'content-type': 'application/x-www-form-urlencoded',
     },
-    "data": obj 
+    'data': obj 
   }).done(response => {
     // do something with response...
     console.log(response);
@@ -81,8 +81,8 @@ export const updateGame = (gameId, obj) => {
 
 export const getGame = gameId => {
   $.ajax({
-    "url": baseUrl + "games/" + gameId,
-    "method": "GET"
+    'url': baseUrl + 'games/' + gameId,
+    'method': 'GET'
   }).done(response => {
     // do something with response...
     console.log(response);
