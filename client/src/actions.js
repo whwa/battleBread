@@ -135,21 +135,23 @@ export const setUser = ( player, username, level = 1, chats = [] ) => {
 // SERVER INTERACTIONS //
 /////////////////////////
 
+const url = 'http://localhost:3000';
+
 export const newUser = ( username, password ) => {
-  axios.post('http://localhost:3000/users', {username, password}).then(response => console.log(response));
+  axios.post('/users', {username, password}).then(response => console.log(response));
 };
 
-export const getUser = ( userId ) => {
-  axios.get(`http://localhost:3000/users/${userId}`)
+export const getUser = ( username ) => {
+  axios.get(`${url}/users/${username}`)
     .then(response => console.log(response));
 };
 
 export const login = ( username, password ) => {
-  //TODO: actually do something here
+  axios.post(`${url}/login`, { username, password });
 };
 
 export const getGame = gameId => {
-  axios.get(`http://localhost:3000/games/${gameId}`)
+  axios.get(`${url}/games/${gameId}`)
     .then(response => {
       console.log(response);
       setBoard(response.data.board);
@@ -158,7 +160,7 @@ export const getGame = gameId => {
 
 export const updateGame = (gameId) => {
   const gameState = store.getState();
-  axios.post(`http://localhost:3000/games/${gameId}`, gameState.board)
+  axios.post(`${url}/games/${gameId}`, gameState.board)
     .then(getGame(gameId));
   // .then(response => console.log('AAAH', response));
 };
