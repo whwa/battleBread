@@ -102,3 +102,24 @@ export const updatePieces = (player, pieces) => store.dispatch({
   type: 'updatePieces',
   payload: { player, pieces },
 });
+
+///////////////////////
+// USER INFO ACTIONS //
+///////////////////////
+
+/**
+ * Simply retrieves both user's info
+ */
+export const getUsers = () => store.dispatch({ type: 'getUsers' });
+
+/**
+ * Takes in the player's username, level, and chats, and modifies state to reflect
+ * @param { string } player 'p1' || 'p2'
+ * @param { string } username
+ * @param { number } level 
+ * @param { object } chats @todo figure out shape of this
+ */
+export const setUser = ( player, username, level, chats ) => store.dispatch({
+  type: 'setUser',
+  payload: { player, username, level, chats };
+})
