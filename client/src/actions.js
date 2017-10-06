@@ -1,5 +1,6 @@
 import store from './store.js';
 import randomInt from 'random-int';
+import axios from 'axios';
 import { range } from 'lodash';
 
 ///////////////////
@@ -119,7 +120,13 @@ export const getUsers = () => store.dispatch({ type: 'getUsers' });
  * @param { number } level 
  * @param { object } chats @todo figure out shape of this
  */
-export const setUser = ( player, username, level, chats ) => store.dispatch({
-  type: 'setUser',
-  payload: { player, username, level, chats },
-});
+export const setUser = ( player, username, level = 0, chats = [] ) => {
+  store.dispatch({
+    type: 'setUser',
+    payload: { player, username, level, chats },
+  });
+};
+
+export const newUser = ( username, password ) => {
+  axios.post('http://localhost:3000/users', {username, password}).then(response => console.log(response));
+};
