@@ -28,3 +28,11 @@
   margin: 10px;
   overflow: auto;
 }
+
+.chatInput, .chatWords {
+  margin: 10px;  
+}
+
+.chatWord {
+  margin-right: 5px;
+}
