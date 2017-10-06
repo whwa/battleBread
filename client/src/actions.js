@@ -144,6 +144,10 @@ export const getUser = ( userId ) => {
     .then(response => console.log(response));
 };
 
+export const login = ( username, password ) => {
+  //TODO: actually do something here
+};
+
 export const getGame = gameId => {
   axios.get(`http://localhost:3000/games/${gameId}`)
     .then(response => {
