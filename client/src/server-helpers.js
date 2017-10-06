@@ -35,9 +35,10 @@ export const updateUser = (userId, obj) => {
   });
 };
 
-export const getUser = userId => {
+//updated to get by userName, before it was userID
+export const getUser = userName => {
   $.ajax({
-    'url': baseUrl + 'users/' + userId,
+    'url': baseUrl + 'users/' + userName,
     'method': 'GET'
   }).done(response => {
     // do something with response...
