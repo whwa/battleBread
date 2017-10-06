@@ -42,7 +42,7 @@ INSERT into users (username, password, wins, losses, playerLevel, streak, games,
 Values ('doughDudeDevon', 'password2', 3, 7, 1, 'WLWWLLLLLL', '[1]', 'http://oi48.tinypic.com/2n9z89k.jpg');
 
 INSERT into users (username, password, wins, losses, playerLevel, streak, games, avatarUrl)
-Values ('empanadaEaterEphraim', 'password3', 5, 5, 2, 'WWLWWLWLL', '[2],' 'http://oi50.tinypic.com/241jksn.jpg');
+Values ('empanadaEaterEphraim', 'password3', 5, 5, 2, 'WWLWWLWLL', '[2]', 'http://oi50.tinypic.com/241jksn.jpg');
 
 INSERT into users (username, password, wins, losses, playerLevel, streak, games, avatarUrl)
 Values ('sniperSouffleSteph', 'password4', 8, 2, 3, 'LWWLWWWWWW', '[2]', 'http://oi43.tinypic.com/5twb9d.jpg');
