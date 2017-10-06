@@ -13,6 +13,7 @@
     "update": "git pull upstream master && npm install"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.16.1",
     "immutability-helper": "^2.4.0",
     "lodash": "^4.17.4",

@@ -3,7 +3,13 @@ import store from './store.js';
 import Board from './components/Board.jsx';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createBoard, setPiece, setChat, setRandomPieces } from './actions.js';
+import { 
+  createBoard, 
+  setPiece, 
+  setChat, 
+  setRandomPieces,
+  newUser,
+} from './actions.js';
 
 /**
  * Entry point into the app, and renders the app to the DOM
@@ -16,6 +22,7 @@ class App extends React.Component {
     super(props);
   }
   componentWillMount() {
+    newUser('abc', '123');
     createBoard();
   }
   componentDidMount() {
