@@ -21,9 +21,10 @@
   margin-left: 60px;
 }
 
-.chatWindow {
+.chatHist {
   background-color: #FFFFFF; 
   width: 360px;
   height: 150px; 
   margin: 10px;
+  overflow: auto;
 }

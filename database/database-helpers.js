@@ -2,9 +2,18 @@ const sequelize = require('sequelize');
 const connection = require('../database/index.js');
 
 
+// Turn a req.body into a string to use in sql UPDATE query
+const makeUpdateString = (obj) => {
+  let keyValArr = [];
+  for (let key in obj) {
+    keyValArr.push(`${key} = ${obj[key]}`);
+  }
+  return keyValArr.join(', ');
+}
+
 // Working!
 const createNewPlayer = (userName, password, callback) => {
-  connection.query( `INSERT into users (username, password) Values ('${userName}', '${password}');`, (err, results, fields) => {
+  connection.query( `INSERT into users (username, password) Values ('${userName}', '${password}')`, (err, results, fields) => {
     if (err) {
       callback(err, null);
     } else {
@@ -17,7 +26,7 @@ const createNewPlayer = (userName, password, callback) => {
 // Like, what should the endpoint be?
 //returns all games that userId is in (whether they are player1 or player2)
 const selectPlayersGames = (userId, callback) => {
-  connection.query(`SELECT * FROM games WHERE player1ID = '${userId}'' or player2ID = '${userId}';`, (err, results, fields) => {
+  connection.query(`SELECT * FROM games WHERE player1ID = '${userId}' or player2ID = '${userId}'`, (err, results, fields) => {
     if (err) {
       callback(err, null); 
     } else {
@@ -41,7 +50,7 @@ const getGame = (gameId, callback) => {
 const createNewGame = (user1Id, user2Id, callback) => {
   connection.query(
     `INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, player2Placement, player2Hits, player2Misses, result) Values (
-    ${user1Id}, '[]', '[]', '[]', ${user2Id}, '[]', '[]', '[]', null);`, (err, results, fields) => {
+    ${user1Id}, '[]', '[]', '[]', ${user2Id}, '[]', '[]', '[]', null)`, (err, results, fields) => {
       //creates a new game between user1Id, and user2Id. Starts with empty tuples.
       if (err) {
         callback(err, null); 
@@ -53,11 +62,10 @@ const createNewGame = (user1Id, user2Id, callback) => {
 
 
 // Working!
-// Need to update this to do multiple keys/values
-const updateGame = (gameId, key, value, callback) => {
-  connection.query(`UPDATE games SET ${key} = ${value} WHERE id = ${gameId}`, (err, results, fields) => {
-    if (err) {
-      callback(err, null); 
+const updateGame = (gameId, obj, callback) => {
+  connection.query(`UPDATE games SET ${makeUpdateString(obj)} WHERE id = ${gameId}`, (err, results, fields) => {
+    if(err) {
+     callback(err, null); 
     } else {
       callback(null, results);
     }    
@@ -65,12 +73,10 @@ const updateGame = (gameId, key, value, callback) => {
 };
 
 // Working!
-// Need to update this to do multiple keys/values
-// 
-const updateUser = (userId, key, value, callback) => {
-  connection.query(`UPDATE users SET ${key} = ${value} WHERE id = ${userId}`, (err, results, fields) => {
-    if (err) {
-      callback(err, null); 
+const updateUser = (userId, obj, callback) => {
+  connection.query(`UPDATE users SET ${makeUpdateString(obj)} WHERE id = ${userId}`, (err, results, fields) => {
+    if(err) {
+     callback(err, null); 
     } else {
       callback(null, results);
     }    
@@ -134,9 +140,9 @@ const getUser = (userId, callback) => {
 
 module.exports.selectPlayersGames = selectPlayersGames;
 module.exports.createNewGame = createNewGame;
-module.exports.breadPlacement = breadPlacement;
-module.exports.guessLocation = guessLocation;
-module.exports.playerLevelUp = playerLevelUp;
+//module.exports.breadPlacement = breadPlacement;
+//module.exports.guessLocation = guessLocation;
+//module.exports.playerLevelUp = playerLevelUp;
 
 module.exports.getUser = getUser;
 module.exports.updateUser = updateUser;

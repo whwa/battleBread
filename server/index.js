@@ -1,10 +1,12 @@
 const express = require('express');
 const db = require('../database/database-helpers.js');
 const dbi = require('../database/index.js');
+const clientHelpers = require('./client-helpers.js');
 const bodyParser = require('body-parser');
-const app = express(); 
+const app = express();  
 
 // EG note to self: to start sql, brew services restart mysql
+// mysql -u root < database/schema.sql
 
 app.use(express.static(__dirname + '/../client/'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,18 +38,16 @@ app.get('/games/:gameId', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Retrieved game info: ', results);
-      res.send(results);
+      console.log('Retrieved game info: ', results[0]);
+      res.send(clientHelpers.buildStateForClient(results[0]));
+      //res.send(results);  
     }    
   });
 });
 
-// This endpoint updates games (e.g. hits, update misses, etc.)
-// Needs fixing to update multiple values at once
+// This endpoint updates games (e.g. hits, misses, etc.)
 app.post('/games/:gameId', (req, res) => {
-  let key = Object.keys(req.body)[0];
-  let val = req.body[key];
-  db.updateGame(req.params.gameId, key, val, (err, results) => {
+  db.updateGame(req.params.gameId, req.body, (err, results) => {
     if (err) { 
       console.error(err); 
     } else {
@@ -63,7 +63,7 @@ app.post('/users', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Created new user: ', results);
+      //console.log('Created new user: ', results);
       res.send(results);
     }
   }); 
@@ -82,11 +82,8 @@ app.get('/users/:userId', (req, res) => {
 });
 
 // This endpoint is for updating user profiles
-// Needs fixing to update multiple values at once
 app.post('/users/:userId', (req, res) => {
-  let key = Object.keys(req.body)[0];
-  let val = req.body[key];
-  db.updateUser(req.params.userId, key, val, (err, results) => {
+  db.updateUser(req.params.userId, req.body, (err, results) => {
     if (err) { 
       console.error(err); 
     } else {
