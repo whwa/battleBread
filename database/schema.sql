@@ -12,6 +12,7 @@ CREATE TABLE users (
   losses int NOT NULL DEFAULT 0,
   playerLevel int NOT NULL DEFAULT 1,
   streak varchar(100) DEFAULT '',
+  games varchar(100),
   avatarUrl varchar(100) DEFAULT 'http://oi40.tinypic.com/i5sy1u.jpg',
   PRIMARY KEY (id)
 );
@@ -34,17 +35,17 @@ CREATE TABLE games (
   FOREIGN KEY (player2ID) REFERENCES users(id)
 );
 
-INSERT into users (username, password, wins, losses, playerLevel, streak, avatarUrl)
-Values ('boxingBakerBen', 'password1', 6, 4, 2, 'WLWWLLWWWL', 'http://oi46.tinypic.com/4jl55k.jpg');
+INSERT into users (username, password, wins, losses, playerLevel, streak, games, avatarUrl)
+Values ('boxingBakerBen', 'password1', 6, 4, 2, 'WLWWLLWWWL', '[1]', 'http://oi46.tinypic.com/4jl55k.jpg');
 
-INSERT into users (username, password, wins, losses, playerLevel, streak, avatarUrl)
-Values ('doughDudeDevon', 'password2', 3, 7, 1, 'WLWWLLLLLL', 'http://oi48.tinypic.com/2n9z89k.jpg');
+INSERT into users (username, password, wins, losses, playerLevel, streak, games, avatarUrl)
+Values ('doughDudeDevon', 'password2', 3, 7, 1, 'WLWWLLLLLL', '[1]', 'http://oi48.tinypic.com/2n9z89k.jpg');
 
-INSERT into users (username, password, wins, losses, playerLevel, streak, avatarUrl)
-Values ('empanadaEaterEphraim', 'password3', 5, 5, 2, 'WWLWWLWLL', 'http://oi50.tinypic.com/241jksn.jpg');
+INSERT into users (username, password, wins, losses, playerLevel, streak, games, avatarUrl)
+Values ('empanadaEaterEphraim', 'password3', 5, 5, 2, 'WWLWWLWLL', '[2],' 'http://oi50.tinypic.com/241jksn.jpg');
 
-INSERT into users (username, password, wins, losses, playerLevel, streak, avatarUrl)
-Values ('sniperSouffleSteph', 'password4', 8, 2, 3, 'LWWLWWWWWW', 'http://oi43.tinypic.com/5twb9d.jpg');
+INSERT into users (username, password, wins, losses, playerLevel, streak, games, avatarUrl)
+Values ('sniperSouffleSteph', 'password4', 8, 2, 3, 'LWWLWWWWWW', '[2]', 'http://oi43.tinypic.com/5twb9d.jpg');
 
 
 INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, 

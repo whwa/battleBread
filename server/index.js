@@ -76,8 +76,8 @@ app.post('/users', (req, res) => {
 });
 
 // This endpoint serves info on particular users
-app.get('/users/:userId', (req, res) => {
-  db.getUser(req.params.userId, (err, results) => {
+app.get('/users/:userName', (req, res) => {
+  db.getUser(req.params.userName, (err, results) => {
     if (err) { 
       console.error(err); 
     } else {
