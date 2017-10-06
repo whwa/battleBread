@@ -17,6 +17,10 @@ export const createBoard = () => {
   store.dispatch({ type: 'infoInit' });
 };
 
+export const setBoard = (board) => {
+  store.dispatch({ type: 'setBoard', payload: { board }});
+};
+
 /**
  * Performs a 'guess' action on a single tile. Depending on whether or not there is
  * bread on that tile, different actions will occur.
@@ -120,13 +124,37 @@ export const getUsers = () => store.dispatch({ type: 'getUsers' });
  * @param { number } level 
  * @param { object } chats @todo figure out shape of this
  */
-export const setUser = ( player, username, level = 0, chats = [] ) => {
+export const setUser = ( player, username, level = 1, chats = [] ) => {
   store.dispatch({
     type: 'setUser',
     payload: { player, username, level, chats },
   });
 };
 
+/////////////////////////
+// SERVER INTERACTIONS //
+/////////////////////////
+
 export const newUser = ( username, password ) => {
   axios.post('http://localhost:3000/users', {username, password}).then(response => console.log(response));
+};
+
+export const getUser = ( userId ) => {
+  axios.get(`http://localhost:3000/users/${userId}`)
+    .then(response => console.log(response));
+};
+
+export const getGame = gameId => {
+  axios.get(`http://localhost:3000/games/${gameId}`)
+    .then(response => {
+      console.log(response);
+      setBoard(response.data.board);
+    });
+};
+
+export const updateGame = (gameId) => {
+  const gameState = store.getState();
+  axios.post(`http://localhost:3000/games/${gameId}`, gameState.board)
+    .then(getGame(gameId));
+  // .then(response => console.log('AAAH', response));
 };

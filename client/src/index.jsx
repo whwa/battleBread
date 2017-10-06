@@ -8,7 +8,9 @@ import {
   setPiece, 
   setChat, 
   setRandomPieces,
-  newUser,
+  getUser,
+  getGame,
+  updateGame,
 } from './actions.js';
 
 /**
@@ -22,12 +24,15 @@ class App extends React.Component {
     super(props);
   }
   componentWillMount() {
-    newUser('abc', '123');
+    getUser('5');
     createBoard();
+    getGame('1');
+    
   }
   componentDidMount() {
-    setRandomPieces('p2');
-    setRandomPieces('p1');
+    // setRandomPieces('p2');
+    // setRandomPieces('p1');
+    // updateGame('1');
     setChat('p1', 'glhf');
     setChat('p2', 'you\'re toast!');
   }

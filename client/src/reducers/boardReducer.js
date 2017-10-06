@@ -69,6 +69,9 @@ const boardReducer = (state = {}, action) => {
       });
     });
     return update(state, {$merge: newState});
+  } else if (action.type === 'setBoard') {
+    const { board } = action.payload;
+    return update(state, { $merge: board });
   } else if (action.type === 'guess') {
     /**
      * @param { object } action.payload
