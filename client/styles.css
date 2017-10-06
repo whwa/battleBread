@@ -24,13 +24,28 @@
 .chatHist {
   background-color: #FFFFFF; 
   width: 360px;
-  height: 150px; 
+  height: 125px; 
   margin: 10px;
   overflow: auto;
 }
 
-.chatInput, .chatWords {
-  margin: 10px;  
+.chatInput {
+  margin-left: 10px;  
+}
+
+.textArea {
+  width: 290px;
+  overflow: auto;
+  resize: none;  
+}
+
+.submitChat {
+  float: right;
+  margin-right: 20px;  
+}
+
+.chatWords {
+  margin-left: 10px;  
 }
 
 .chatWord {

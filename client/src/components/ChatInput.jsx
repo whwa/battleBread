@@ -44,8 +44,8 @@ class ChatInput extends React.Component {
         <div className='chatBox'>
           <ChatHist />
             <form className="chatInput">
-                  <input readOnly="readonly" type="text" placeholder={this.state.newMessage} id="newMessage" value={this.state.message}/>
-                  <button type="button" className="submit" onClick={() => {this.handleSubmit(this.state.player, this.state.message)}}>SEND</button>
+                  <textarea className='textArea' readOnly="readonly" type="text" placeholder={this.state.newMessage} id="newMessage" value={this.state.message}/>
+                  <button type="button" className="submitChat" onClick={() => {this.handleSubmit(this.state.player, this.state.message)}}>SEND</button>
             </form>
             <div className="chatWords">
               { this.state.list.map((item, index) => <ChatWords item={item} key={index} updateMessage={this.updateMessage}/>)}
