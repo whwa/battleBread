@@ -27,6 +27,7 @@ const userReducer = (
   } else if (type === 'setUser') {
     /**
      * @param { string } payload.player 'p1' || 'p2'
+     * @param { string } payload.username
      * @param { number } payload.level 
      * @param { object } payload.chats @todo figure out shape of this
      */
