@@ -11,6 +11,11 @@ const app = express();
 app.use(express.static(__dirname + '/../client/'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // Using to make testing easier
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/', (req, res) => {
   res.send('index.html');
@@ -20,13 +25,14 @@ app.post('/login', (req, res) => {
   // log user in
 });
 
-// This endpoint only for starting new games
+// This endpoint only for starting new games.
+// Requires req.body to have user1ID and user2ID properties.
 app.post('/games', (req, res) => {
-  db.createNewGame(req.body.user1ID, req.body.user2ID, (err, results) => {
+  db.createNewGame(req.body, (err, results) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Created new game: ', results);
+      console.log('Created new game: ', JSON.stringify(results));
       res.send(results);
     }
   }); 
@@ -38,9 +44,8 @@ app.get('/games/:gameId', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Retrieved game info: ', results[0]);
+      console.log('Retrieved game info: ', JSON.stringify(results[0]));
       res.send(clientHelpers.buildStateForClient(results[0]));
-      //res.send(results);  
     }    
   });
 });
@@ -51,21 +56,22 @@ app.post('/games/:gameId', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Updated game: ', results);
+      console.log('Updated game: ', JSON.stringify(results));
       res.send(results);
     }
   });
 });
 
-// This endpoint only for creating new users
+// This endpoint only for creating new users.
+// Requires req.body to have username and password properties.
 app.post('/users', (req, res) => {
-  db.createNewPlayer(req.body.userName, req.body.password, (err, results) => {
+  db.createNewPlayer(req.body, (err, results) => {
     if (err) { 
       console.error(err); 
     } else {
-      //console.log('Created new user: ', results);
+      console.log('Created new user: ', JSON.stringify(results));
       res.send(results);
-    }
+    } 
   }); 
 });
 
@@ -75,7 +81,7 @@ app.get('/users/:userId', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Retrieved user: ', results);
+      console.log('Retrieved user: ', JSON.stringify(results));
       res.send(results);
     }
   });
@@ -87,7 +93,7 @@ app.post('/users/:userId', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Updated user: ', results);
+      console.log('Updated user: ', JSON.stringify(results));
       res.send(results);
     }
   });
