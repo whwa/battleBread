@@ -122,4 +122,4 @@ export const getUsers = () => store.dispatch({ type: 'getUsers' });
 export const setUser = ( player, username, level, chats ) => store.dispatch({
   type: 'setUser',
   payload: { player, username, level, chats },
-})
+});
