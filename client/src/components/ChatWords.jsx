@@ -12,7 +12,7 @@ class ChatWords extends React.Component {
 
   render() {
     return(
-        <button type="button" className="chatWord">{this.props.item}</button>
+        <button type="button" className="chatWord" onClick={()=>{this.props.updateMessage(this.props.item)}}>{this.props.item}</button>
     )
   }
 }
