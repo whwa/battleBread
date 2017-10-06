@@ -2,18 +2,10 @@ const sequelize = require('sequelize');
 const connection = require('../database/index.js');
 
 
-// Turn a req.body into a string to use in sql UPDATE query
-const makeUpdateString = (obj) => {
-  let keyValArr = [];
-  for (let key in obj) {
-    keyValArr.push(`${key} = ${obj[key]}`);
-  }
-  return keyValArr.join(', ');
-}
-
-// Working!
-const createNewPlayer = (userName, password, callback) => {
-  connection.query( `INSERT into users (username, password) Values ('${userName}', '${password}')`, (err, results, fields) => {
+// Updated syntax to simplify code and use built-in escaping functionality,
+// preventing SQL injection attacks
+const createNewPlayer = (obj, callback) => {
+  connection.query( `INSERT into users SET ?`, obj, (err, results, fields) => {
     if (err) {
       callback(err, null);
     } else {
@@ -35,22 +27,20 @@ const selectPlayersGames = (userId, callback) => {
   });
 };
 
-// Working!
 const getGame = (gameId, callback) => {
   connection.query(`SELECT * FROM games WHERE id = ${gameId}`, (err, results, fields) => {
     if (err) {
       callback(err, null); 
     } else {
       callback(null, results);
-    } 
+    }
   });
-};
+}; 
 
-// Working!
-const createNewGame = (user1Id, user2Id, callback) => {
+const createNewGame = (obj, callback) => {
   connection.query(
     `INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, player2Placement, player2Hits, player2Misses, result) Values (
-    ${user1Id}, '[]', '[]', '[]', ${user2Id}, '[]', '[]', '[]', null)`, (err, results, fields) => {
+    ${obj.user1Id}, '[]', '[]', '[]', ${obj.user2Id}, '[]', '[]', '[]', null)`, (err, results, fields) => {
       //creates a new game between user1Id, and user2Id. Starts with empty tuples.
       if (err) {
         callback(err, null); 
@@ -60,10 +50,10 @@ const createNewGame = (user1Id, user2Id, callback) => {
     });
 };
 
-
-// Working!
+// Updated syntax to simplify code and use built-in escaping functionality,
+// preventing SQL injection attacks
 const updateGame = (gameId, obj, callback) => {
-  connection.query(`UPDATE games SET ${makeUpdateString(obj)} WHERE id = ${gameId}`, (err, results, fields) => {
+  connection.query(`UPDATE games SET ? WHERE id = ${gameId}`, obj, (err, results, fields) => {
     if(err) {
      callback(err, null); 
     } else {
@@ -72,9 +62,10 @@ const updateGame = (gameId, obj, callback) => {
   });
 };
 
-// Working!
+// Updated syntax to simplify code and use built-in escaping functionality,
+// preventing SQL injection attacks
 const updateUser = (userId, obj, callback) => {
-  connection.query(`UPDATE users SET ${makeUpdateString(obj)} WHERE id = ${userId}`, (err, results, fields) => {
+  connection.query(`UPDATE users SET ? WHERE id = ${userId}`, obj, (err, results, fields) => {
     if(err) {
      callback(err, null); 
     } else {
@@ -83,7 +74,6 @@ const updateUser = (userId, obj, callback) => {
   });
 };
 
-// Working!
 const getUser = (userId, callback) => {
   connection.query(`SELECT * FROM users WHERE id = ${userId}`, (err, results) => {
     if (err) {
@@ -140,6 +130,7 @@ const getUser = (userId, callback) => {
 
 module.exports.selectPlayersGames = selectPlayersGames;
 module.exports.createNewGame = createNewGame;
+module.exports.createNewPlayer = createNewPlayer;
 //module.exports.breadPlacement = breadPlacement;
 //module.exports.guessLocation = guessLocation;
 //module.exports.playerLevelUp = playerLevelUp;
