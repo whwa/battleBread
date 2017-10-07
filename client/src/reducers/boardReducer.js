@@ -2,6 +2,14 @@ import update from 'immutability-helper';
 import randomInt from 'random-int';
 import { range } from 'lodash';
 
+const newState = { 
+  p1: {}, 
+  p2: {}, 
+  turn: 0, 
+  p1Pieces: 0,
+  p2Pieces: 0,
+};
+
 /**
  * This function handles changes to the board state resulting from a state.dispatch(action)
  * @param { object } state state is an object representing each players' board. Example:
@@ -32,20 +40,14 @@ import { range } from 'lodash';
  * @property { object } payload varies in shape for each action
  * @returns a new state, based on the type of action it receives
  */
-const boardReducer = (state = {}, action) => {
-  if (action.type === 'createBoard') {
+const boardReducer = (state = { ...newState }, { type, payload = {} } = action) => {
+  if (type === 'createBoard') {
     /**
      * We start a new board from scratch. 
      * 1. Generate an 8x8 array for each player
      * 2. Map a tile object to each index by extending the defaults object with row and col info.
      */
-    const newState = { 
-      p1: {}, 
-      p2: {}, 
-      turn: 0, 
-      p1Pieces: 0,
-      p2Pieces: 0,
-    };
+    
     range(8).map((row) => {
       range(8).map((col) => {
         const defaults = {
@@ -69,12 +71,12 @@ const boardReducer = (state = {}, action) => {
       });
     });
     return update(state, {$merge: newState});
-  } else if (action.type === 'setBoard') {
-    const { board } = action.payload;
+  } else if (type === 'setBoard') {
+    const { board } = payload;
     return update(state, { $merge: board });
-  } else if (action.type === 'guess') {
+  } else if (type === 'guess') {
     /**
-     * @param { object } action.payload
+     * @param { object } payload
      * @property { string } player 'p1' || 'p2'
      * @property { string } id ex: '1,1' or '3,4'
      * 
@@ -89,7 +91,7 @@ const boardReducer = (state = {}, action) => {
      * 4. If it was a hit, we decrement that player's piece count
      * 
      */
-    const { player, id } = action.payload;
+    const { player, id } = payload;
     const { turn } = state;
     const { hasBread } = state[player][id];
     const numPieces = state[`${player}Pieces`];
@@ -106,7 +108,7 @@ const boardReducer = (state = {}, action) => {
     });
     // newState[player][id] = tile;
     return newState;
-  } else if (action.type === 'randomPieces') {
+  } else if (type === 'randomPieces') {
     /**
      * This is mostly just for testing. Updates 14 random tiles to contain bread.
      */
@@ -129,14 +131,14 @@ const boardReducer = (state = {}, action) => {
       p1: { $merge: player1 },
       p2: { $merge: player2 },
     });
-  } else if (action.type === 'setPiece') {
+  } else if (type === 'setPiece') {
     /**
-     * @param action.payload
+     * @param payload
      *  @property { string } player 'p1' || 'p2'
      *  @property { array } piece array of tile id strings (ex: ['1,1', '2,4'])
      * Place a piece by setting hasBread for each tile to true
      */
-      const { player, piece } = action.payload;
+      const { player, piece } = payload;
       const thePiece = {};
       const numPieces = state[`${player}Pieces`] + piece.length;
 

@@ -51,6 +51,9 @@ const gameInfoReducer = (state = {}, { type, payload } = action) => {
     });
   } else if (type === 'getInfo') {
     return state;
+  } else if (type === 'setInfo') {
+    const { dbInfo } = payload;
+    return update(state, { $merge: dbInfo });
   } else {
     return state;
   }

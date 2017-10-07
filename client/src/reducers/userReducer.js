@@ -1,5 +1,24 @@
 import update from 'immutability-helper';
 
+const defaultState = {
+  p1: {
+    username: 'anonymous', 
+    chats: ['hi', 'glhf'], 
+    level: 1, 
+    avatarUrl: 'http://oi40.tinypic.com/i5sy1u.jpg', 
+    streak: 0,
+    wins: 0,
+  },
+  p2: {
+    username: 'computer', 
+    chats: ['hi', 'glhf'], 
+    level: 1, 
+    avatarUrl: 'http://oi40.tinypic.com/i5sy1u.jpg', 
+    streak: 0,
+    wins: 0,
+  }
+};
+
 /**
  * 
  * @param { object } state
@@ -15,7 +34,7 @@ import update from 'immutability-helper';
  * 
  */
 const userReducer = (
-  state = { 'p1': {}, 'p2': {} },
+  state = { ...defaultState }, 
   { type, payload } = action
 ) => {
   if (type === 'getUsers') {

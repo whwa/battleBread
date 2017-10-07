@@ -158,7 +158,7 @@ export const getGame = gameId => {
     });
 };
 
-export const updateGame = (gameId) => {
+export const updateGame = gameId => {
   const gameState = store.getState();
   axios.post(`${url}/games/${gameId}`, gameState.board)
     .then(getGame(gameId));
