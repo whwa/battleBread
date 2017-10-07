@@ -1,5 +1,13 @@
 import update from 'immutability-helper';
 
+const defaultGameInfo = {
+  id: null,
+  status: 'inactive',
+  turn: 'p1',
+  p1Pieces: 0,
+  p2Pieces: 0
+};
+
 /**
  * Reducer function for the gameInfo portion of the redux state
  * @param { object } state
@@ -9,15 +17,8 @@ import update from 'immutability-helper';
  * @property { number } state.p2Pieces number of pieces remaining for p2
  * @returns a new state, based on the type of action it receives
  */
-const gameInfoReducer = (state = {}, { type, payload } = action) => {
-  if (type === 'infoInit') {
-    return update(state, {
-      status: {$set: 'inactive'},
-      turn: {$set: 'p1'},
-      p1Pieces: {$set: 0},
-      p2Pieces: {$set: 0},
-    });
-  } else if (type === 'toggleStatus') {
+const gameInfoReducer = (state = { ...defaultGameInfo }, { type, payload } = action) => {
+  if (type === 'toggleStatus') {
     /**
      * Toggles whether the game state is active or not
      * @param { string } payload.status 'active' || 'inactive'
@@ -51,6 +52,9 @@ const gameInfoReducer = (state = {}, { type, payload } = action) => {
     });
   } else if (type === 'getInfo') {
     return state;
+  } else if (type === 'setInfo') {
+    const { dbInfo } = payload;
+    return update(state, { $merge: dbInfo });
   } else {
     return state;
   }
