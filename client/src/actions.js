@@ -14,7 +14,10 @@ import { range } from 'lodash';
  */
 export const createBoard = () => {
   store.dispatch({ type: 'createBoard' });
-  store.dispatch({ type: 'infoInit' });
+};
+
+export const setBoard = (board) => {
+  store.dispatch({ type: 'setBoard', payload: { board }});
 };
 
 /**
@@ -117,16 +120,68 @@ export const getUsers = () => store.dispatch({ type: 'getUsers' });
  * Takes in the player's username, level, and chats, and modifies state to reflect
  * @param { string } player 'p1' || 'p2'
  * @param { string } username
- * @param { number } level 
- * @param { object } chats @todo figure out shape of this
+ * @param { number } level
+ * @param { string  } avatarUrl
+ * @param { string  } streak
+ * @param { number  } wins
+ * @param { array } chats valid chats
  */
-export const setUser = ( player, username, level = 0, chats = [] ) => {
+export const setUser = (player, 
+  username, 
+  chats, 
+  level, 
+  avatarUrl, 
+  streak,
+  wins
+) => {
   store.dispatch({
     type: 'setUser',
-    payload: { player, username, level, chats },
+    payload: { player, 
+      username, 
+      chats, 
+      level, 
+      avatarUrl, 
+      streak,
+      wins, 
+    },
   });
 };
 
+/////////////////////////
+// SERVER INTERACTIONS //
+/////////////////////////
+
+const url = 'http://localhost:3000';
+
 export const newUser = ( username, password ) => {
-  axios.post('http://localhost:3000/users', {username, password}).then(response => console.log(response));
+  axios.post('/users', {username, password}).then(response => console.log(response));
+};
+
+export const getUser = ( username ) => {
+  axios.get(`${url}/users/${username}`)
+    .then(response => console.log(response));
+};
+
+export const login = ( username, password ) => {
+  axios.post(`${url}/login`, { username, password });
+};
+
+export const getGame = gameId => {
+  axios.get(`${url}/games/${gameId}`)
+    .then(response => {
+      console.log(response);
+      const { board, chats } = response.data;
+      setBoard(board);
+      chats.forEach(chat => {
+        const { player, text } = chat;
+        setChat(player, text);
+      });
+    });
+};
+
+export const updateGame = gameId => {
+  const gameState = store.getState();
+  axios.post(`${url}/games/${gameId}`, gameState.board)
+    .then(getGame(gameId));
+  // .then(response => console.log('AAAH', response));
 };

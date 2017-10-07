@@ -6,8 +6,7 @@ import update from 'immutability-helper';
  * @param { object } action an action obj with shape { type: { string }, payload: { obj }}
  * @returns a new state, based on the type of action it receives
  */
-const chatReducer = (state = [], action) => {
-  const {type, payload} = action;
+const chatReducer = (state = [], { type, payload } = action) => {
   if (type === 'setChat') {
     /**
      * @param payload shape: { player: { 'p1' || 'p2' }, text{ string } }
