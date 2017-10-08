@@ -39,7 +39,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <h3>BattleBread boards</h3>
+        <div className="headerLogo">
+        <img className="logo" src="../client/images/BattleBreadLogo.png" height="125px"></img>
+        </div>
         <div className="container-fluid">
           <Provider store={store}>
             <Board />
