@@ -2,20 +2,20 @@ import update from 'immutability-helper';
 
 const defaultState = {
   p1: {
-    username: 'anonymous', 
-    chats: ['hi', 'glhf'], 
-    level: 1, 
-    avatarUrl: 'http://oi40.tinypic.com/i5sy1u.jpg', 
-    streak: 0,
+    username: 'anonymous',
+    chats: ['hi', 'glhf'],
+    level: 1,
+    avatarUrl: 'http://oi40.tinypic.com/i5sy1u.jpg',
     wins: 0,
+    losses: 0,
   },
   p2: {
     username: 'computer', 
     chats: ['hi', 'glhf'], 
     level: 1, 
-    avatarUrl: 'http://oi40.tinypic.com/i5sy1u.jpg', 
-    streak: 0,
+    avatarUrl: 'http://oi40.tinypic.com/i5sy1u.jpg',
     wins: 0,
+    losses: 0,
   }
 };
 
@@ -51,23 +51,23 @@ const userReducer = (
      * @param { number } payload.level 
      * @param { object } payload.chats @todo figure out shape of this
      */
+    const { player } = payload;
     const { 
-      player, 
       username, 
       chats, 
       level, 
-      avatarUrl, 
-      streak,
+      avatarUrl,
       wins,
-    } = payload;
+      losses,
+    } = payload.userData;
     return update(state, {
       [player]: {
         username: { $set: username },
         chats: { $set: chats },
         level: { $set: level },
         avatarUrl: {$set: avatarUrl },
-        streak: { $set: streak },
         wins: { $set: wins },
+        losses: { $set: losses },
       }
     });
   } else {

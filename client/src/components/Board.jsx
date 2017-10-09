@@ -17,12 +17,12 @@ const Board = props => (
   <div className="container">
     <div className="row">
       <div className="col-6">
-        <h4>You:</h4>
+        <h4>{props.user.p1.username}</h4>
         {range(8).map(row => (
           <div className="row">
             {range(8).map(col => (
               <Tile
-                options={props.p1[`${row},${col}`]}
+                options={props.board.p1[`${row},${col}`]}
                 player="p1"
               />
             ))}
@@ -30,12 +30,12 @@ const Board = props => (
         ))}
       </div>
       <div className="col-6">
-        <h4>Opponent:</h4>
+        <h4>{props.user.p2.username}</h4>
         {range(8).map(row => (
           <div className="row">
             {range(8).map(col => (
               <Tile
-                options={props.p2[`${row},${col}`]}
+                options={props.board.p2[`${row},${col}`]}
                 player="p2"
               />
             ))}
@@ -48,10 +48,10 @@ const Board = props => (
   </div>
 );
 
-/**
+/** 
  * mapStateToProps takes a state and defines the data which gets passed into props from the store.
  * @param { object } board Here, we destructure the the board property out of the state and set it to props
  */
-const mapStateToProps = ({ board }) => ({ ...board });
+const mapStateToProps = ({ board, user } = state) => ({ board, user });
 
 export default connect(mapStateToProps)(Board);

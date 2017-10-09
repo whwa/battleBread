@@ -16,7 +16,7 @@ export const createBoard = () => {
   store.dispatch({ type: 'createBoard' });
 };
 
-export const setBoard = (board) => {
+export const setBoard = board => {
   store.dispatch({ type: 'setBoard', payload: { board }});
 };
 
@@ -126,24 +126,10 @@ export const getUsers = () => store.dispatch({ type: 'getUsers' });
  * @param { number  } wins
  * @param { array } chats valid chats
  */
-export const setUser = (player, 
-  username, 
-  chats, 
-  level, 
-  avatarUrl, 
-  streak,
-  wins
-) => {
+export const setUser = (player, userData) => {
   store.dispatch({
     type: 'setUser',
-    payload: { player, 
-      username, 
-      chats, 
-      level, 
-      avatarUrl, 
-      streak,
-      wins, 
-    },
+    payload: { player, userData },
   });
 };
 
@@ -152,20 +138,6 @@ export const setUser = (player,
 /////////////////////////
 
 const url = 'http://localhost:3000';
-
-export const newUser = ( username, password ) => {
-  axios.post('/users', {username, password})
-    .then(response => console.log(response));
-};
-
-export const getUser = ( username ) => {
-  axios.get(`${url}/users/${username}`)
-    .then(response => console.log(response));
-};
-
-export const login = ( username, password ) => {
-  axios.post(`${url}/login`, { username, password });
-};
 
 export const getGame = gameId => {
   axios.get(`${url}/games/${gameId}`)
@@ -185,4 +157,30 @@ export const updateGame = gameId => {
   axios.post(`${url}/games/${gameId}`, gameState.board)
     .then(getGame(gameId));
   // .then(response => console.log('AAAH', response));
+};
+
+export const getUser = username => {
+  axios.get(`${url}/users/${username}`)
+    .then(response => console.log(response));
+};
+
+export const login = (username, password) => {
+  axios.post(`${url}/login`, { username, password })
+    .then(response => {
+      if (response.status === 200) {
+        setUser('p1', response.data);
+        if (response.data.games.length) {
+          getGame(response.data.games[0]);
+        }
+      }
+    });
+};
+
+export const newUser = (username, password) => {
+  axios.post('/users', { username, password })
+    .then(response => {
+      if (response.status !== 404) {
+        login(username, password);
+      }
+    });
 };

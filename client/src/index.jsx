@@ -22,10 +22,10 @@ import {
 class App extends React.Component {
   constructor(props) {
     super(props);
+    createBoard();
   }
   componentWillMount() {
     getUser('abc123');
-    createBoard();
     getGame('1');
     
   }
