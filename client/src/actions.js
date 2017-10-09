@@ -228,8 +228,13 @@ export const newGame = () => {
         createBoard();
         setRandomPieces('p1');
         setRandomPieces('p2');
+        setUser('p1', {games: [response]});
+        setUser('p2', {games: [response]});
         const board = store.getState().board;
         setBoard(board);
+        const { p1Pieces, p2Pieces } = board;
+        updatePieces('p1', p1Pieces);
+        updatePieces('p2', p2Pieces);
       });
   }
 };

@@ -55,7 +55,7 @@ const userReducer = (
      * @param { number } payload.level 
      * @param { object } payload.chats @todo figure out shape of this
      */
-    const { player } = payload;
+    const { player, userData } = payload;
     const { 
       username, 
       chats, 
@@ -64,17 +64,10 @@ const userReducer = (
       wins,
       losses,
       phrases,
+      games,
     } = payload.userData;
     return update(state, {
-      [player]: {
-        username: { $set: username },
-        chats: { $set: chats },
-        level: { $set: level },
-        avatarUrl: {$set: avatarUrl },
-        wins: { $set: wins },
-        losses: { $set: losses },
-        phrases: { $set: phrases },
-      }
+      [player]: { $merge: userData },
     });
   } else {
     return state;
