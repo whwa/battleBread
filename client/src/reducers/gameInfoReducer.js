@@ -53,8 +53,8 @@ const gameInfoReducer = (state = { ...defaultGameInfo }, { type, payload } = act
   } else if (type === 'getInfo') {
     return state;
   } else if (type === 'setInfo') {
-    const { newInfo } = payload;
-    return update(state, { $merge: newInfo });
+    // const { newInfo } = payload;
+    return update(state, { $merge: payload });
   } else {
     return state;
   }
