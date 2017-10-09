@@ -44,7 +44,6 @@ app.post('/login', (req, res) => {
 });
 
 // This endpoint only for starting new games.
-// Requires req.body to have user1ID and user2ID properties.
 app.post('/games', (req, res) => {
   console.log('hello');
   db.createNewGame((err, results) => {
@@ -82,10 +81,10 @@ app.post('/games/:gameId', (req, res) => {
 });
 
 // This endpoint only for creating new users.
-// Requires req.body to have username and password properties.
 app.post('/users', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
+  console.log(username);  
   db.getUser(username, password, (err, results) => {
     if (err) {
       console.error(err);
