@@ -27,7 +27,7 @@ class App extends React.Component {
     this.state = {
       username: '',
       password: ''
-    }
+    };
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
   }
