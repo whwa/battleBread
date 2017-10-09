@@ -8,14 +8,14 @@ const buildStateForClient = results => {
   state.board.p2Pieces = 0; 
   state.board.p1 = buildGridForClient(results, 1);
   state.board.p2 = buildGridForClient(results, 2);
-  state.chats = buildChatsForClient(results);
+  //state.chats = buildChatsForClient(results);
   return state;
 };
 
 const buildChatsForClient = results => {
   let chats = [];
-  let p1chat = JSON.parse(results.chats).p1chat;
-  let p2chat = JSON.parse(results.chats).p2chat;
+  let p1chat = JSON.parse(results.chats[0]);
+  let p2chat = JSON.parse(results.chats[1]);
   for (let i = 0; i < p1chat.length; i++) {
     if (i % 2 === 0) {
       chats.push({"player": "p1", "text": p1chat[i]});

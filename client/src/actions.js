@@ -22,28 +22,7 @@ export const setBoard = board => {
   store.dispatch({ type: 'setBoard', payload: { board }});
 };
 
-/**
- * Performs a 'guess' action on a single tile. Depending on whether or not there is
- * bread on that tile, different actions will occur.
- * @param {string} player either 'p1' or 'p2'. Represents TARGET player's board.
- * @param {string} id the ID of the guessed tile, ex: '1,1' or '4,3'
- */
-export const guess = (player, id) => {
-  store.dispatch({
-    type: 'guess', 
-    payload: { player, id },
-  });
-  store.dispatch({ type: 'toggleTurn' });
-  const { p1Pieces, p2Pieces } = store.getState().board;
-  store.dispatch({
-    type: 'updatePieces',
-    payload: { player: 'p1', pieces: p1Pieces },
-  });
-  store.dispatch({
-    type: 'updatePieces',
-    payload: { player: 'p2', pieces: p2Pieces },
-  });
-};
+
 
 /**
  * Sets a single piece, which is represented by an array of its coordinates
@@ -221,18 +200,19 @@ export const newGame = () => {
   } else {
     axios.post(`${url}/games`)
       .then(response => {
+        const { data } = response;
         store.dispatch({
           type: 'setInfo',
-          payload: { id: response },
+          payload: { id: data },
         });
         createBoard();
         setRandomPieces('p1');
         setRandomPieces('p2');
-        setUser('p1', {games: [response]});
-        setUser('p2', {games: [response]});
+        setUser('p1', {games: [data]});
+        setUser('p2', {games: [data]});
         store.dispatch({
           type: 'setInfo',
-          payload: { id: response },
+          payload: { id: data },
         });
         const board = store.getState().board;
         setBoard(board);
@@ -240,5 +220,31 @@ export const newGame = () => {
         updatePieces('p1', p1Pieces);
         updatePieces('p2', p2Pieces);
       });
+  }
+};
+
+/**
+ * Performs a 'guess' action on a single tile. Depending on whether or not there is
+ * bread on that tile, different actions will occur.
+ * @param {string} player either 'p1' or 'p2'. Represents TARGET player's board.
+ * @param {string} id the ID of the guessed tile, ex: '1,1' or '4,3'
+ */
+export const guess = (player, id) => {
+  store.dispatch({
+    type: 'guess', 
+    payload: { player, id },
+  });
+  store.dispatch({ type: 'toggleTurn' });
+  const { p1Pieces, p2Pieces } = store.getState().board;
+  store.dispatch({
+    type: 'updatePieces',
+    payload: { player: 'p1', pieces: p1Pieces },
+  });
+  store.dispatch({
+    type: 'updatePieces',
+    payload: { player: 'p2', pieces: p2Pieces },
+  });
+  if (!!store.getState().gameInfo.id) {
+    updateGame(store.getState().gameInfo.id);
   }
 };
