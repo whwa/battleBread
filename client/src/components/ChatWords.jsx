@@ -1,3 +1,6 @@
+// This component renders all the chat word buttons to create 
+// the player chat messages.
+
 import React from 'react';
 import { setChat } from '../actions.js';
 
@@ -7,7 +10,6 @@ class ChatWords extends React.Component {
     super(props);
     this.state = {
     }
-    
   }
 
   render() {

@@ -67,3 +67,14 @@
   clear: both;
   width: 300px;
 }
+
+.avatar {
+  height: 65px;
+  display: inline;
+  margin-right: 20px;
+  margin-left: 0px;
+}
+
+.username {
+  display: inline;
+}
