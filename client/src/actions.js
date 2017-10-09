@@ -34,6 +34,15 @@ export const guess = (player, id) => {
     payload: { player, id },
   });
   store.dispatch({ type: 'toggleTurn' });
+  const { p1Pieces, p2Pieces } = store.getState().board;
+  store.dispatch({
+    type: 'updatePieces',
+    payload: { player: 'p1', pieces: p1Pieces },
+  });
+  store.dispatch({
+    type: 'updatePieces',
+    payload: { player: 'p2', pieces: p2Pieces },
+  });
 };
 
 /**
@@ -201,15 +210,35 @@ export const newUser = (username, password) => {
 };
 
 export const newGame = () => {
-  axios.post(`${url}/games`)
-    .then(response => {
-      store.dispatch({
-        type: 'setInfo',
-        payload: { id: response },
+  const { username } = store.getState().user.p1;
+  if (username === 'anonymous') {
+    createBoard();
+    setRandomPieces('p1');
+    setRandomPieces('p2');
+    const { p1Pieces, p2Pieces } = store.getState().board;
+    updatePieces('p1', p1Pieces);
+    updatePieces('p2', p2Pieces);
+  } else {
+    axios.post(`${url}/games`)
+      .then(response => {
+        store.dispatch({
+          type: 'setInfo',
+          payload: { id: response },
+        });
+        createBoard();
+        setRandomPieces('p1');
+        setRandomPieces('p2');
+        setUser('p1', {games: [response]});
+        setUser('p2', {games: [response]});
+        store.dispatch({
+          type: 'setInfo',
+          payload: { id: response },
+        });
+        const board = store.getState().board;
+        setBoard(board);
+        const { p1Pieces, p2Pieces } = board;
+        updatePieces('p1', p1Pieces);
+        updatePieces('p2', p2Pieces);
       });
-      createBoard();
-      setRandomPieces();
-      const board = store.getState().board;
-      setBoard(board);
-    });
+  }
 };

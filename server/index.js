@@ -74,7 +74,7 @@ app.post('/users', (req, res) => {
 app.post('/games', (req, res) => {
   console.log('hello');
   db.createNewGame((err, results) => {
-    //console.log(results.insertId);
+    console.log(results);
     if (err) { 
       console.error(err); 
     } else {
