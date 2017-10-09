@@ -24,7 +24,7 @@ class App extends React.Component {
     super(props);
   }
   componentWillMount() {
-    getUser('abc');
+    getUser('abc123');
     createBoard();
     getGame('1');
     

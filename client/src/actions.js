@@ -154,7 +154,8 @@ export const setUser = (player,
 const url = 'http://localhost:3000';
 
 export const newUser = ( username, password ) => {
-  axios.post('/users', {username, password}).then(response => console.log(response));
+  axios.post('/users', {username, password})
+    .then(response => console.log(response));
 };
 
 export const getUser = ( username ) => {
