@@ -65,3 +65,5 @@ class ChatInput extends React.Component {
   
 const mapStateToProps = ({ user } = state) => ({ ...user });
 export default connect(mapStateToProps)(ChatInput);
+
+//hi
