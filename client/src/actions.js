@@ -167,6 +167,7 @@ export const getUser = username => {
 export const login = (username, password) => {
   axios.post(`${url}/login`, { username, password })
     .then(response => {
+      console.log(response);
       if (response.status === 200) {
         setUser('p1', response.data);
         if (response.data.games.length) {
