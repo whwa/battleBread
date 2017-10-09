@@ -17,7 +17,10 @@ const Board = props => (
   <div className="container">
     <div className="row">
       <div className="col-6">
-        <h4>{props.user.p1.username}</h4>
+        <div>
+          <img src={props.user.p1.avatarUrl} className="avatar"></img>
+          <h4 className="username">{props.user.p1.username}</h4>
+        </div>
         {range(8).map(row => (
           <div className="row">
             {range(8).map(col => (
@@ -30,7 +33,10 @@ const Board = props => (
         ))}
       </div>
       <div className="col-6">
-        <h4>{props.user.p2.username}</h4>
+        <div>
+          <img src={props.user.p2.avatarUrl} className="avatar"></img>
+          <h4 className="username">{props.user.p2.username}</h4>
+        </div>
         {range(8).map(row => (
           <div className="row">
             {range(8).map(col => (

@@ -1,3 +1,9 @@
+// This file is currently just a skeleton for a login page. 
+// It is not being utilized at the moment.
+// We would like to eventually implement react router and a third 
+// party login through the users Google or Facebook account
+
+
 import React from 'react'
 
 const Login = () => (
