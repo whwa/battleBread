@@ -9,6 +9,7 @@ const defaultState = {
     wins: 0,
     losses: 0,
     games: [],
+    phrases: {},
   },
   p2: {
     username: 'computer', 
@@ -18,6 +19,7 @@ const defaultState = {
     wins: 0,
     losses: 0,
     games: [],
+    phrases: {},
   }
 };
 
@@ -61,6 +63,7 @@ const userReducer = (
       avatarUrl,
       wins,
       losses,
+      phrases,
     } = payload.userData;
     return update(state, {
       [player]: {
@@ -70,6 +73,7 @@ const userReducer = (
         avatarUrl: {$set: avatarUrl },
         wins: { $set: wins },
         losses: { $set: losses },
+        phrases: { $set: phrases },
       }
     });
   } else {
