@@ -9,7 +9,7 @@ import {
   setChat, 
   setRandomPieces,
   newUser,
-  getUser,
+  getUsers,
   getGame,
   updateGame,
   login,
@@ -27,7 +27,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      userInfo: ''
     };
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -54,18 +55,20 @@ class App extends React.Component {
     this.setState({
       username : e.target.value
     })
-    console.log('username')
   }
 
   handlePassword(e) {
     this.setState({
       password : e.target.value
     })
-    console.log('password')
   }
 
   handleLogin() {
-    login(this.state.username, this.state.password)
+    login(this.state.username, this.state.password),
+    console.log(store);
+    this.setState({
+      userInfo: store.getState().user,
+    })
   }
 
   handleRegister() {
@@ -101,7 +104,6 @@ class App extends React.Component {
            <Board />
          </Provider>
         </div>
-
       </div>
     );
   }
