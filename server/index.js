@@ -3,6 +3,7 @@ const db = require('../database/database-helpers.js');
 const dbi = require('../database/index.js');
 const clientHelpers = require('./client-helpers.js');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();  
 
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.static(__dirname + '/../client/'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // Using to make testing easier
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

@@ -1,3 +1,7 @@
+// This file is a skeleton for implementing the React Router. 
+// We have not refactored the App to allow for page redirection.
+// This page is not currently being used or utilized.  
+
 import React from 'react'
 import {
   BrowserRouter as Router,

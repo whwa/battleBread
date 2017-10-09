@@ -1,8 +1,16 @@
+// This component is the input field for the messaging feature. 
+// The form does not accept typed entries, you must use the provided 
+// buttons/vocabulary to compose the message.
+// There is no way to delete a word after you enter it into the form. 
+// This could be a possible added feature.
+// When the component mounts, it called setUser to bring in the 
+// user information. We need the know their username, and level to 
+// import their currently allowed vocabulary words.
+
 import React from 'react';
 import ChatHist from './ChatHist.jsx';
 import ChatWords from './ChatWords.jsx';
 import { setUser, setChat } from '../actions.js';
-
 
 class ChatInput extends React.Component {
   constructor(props) {
