@@ -84,9 +84,8 @@ app.post('/games/:gameId', (req, res) => {
 // This endpoint only for creating new users.
 // Requires req.body to have username and password properties.
 app.post('/users', (req, res) => {
-  let username = req.params.username;
+  let username = req.body.username;
   let password = req.body.password;
-  console.log('registering username:', username);
   db.getUser(username, password, (err, results) => {
     if (err) {
       console.error(err);
