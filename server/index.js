@@ -31,9 +31,12 @@ app.post('/login', (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      //if user exist, send an error to client
+      if (results.length === 0) {
+        res.sendStatus(404).send('username/password is wrong');
+      } else {
       console.log('this is server data', results);
       res.send(results);
+      }
     }
   });
 });
@@ -86,6 +89,7 @@ app.post('/users', (req, res) => {
       console.error(err);
     } else {
       //if user exist, send an error to client
+      console.log('this is the results of registering:', results);
       if (results.length === 1) {
         res.status(404).send('Not found');
       } else {

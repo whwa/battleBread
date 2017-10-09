@@ -91,6 +91,16 @@ const getUser = (userName, password, callback) => {
   });
 };
 
+// const getAllUser = (callback) => {
+//   connection.query('SELECT * FROM users', (err, results) => {
+//     if (err) {
+//       callback (err, null);
+//     } else {
+//       callback(null, results);
+//     }
+//   });
+// };
+
 // Fold this into more general updateGame function?
 // This could definity work inside the updateGame function,
 // Given the initial board placement of all the user's pieces
@@ -134,7 +144,7 @@ const getUser = (userName, password, callback) => {
 //   });
 // };
 
-
+// module.exports.getAllusers = getAllusers;
 module.exports.selectPlayersGames = selectPlayersGames;
 module.exports.createNewGame = createNewGame;
 module.exports.createNewPlayer = createNewPlayer;
