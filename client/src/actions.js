@@ -201,7 +201,7 @@ export const login = (username, password) => {
 };
 
 export const newUser = (username, password) => {
-  axios.post('/users', { username, password })
+  axios.post(`${url}/users`, { username, password })
     .then(response => {
       if (response.status !== 404) {
         login(username, password);
