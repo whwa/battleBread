@@ -74,7 +74,7 @@ class App extends React.Component {
                 <input id="password" type="password" name="password" placeholder="Password" onChange={this.handlePassword}></input>
               </div>
               <div>
-                <button type="button" value="Login" onClick={()=>{login()}}>Login</button>
+                <button type="button" value="Login" onClick={()=>{login(this.state.username, this.state.password)}}>Login</button>
                 <button type="button" value="Register" onClick={newUser}>Register</button>
               </div>
             </form>
