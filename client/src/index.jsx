@@ -8,9 +8,11 @@ import {
   setPiece, 
   setChat, 
   setRandomPieces,
+  newUser,
   getUser,
   getGame,
   updateGame,
+  login
 } from './actions.js';
 
 /**
@@ -22,13 +24,20 @@ import {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    createBoard();
+    this.state = {
+      username: '',
+      password: ''
+    }
+    this.handleUsername = this.handleUsername.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
   }
+  
   componentWillMount() {
+    createBoard();
     getUser('abc123');
     getGame('1');
-    
   }
+
   componentDidMount() {
     // setRandomPieces('p2');
     // setRandomPieces('p1');
@@ -36,17 +45,51 @@ class App extends React.Component {
     setChat('p1', 'glhf');
     setChat('p2', 'you\'re toast!');
   }
+
+  handleUsername(e) {
+    this.setState({
+      username : e.target.value
+    })
+    console.log('username')
+  }
+
+  handlePassword(e) {
+    this.setState({
+      password : e.target.value
+    })
+    console.log('password')
+  }
+
   render() {
     return (
       <div className="container">
-        <div className="headerLogo">
-        <img className="logo" src="../client/images/BattleBreadLogo.png" height="125px"></img>
+
+        <div className="header">
+          <div className="login">
+            <form action="/login" method="post">
+              <div>
+                <input id="username" type="text" name="username" placeholder="Username" onChange={this.handleUsername}></input>
+              </div>
+              <div>
+                <input id="password" type="password" name="password" placeholder="Password" onChange={this.handlePassword}></input>
+              </div>
+              <div>
+                <button type="button" value="Login" onClick={()=>{login()}}>Login</button>
+                <button type="button" value="Register" onClick={newUser}>Register</button>
+              </div>
+            </form>
+          </div>
+          <div className="logo">
+            <img src="../client/images/BattleBreadLogo.png" height="125px"></img>
+          </div>
         </div>
+
         <div className="container-fluid">
           <Provider store={store}>
-            <Board />
-          </Provider>
+           <Board />
+         </Provider>
         </div>
+
       </div>
     );
   }
