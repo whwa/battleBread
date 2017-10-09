@@ -2,6 +2,7 @@
   "name": "battlebread",
   "version": "0.0.2",
   "description": "",
+  "main": "server/index.js",
   "author": "Battle Bread Team",
   "license": "",
   "engines": {
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "cors": "^2.8.4",
     "express": "^4.16.1",
     "immutability-helper": "^2.4.0",
     "lodash": "^4.17.4",
