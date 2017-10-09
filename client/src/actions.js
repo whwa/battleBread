@@ -230,6 +230,10 @@ export const newGame = () => {
         setRandomPieces('p2');
         setUser('p1', {games: [response]});
         setUser('p2', {games: [response]});
+        store.dispatch({
+          type: 'setInfo',
+          payload: { id: response },
+        });
         const board = store.getState().board;
         setBoard(board);
         const { p1Pieces, p2Pieces } = board;
