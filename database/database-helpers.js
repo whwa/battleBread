@@ -3,7 +3,7 @@ const connection = require('../database/index.js');
 
 
 const createNewPlayer = (obj, callback) => {
-  connection.query( `INSERT into users SET ?`, obj, (err, results, fields) => {
+  connection.query(`INSERT into users SET ?`, obj, (err, results, fields) => {
     if (err) {
       callback(err, null);
     } else {
@@ -91,58 +91,6 @@ const getUser = (userName, password, callback) => {
   });
 };
 
-// const getAllUser = (callback) => {
-//   connection.query('SELECT * FROM users', (err, results) => {
-//     if (err) {
-//       callback (err, null);
-//     } else {
-//       callback(null, results);
-//     }
-//   });
-// };
-
-// Fold this into more general updateGame function?
-// This could definity work inside the updateGame function,
-// Given the initial board placement of all the user's pieces
-// we can set the player1 placement
-// const breadPlacement = (userId, col, row, callback) => {
-//   let placement = [col, row];
-//   connection.query('tbd', (err, results, fields) => {
-//     if (err) {
-//       callback(err, null); 
-//     } else {
-//       callback(null, results);
-//     }
-//   });
-// };
-
-// // Fold this into more general updateGame function?
-// const guessLocation = (userId, col, row, callback) => {
-//   connection.query('tbd', (err, results, fields) => {
-//     if (err) {
-//       callback(err, null); 
-//     } else {
-//       callback(null, results);
-//     }
-//   });
-// };
-
-// // Fold this into more general updateUser function?
-// // Yeah, Once a game is concluded, both the winner and loser will have their profile updated
-// // Winner gets their win count++ and possible level up (depending on what our achievement ranks are)
-// // Loser gets their losses count ++
-// // With this in mind, we can add a w/l array to the user schema to see if they are on a winning streak/losing streak
-
-// const playerLevelUp = (userId, newLevel, callback) => {
-//   connection.query(`UPDATE users SET playerLevel='${newLevel}' WHERE id='${userId}';`, (err, results, fields) => {
-//   //updates players current level to given level. 
-//     if (err) {
-//       callback(err, null); 
-//     } else {
-//       callback(null, results);
-//     }
-//   });
-// };
 
 // module.exports.getAllusers = getAllusers;
 module.exports.selectPlayersGames = selectPlayersGames;
