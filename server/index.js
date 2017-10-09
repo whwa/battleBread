@@ -25,11 +25,16 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  console.log('hello');
-  db.checkPassword(req.body, (err, results) => {
+  console.log('loggin in');
+  let username = req.body.username;
+  let password = req.body.password;
+  console.log(username);
+  db.getUser(username, password, (err, results) => {
     if (err) {
       console.error(err);
-    } else { 
+    } else {
+      //if user exist, send an error to client
+      console.log('this is server data', results);
       res.send(results);
     }
   });
@@ -54,7 +59,7 @@ app.get('/games/:gameId', (req, res) => {
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Retrieved game info: ', JSON.stringify(results[0]));
+      //console.log('Retrieved game info: ', JSON.stringify(results[0]));
       res.send(clientHelpers.buildStateForClient(results[0]));
     }    
   });
@@ -75,9 +80,10 @@ app.post('/games/:gameId', (req, res) => {
 // This endpoint only for creating new users.
 // Requires req.body to have username and password properties.
 app.post('/users', (req, res) => {
-  let username = req.params.username;
-  let password = req.params.password;
-  db.getUser(req.body, (err, results) => {
+  let username = req.body.username;
+  let password = req.body.password;
+  console.log('registering username:', username);
+  db.getUser(username, password, (err, results) => {
     if (err) {
       console.error(err);
     } else {
@@ -100,14 +106,15 @@ app.post('/users', (req, res) => {
 
 // This endpoint serves info on particular users
 app.get('/users/:userName', (req, res) => {
-  db.getUser(req.params.userName, (err, results) => {
-    if (err) { 
-      console.error(err); 
-    } else {
-      console.log('Retrieved user: ', JSON.stringify(results));
-      res.send(results);
-    }
-  });
+  // db.getUser(req.params.userName, req.pa (err, results) => {
+  //   if (err) { 
+  //     console.error(err); 
+  //   } else {
+  //     console.log('Retrieved user: ', JSON.stringify(results));
+  //     res.send(results);
+  //   }
+  // });
+  next();
 });
 
 // This endpoint is for updating user profiles

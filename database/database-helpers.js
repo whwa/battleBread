@@ -15,7 +15,7 @@ const createNewPlayer = (obj, callback) => {
 const checkPassword = (userName, passwordHash, callback) => {
   connection.query(`SELECT * FROM users WHERE username = ${userName} and password = ${passwordHash}`, (err, results, fields) => {
     if (err) {
-      callback(err, null);
+      callback (err, null);
     } else {
       callback(null, results);
     }
@@ -79,10 +79,12 @@ const updateUser = (userId, obj, callback) => {
   });
 };
 
-const getUser = (userName, callback) => {
-  connection.query(`SELECT * FROM users WHERE username = ${userName}`, (err, results) => {
+const getUser = (userName, password, callback) => {
+  connection.query(`SELECT * FROM users WHERE username = '${userName}' and password = '${password}'`, (err, results) => {
+    console.log(results);
+    console.log('this is err', err);
     if (err) {
-      callback(err, null);
+      callback (err, null);
     } else {
       callback(null, results);
     }
