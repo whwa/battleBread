@@ -17,8 +17,8 @@ class ChatInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        player: 'p1',
-        level: '',
+        player: this.props.p1.username,
+        level: this.props.p1.level,
         newMessage: '',
         list: ['you\'re', 'bread', 'toast']
     }
@@ -29,16 +29,18 @@ class ChatInput extends React.Component {
   componentDidMount() {
     // var userInfo = getUsers();
     // console.log(">>>>>>>>>>>>>>>>>", userInfo)
-    this.setState({
-      // player: userInfo.username,
-      // level: userInfo.level,
-      // list: userInfo.chats,
-    })
+    // this.setState({
+    //   player: ,
+    //   level: ,
+      // list: this.props.p1.phrases,
+    // })
   }
 
   handleSubmit(player, text) {
     setChat(player, text);
     console.log('message sent')
+    console.log(this.state)
+    
   }
 
   updateMessage(e) {
@@ -47,7 +49,7 @@ class ChatInput extends React.Component {
       newMessage: oldMessage + ' ' + e
     })
     console.log('send words!')
-    console.log("PROPSS", this.props.userInfo)
+    console.log("PROPSS", this.props)
   }
 
   render() {
