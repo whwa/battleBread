@@ -13,7 +13,7 @@ CREATE TABLE users (
   playerLevel int NOT NULL DEFAULT 1,
   games varchar(100),
   avatarUrl varchar(100) DEFAULT 'http://oi40.tinypic.com/i5sy1u.jpg',
-  phrases varchar(200) DEFAULT '{
+  phrases varchar(2000) DEFAULT '{
     1: ["you", "and", "are", "toast", "batard"],
     2: ["you", "and", "are", "toast", "batard", "cookies"],
     3: ["you", "and", "are", "toast", "batard", "cookies", "baguette"],
