@@ -30,6 +30,8 @@ class App extends React.Component {
     };
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
   }
   
   componentWillMount() {
@@ -60,6 +62,14 @@ class App extends React.Component {
     console.log('password')
   }
 
+  handleLogin() {
+    login(this.state.username, this.state.password)
+  }
+
+  handleRegister() {
+    newUser(this.state.username, this.state.password)
+  }
+
   render() {
     return (
       <div className="container">
@@ -74,8 +84,8 @@ class App extends React.Component {
                 <input id="password" type="password" name="password" placeholder="Password" onChange={this.handlePassword}></input>
               </div>
               <div>
-                <button type="button" value="Login" onClick={()=>{login(this.state.username, this.state.password)}}>Login</button>
-                <button type="button" value="Register" onClick={newUser}>Register</button>
+                <button type="button" value="Login" onClick={this.handleLogin}>Login</button>
+                <button type="button" value="Register" onClick={this.handleRegister}>Register</button>
               </div>
             </form>
           </div>
