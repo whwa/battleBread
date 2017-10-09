@@ -33,9 +33,12 @@ app.post('/login', (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      //if user exist, send an error to client
-      console.log('this is server data', results);
-      res.send(results);
+      if (results.length === 0) {
+        res.sendStatus(404).send('username/password is wrong');
+      } else {
+        console.log('this is server data', results);
+        res.send(results);
+      }
     }
   });
 });
@@ -43,12 +46,13 @@ app.post('/login', (req, res) => {
 // This endpoint only for starting new games.
 // Requires req.body to have user1ID and user2ID properties.
 app.post('/games', (req, res) => {
-  db.createNewGame(req.body, (err, results) => {
+  console.log('hello');
+  db.createNewGame((err, results) => {
+    console.log(results.insertId);
     if (err) { 
       console.error(err); 
     } else {
-      console.log('Created new game: ', JSON.stringify(results));
-      res.send(results);
+      res.send(results.insertId);
     }
   }); 
 });
@@ -88,6 +92,7 @@ app.post('/users', (req, res) => {
       console.error(err);
     } else {
       //if user exist, send an error to client
+      console.log('this is the results of registering:', results);
       if (results.length === 1) {
         res.status(404).send('Not found');
       } else {

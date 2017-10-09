@@ -29,9 +29,7 @@ CREATE TABLE games (
   allMoves varchar(400) DEFAULT '{"p1guess":[],"p2guess":[]}',
   chats varchar(10000),
   result ENUM('In progress', 'Complete'),
-  PRIMARY KEY (id),
-  FOREIGN KEY (player1ID) REFERENCES users(id),
-  FOREIGN KEY (player2ID) REFERENCES users(id)
+  PRIMARY KEY (id)
 );
 
 
