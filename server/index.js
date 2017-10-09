@@ -57,14 +57,12 @@ app.post('/users', (req, res) => {
       if (results.length === 1) {
         res.status(404).send('USERNAME ALREADY EXISTS');
       } else {
-
         setTimeout(function() {  
           //if username doesnt exist, create a new user with password and username
           db.createNewPlayer({username: username, password: password}, (err, results) => {
             res.send(200, 'Created New User');
           });
         }, 200);
-
       }
     }
   });
