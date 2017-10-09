@@ -10,7 +10,7 @@
 import React from 'react';
 import ChatHist from './ChatHist.jsx';
 import ChatWords from './ChatWords.jsx';
-import { setUser, setChat } from '../actions.js';
+import { getUsers, setChat } from '../actions.js';
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class ChatInput extends React.Component {
   }
 
   componentDidMount() {
-    // var userInfo = setUser();
+    // var userInfo = getUsers();
     this.setState({
       // player: userInfo.username,
       // level: userInfo.level,
