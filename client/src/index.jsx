@@ -38,8 +38,9 @@ class App extends React.Component {
   
   componentWillMount() {
     createBoard();
+    newGame();
     // getUser('abc123');
-    getGame('1');
+    // getGame('1');
   }
 
   componentDidMount() {

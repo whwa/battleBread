@@ -43,15 +43,42 @@ app.post('/login', (req, res) => {
   });
 });
 
+// This endpoint only for creating new users.
+app.post('/users', (req, res) => {
+  let username = req.body.username;
+  let password = req.body.password; 
+  db.getUser(username, password, (err, results) => {
+    console.log('heRERERERE', results);
+    if (err) {
+      console.error(err);
+    } else {
+      //if user exist, send an error to client
+      console.log('this is the results of registering:', results.length);
+      if (results.length === 1) {
+        res.status(404).send('USERNAME ALREADY EXISTS');
+      } else {
+
+        setTimeout(function() {  
+          //if username doesnt exist, create a new user with password and username
+          db.createNewPlayer({username: username, password: password}, (err, results) => {
+            res.send(200, 'Created New User');
+          });
+        }, 200);
+
+      }
+    }
+  });
+});
+
 // This endpoint only for starting new games.
 app.post('/games', (req, res) => {
   console.log('hello');
   db.createNewGame((err, results) => {
-    //console.log(results.insertId);
+    console.log(results);
     if (err) { 
       console.error(err); 
     } else {
-      res.sendStatus(200).send(results.insertId);
+      res.send(200, results.insertId);
     }
   }); 
 });
@@ -80,28 +107,7 @@ app.post('/games/:gameId', (req, res) => {
   });
 });
 
-// This endpoint only for creating new users.
-app.post('/users', (req, res) => {
-  let username = req.body.username;
-  let password = req.body.password;
-  console.log(username);  
-  db.getUser(username, password, (err, results) => {
-    if (err) {
-      console.error(err);
-    } else {
-      //if user exist, send an error to client
-      console.log('this is the results of registering:', results);
-      if (results.length === 1) {
-        res.status(404).send('Not found');
-      } else {
-      //if username doesnt exist, create a new user with password and username
-        db.createNewPlayer({username: username, password: password}, (err, results) => {
-          res.status(200).send('Created New User');
-        });
-      }
-    }
-  });
-});
+
 
 // This endpoint serves info on particular users
 app.get('/users/:userName', (req, res) => {

@@ -9,6 +9,7 @@ const defaultState = {
     wins: 0,
     losses: 0,
     games: [],
+    phrases: {},
   },
   p2: {
     username: 'computer', 
@@ -18,6 +19,7 @@ const defaultState = {
     wins: 0,
     losses: 0,
     games: [],
+    phrases: {},
   }
 };
 
@@ -53,7 +55,7 @@ const userReducer = (
      * @param { number } payload.level 
      * @param { object } payload.chats @todo figure out shape of this
      */
-    const { player } = payload;
+    const { player, userData } = payload;
     const { 
       username, 
       chats, 
@@ -61,16 +63,11 @@ const userReducer = (
       avatarUrl,
       wins,
       losses,
+      phrases,
+      games,
     } = payload.userData;
     return update(state, {
-      [player]: {
-        username: { $set: username },
-        chats: { $set: chats },
-        level: { $set: level },
-        avatarUrl: {$set: avatarUrl },
-        wins: { $set: wins },
-        losses: { $set: losses },
-      }
+      [player]: { $merge: userData },
     });
   } else {
     return state;
