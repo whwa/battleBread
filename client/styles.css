@@ -18,7 +18,8 @@
   height: 250px;
   background-color: #F3F3F3;
   margin-top: 20px;
-  margin-left: 60px;
+  margin-right: 5%;
+  float: right;
 }
 
 .chatHist {
