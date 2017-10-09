@@ -12,7 +12,8 @@ import {
   getUser,
   getGame,
   updateGame,
-  login
+  login,
+  newGame,
 } from './actions.js';
 
 /**

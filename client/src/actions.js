@@ -3,6 +3,8 @@ import randomInt from 'random-int';
 import axios from 'axios';
 import { range } from 'lodash';
 
+const url = 'http://localhost:3000';
+
 ///////////////////
 // BOARD ACTIONS //
 ///////////////////
@@ -137,8 +139,6 @@ export const setUser = (player, userData) => {
 // SERVER INTERACTIONS //
 /////////////////////////
 
-const url = 'http://localhost:3000';
-
 export const getGame = gameId => {
   axios.get(`${url}/games/${gameId}`)
     .then(response => {
@@ -148,6 +148,20 @@ export const getGame = gameId => {
       chats.forEach(chat => {
         const { player, text } = chat;
         setChat(player, text);
+      });
+      const p1Pieces = Object.keys(board.p1).filter(tile => !!board.p1[tile].hasBread);
+      store.dispatch({
+        type: 'updatePieces',
+        payload: { player: 'p1', pieces: p1Pieces.length },
+      });
+      const p2Pieces = Object.keys(board.p2).filter(tile => !!board.p2[tile].hasBread);
+      store.dispatch({
+        type: 'updatePieces',
+        payload: { player: 'p2', pieces: p2Pieces.length },
+      });
+      store.dispatch({
+        type: 'setInfo',
+        payload: { id: gameId },
       });
     });
 };
@@ -183,5 +197,19 @@ export const newUser = (username, password) => {
       if (response.status !== 404) {
         login(username, password);
       }
+    });
+};
+
+export const newGame = () => {
+  axios.post(`${url}/games`)
+    .then(response => {
+      store.dispatch({
+        type: 'setInfo',
+        payload: { id: response },
+      });
+      createBoard();
+      setRandomPieces();
+      const board = store.getState().board;
+      setBoard(board);
     });
 };

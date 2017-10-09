@@ -8,6 +8,7 @@ const defaultState = {
     avatarUrl: 'http://oi40.tinypic.com/i5sy1u.jpg',
     wins: 0,
     losses: 0,
+    games: [],
   },
   p2: {
     username: 'computer', 
@@ -16,6 +17,7 @@ const defaultState = {
     avatarUrl: 'http://oi40.tinypic.com/i5sy1u.jpg',
     wins: 0,
     losses: 0,
+    games: [],
   }
 };
 
