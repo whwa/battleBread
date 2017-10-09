@@ -42,10 +42,10 @@ const getGame = (gameId, callback) => {
   });
 }; 
 
-const createNewGame = (obj, callback) => {
+const createNewGame = (callback) => {
   connection.query(
     `INSERT into games (player1ID, player1Placement, player1Hits, player1Misses, player2ID, player2Placement, player2Hits, player2Misses, result) Values (
-    ${obj.user1Id}, '[]', '[]', '[]', ${obj.user2Id}, '[]', '[]', '[]', null)`, (err, results, fields) => {
+    0, '[]', '[]', '[]', 1, '[]', '[]', '[]', null);`, (err, results, fields) => {
       //creates a new game between user1Id, and user2Id. Starts with empty tuples.
       if (err) {
         callback(err, null); 
@@ -91,6 +91,16 @@ const getUser = (userName, password, callback) => {
   });
 };
 
+// const getAllUser = (callback) => {
+//   connection.query('SELECT * FROM users', (err, results) => {
+//     if (err) {
+//       callback (err, null);
+//     } else {
+//       callback(null, results);
+//     }
+//   });
+// };
+
 // Fold this into more general updateGame function?
 // This could definity work inside the updateGame function,
 // Given the initial board placement of all the user's pieces
@@ -134,7 +144,7 @@ const getUser = (userName, password, callback) => {
 //   });
 // };
 
-
+// module.exports.getAllusers = getAllusers;
 module.exports.selectPlayersGames = selectPlayersGames;
 module.exports.createNewGame = createNewGame;
 module.exports.createNewPlayer = createNewPlayer;
