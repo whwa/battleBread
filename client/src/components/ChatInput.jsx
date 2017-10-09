@@ -11,6 +11,7 @@ import React from 'react';
 import ChatHist from './ChatHist.jsx';
 import ChatWords from './ChatWords.jsx';
 import { getUsers, setChat } from '../actions.js';
+import { connect } from 'react-redux';
 
 class ChatInput extends React.Component {
   constructor(props) {
@@ -62,5 +63,5 @@ class ChatInput extends React.Component {
   } 
 }
   
-
-export default ChatInput;
+const mapStateToProps = ({ user } = state) => ({ ...user });
+export default connect(mapStateToProps)(ChatInput);
