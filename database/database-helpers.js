@@ -2,10 +2,8 @@ const sequelize = require('sequelize');
 const connection = require('../database/index.js');
 
 
-// Updated syntax to simplify code and use built-in escaping functionality,
-// preventing SQL injection attacks
 const createNewPlayer = (obj, callback) => {
-  connection.query(`INSERT into users SET ?`, obj, (err, results, fields) => {
+  connection.query( `INSERT into users SET ?`, obj, (err, results, fields) => {
     if (err) {
       callback(err, null);
     } else {
@@ -14,9 +12,16 @@ const createNewPlayer = (obj, callback) => {
   });
 };
 
-// EG note: Let me know more about how this should work!
-// Like, what should the endpoint be?
-//returns all games that userId is in (whether they are player1 or player2)
+const checkPassword = (userName, passwordHash, callback) => {
+  connection.query(`SELECT * FROM users WHERE username = ${userName} and password = ${passwordHash}`, (err, results, fields) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}; 
+
 const selectPlayersGames = (userId, callback) => {
   connection.query(`SELECT * FROM games WHERE player1ID = '${userId}' or player2ID = '${userId}'`, (err, results, fields) => {
     if (err) {
@@ -134,7 +139,7 @@ module.exports.createNewPlayer = createNewPlayer;
 //module.exports.breadPlacement = breadPlacement;
 //module.exports.guessLocation = guessLocation;
 //module.exports.playerLevelUp = playerLevelUp;
-
+module.exports.checkPassword = checkPassword;
 module.exports.getUser = getUser;
 module.exports.updateUser = updateUser;
 module.exports.getGame = getGame;

@@ -5,6 +5,7 @@ const clientHelpers = require('./client-helpers.js');
 const bodyParser = require('body-parser');
 const app = express();  
 
+
 // EG note to self: to start sql, brew services restart mysql
 // mysql -u root < database/schema.sql
 
@@ -22,7 +23,14 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  // log user in
+  console.log('hello');
+  db.checkPassword(req.body, (err, results) => {
+    if (err) {
+      console.error(err);
+    } else { 
+      res.send(results);
+    }
+  });
 });
 
 // This endpoint only for starting new games.
@@ -65,14 +73,27 @@ app.post('/games/:gameId', (req, res) => {
 // This endpoint only for creating new users.
 // Requires req.body to have username and password properties.
 app.post('/users', (req, res) => {
-  db.createNewPlayer(req.body, (err, results) => {
-    if (err) { 
-      console.error(err); 
+  let username = req.params.username;
+  let password = req.params.password;
+  db.getUser(req.body, (err, results) => {
+    if (err) {
+      console.error(err);
     } else {
-      console.log('Created new user: ', JSON.stringify(results));
-      res.send(results);
-    } 
-  }); 
+      //if user exist, send an error to client
+      if (results.length === 1) {
+        res.status(404).send('Not found');
+      } else {
+      //if username doesnt exist, create a new user with password and username
+        db.createNewPlayer({username: username, password: password}, (err, results) => {
+          if (err) {
+            console.err(err);
+          } else {
+            res.status(200).send('Created New User');
+          }
+        });
+      }
+    }
+  });
 });
 
 // This endpoint serves info on particular users
