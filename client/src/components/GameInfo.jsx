@@ -1,5 +1,5 @@
 import React from 'react';
-import { getInfo, updatePieces } from '../actions.js';
+import { getInfo, updatePieces, newGame } from '../actions.js';
 import { connect } from 'react-redux';
 
 const GameInfo = props => (
@@ -7,6 +7,7 @@ const GameInfo = props => (
     <div>
       <h5>Game Stats:</h5>
       <div>{`Next Move: ${props.turn}`}</div>
+      <button className ="newGame" onClick={ newGame }>New Game</button>
       <div className='infoColOne'>
         <div>{`Your pieces left: ${props.p1Pieces}`}</div>
       </div>

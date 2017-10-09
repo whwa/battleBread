@@ -48,11 +48,11 @@ app.post('/login', (req, res) => {
 app.post('/games', (req, res) => {
   console.log('hello');
   db.createNewGame((err, results) => {
-    console.log(results.insertId);
+    //console.log(results.insertId);
     if (err) { 
       console.error(err); 
     } else {
-      res.send(results.insertId);
+      res.sendStatus(200).send(results.insertId);
     }
   }); 
 });
@@ -86,7 +86,6 @@ app.post('/games/:gameId', (req, res) => {
 app.post('/users', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-  console.log('registering username:', username);
   db.getUser(username, password, (err, results) => {
     if (err) {
       console.error(err);
@@ -98,11 +97,7 @@ app.post('/users', (req, res) => {
       } else {
       //if username doesnt exist, create a new user with password and username
         db.createNewPlayer({username: username, password: password}, (err, results) => {
-          if (err) {
-            console.err(err);
-          } else {
-            res.status(200).send('Created New User');
-          }
+          res.status(200).send('Created New User');
         });
       }
     }
@@ -124,7 +119,7 @@ app.get('/users/:userName', (req, res) => {
 
 // This endpoint is for updating user profiles
 app.post('/users/:userId', (req, res) => {
-  db.updateUser(req.params.userId, req.body, (err, results) => {
+  db.updateUser(req.body.userId, req.body, (err, results) => {
     if (err) { 
       console.error(err); 
     } else {
