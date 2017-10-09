@@ -27,6 +27,7 @@ class ChatInput extends React.Component {
 
   componentDidMount() {
     // var userInfo = getUsers();
+    // console.log(">>>>>>>>>>>>>>>>>", userInfo)
     this.setState({
       // player: userInfo.username,
       // level: userInfo.level,
@@ -45,6 +46,7 @@ class ChatInput extends React.Component {
       newMessage: oldMessage + ' ' + e
     })
     console.log('send words!')
+    console.log("PROPSS", this.props.userInfo)
   }
 
   render() {
