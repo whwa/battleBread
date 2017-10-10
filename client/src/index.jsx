@@ -26,7 +26,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      userName: '',
       password: '',
       userInfo: ''
     };
@@ -53,14 +53,14 @@ class App extends React.Component {
 
   handleUsername(e) {
     this.setState({
-      username : e.target.value
-    })
+      userName: e.target.value
+    });
   }
 
   handlePassword(e) {
     this.setState({
-      password : e.target.value
-    })
+      password: e.target.value
+    });
   }
 
   handleLogin() {
@@ -68,18 +68,18 @@ class App extends React.Component {
     console.log(store);
     this.setState({
       userInfo: store.getState().user,
-    })
+    });
   }
 
   handleRegister() {
-    newUser(this.state.username, this.state.password)
+    newUser(this.state.username, this.state.password);
   }
 
   render() {
     return (
       <div className="container">
 
-        <div className="header">
+        {/* <div className="header">
           <div className="login">
             <form action="/login" method="post">
               <div>
@@ -97,12 +97,12 @@ class App extends React.Component {
           <div className="logo">
             <img src="../client/images/BattleBreadLogo.png" height="125px"></img>
           </div>
-        </div>
+        </div> */}
 
-        <div className="container-fluid">
+        <div className="container">
           <Provider store={store}>
-           <Board />
-         </Provider>
+            <Board />
+          </Provider>
         </div>
       </div>
     );

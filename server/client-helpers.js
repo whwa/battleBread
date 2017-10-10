@@ -26,7 +26,7 @@ const buildChatsForClient = results => {
     }
   }
   return chats;
-}
+};
 
 const buildGridForClient = (results, player) => {
   let grid = {};
@@ -55,6 +55,6 @@ const buildGridForClient = (results, player) => {
     }
   }
   return grid;
-}
+};
 
 module.exports.buildStateForClient = buildStateForClient;

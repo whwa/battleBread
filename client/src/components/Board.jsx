@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { range } from 'lodash';
 import Tile from './Tile.jsx';
 import GameInfo from './GameInfo.jsx';
+import { getInfo, updatePieces, newGame } from '../actions.js';
 import ChatInput from './ChatInput.jsx';
 
 /**
@@ -16,10 +17,12 @@ import ChatInput from './ChatInput.jsx';
 const Board = props => (
   <div className="container">
     <div className="row">
-      <div className="col-6">
-        <div>
+      <div className="col-sm-5">
+        <div className="p1">
           <img src={props.user.p1.avatarUrl} className="avatar"></img>
+          {props.turn === 'p1' ? <div className="yourmove">Your Move</div> : <div className="yourmove">Please Wait</div>}
           <h4 className="username">{props.user.p1.username}</h4>
+          <div>{`Pieces left: ${props.p1Pieces}`}</div>
         </div>
         {range(8).map(row => (
           <div className="row">
@@ -32,10 +35,16 @@ const Board = props => (
           </div>
         ))}
       </div>
-      <div className="col-6">
+      <div className="col-sm-2">
+        <img src="../client/images/BattleBreadLogo.png" height="75px" className="logo" align="middle"></img>
+        <button className ="newGame" onClick={ newGame }>New Game</button>
+      </div>
+      <div className="col-sm-5 leftMargin">
         <div>
           <img src={props.user.p2.avatarUrl} className="avatar"></img>
+          {props.turn === 'p2' ? <div className="yourmove">Your Move</div> : <div className="yourmove">Please Wait</div>}
           <h4 className="username">{props.user.p2.username}</h4>
+          <div>{`Pieces left: ${props.p2Pieces}`}</div>
         </div>
         {range(8).map(row => (
           <div className="row">
@@ -48,8 +57,8 @@ const Board = props => (
           </div>
         ))}
       </div>
-      <GameInfo />
-      <ChatInput />
+      {/* <GameInfo /> */}
+      {props.user.p2.username === 'computer' ? null : <ChatInput />}
     </div>
   </div>
 );
@@ -58,6 +67,17 @@ const Board = props => (
  * mapStateToProps takes a state and defines the data which gets passed into props from the store.
  * @param { object } board Here, we destructure the the board property out of the state and set it to props
  */
-const mapStateToProps = ({ board, user } = state) => ({ board, user });
+///////////////
+//INFO PROPS//
+/////////////
 
-export default connect(mapStateToProps)(Board);
+// const mapStateToProps = ({ gameInfo }) => ({ ...gameInfo });
+// export default connect(mapStateToProps)(GameInfo);
+
+////////////////
+//BOARD PROPS//
+//////////////
+
+const mapStateToProps = ({ board, user, gameInfo } = state) => ({ board, user, ...gameInfo});
+
+export default connect(mapStateToProps)(Board, GameInfo);

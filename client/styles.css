@@ -77,3 +77,28 @@
 .username {
   display: inline;
 }
+
+.yourmove{
+  font-family: 'Press Start 2P', cursive;
+}
+
+.newGame{
+  margin-top: 25px;
+  margin-left: 33px;
+}
+
+.logo{
+  margin-top: 200px;
+}
+
+.leftMargin{
+  padding-left: 80px;
+}
+
+.floatRight{
+  float: right;
+}
+
+.p1{
+  padding-left: 220px;
+}
