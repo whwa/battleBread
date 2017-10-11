@@ -45,13 +45,42 @@ export const setPiece = (player, piece) => {
  * @param {string} player  either 'p1' or 'p2'
  */
 export const setRandomPieces = (player) => {
-  const pieces = range(2, 6)
-    .map((len) => {
-      const rotate = randomInt(0, 1);
-      const scalar = randomInt(0, 7);
-      return range(0, len).map((el, j) => (rotate) ? [scalar, j] : [j, scalar]);
-    })
-    .forEach(piece => setPiece(player, piece));
+    
+  const getStartingLocation = (shipLen) => {
+    var rand = randomInt(7);
+    var randRangeStart = randomInt(8-shipLen);
+    var randRange = range(randRangeStart, randRangeStart + shipLen)
+    const rotate = randomInt(0, 1);
+
+    //0 = vertical -> x can be anything, y can be 8-ship len or less
+    //1 = horizontal -> x can be 8 - ship len or less, y can be anything
+    var placementAttempt = randRange.map((val) => (rotate) ? [rand, val] : [val, rand]); //should rand:val be switched?!
+
+    if(shipLen < 5) {
+      for (var ship in occupiedLocations) {
+        for(var i = 0; i < placementAttempt.length; i++) {
+          var attempt = placementAttempt[i].join()
+          for(var j = 0; j < occupiedLocations[ship].length; j++) {
+            var occupied = occupiedLocations[ship][j].join();
+            if(attempt === occupied) {
+              // console.log('collision')
+              placementAttempt = getStartingLocation(placementAttempt.length)
+            }
+          }
+        }
+      }
+    }
+    return placementAttempt;
+  }
+  var occupiedLocations = {};
+  const ships = range(5, 1);
+  ships.forEach((len) => {
+    occupiedLocations[len] = getStartingLocation(len);
+  })
+
+  for (var ship in occupiedLocations) {
+    setPiece(player, occupiedLocations[ship])
+  }
 };
 
 /**
