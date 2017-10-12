@@ -40,7 +40,7 @@ const Tile = (props) => {
 
   return (
     <div
-      className="card bg" 
+      className="card" 
       id={id}
       style={styles}
       /**
