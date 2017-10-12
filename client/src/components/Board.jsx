@@ -20,9 +20,9 @@ const Board = props => (
       <div className="col-sm-5">
         <div className="p1">
           <img src={props.user.p1.avatarUrl} className="avatar"></img>
-          {props.turn === 'p1' ? <div className="yourmove">Your Move</div> : <div className="yourmove">Please Wait</div>}
-          <h4 className="username">{props.user.p1.username}</h4>
-          <div>{`Pieces left: ${props.p1Pieces}`}</div>
+          {props.turn === 'p1' ? <div className="yourmove">Your Move {props.user.p1.username}</div> : <div className="yourmove">Please Wait {props.user.p1.username}</div>}
+          {/* <h4 className="username">{props.user.p1.username}</h4> */}
+          <div className="pieces">{`Pieces left: ${props.p1Pieces}`}</div>
         </div>
         {range(8).map(row => (
           <div className="row">
@@ -37,14 +37,14 @@ const Board = props => (
       </div>
       <div className="col-sm-2">
         <img src="../client/images/BattleBreadLogo.png" height="75px" className="logo" align="middle"></img>
-        <button className ="newGame" onClick={ newGame }>New Game</button>
+        <button className ="newGame pieces" onClick={ newGame }>New Game</button>
       </div>
       <div className="col-sm-5 leftMargin">
         <div>
           <img src={props.user.p2.avatarUrl} className="avatar"></img>
-          {props.turn === 'p2' ? <div className="yourmove">Your Move</div> : <div className="yourmove">Please Wait</div>}
-          <h4 className="username">{props.user.p2.username}</h4>
-          <div>{`Pieces left: ${props.p2Pieces}`}</div>
+          {props.turn === 'p2' ? <div className="yourmove">Your Move {props.user.p2.username}</div> : <div className="yourmove">Please Wait <br/>{props.user.p2.username}</div>}
+          {/* <h4 className="username">{props.user.p2.username}</h4> */}
+          <div className="pieces">{`Pieces left: ${props.p2Pieces}`}</div>
         </div>
         {range(8).map(row => (
           <div className="row">
@@ -80,4 +80,4 @@ const Board = props => (
 
 const mapStateToProps = ({ board, user, gameInfo } = state) => ({ board, user, ...gameInfo});
 
-export default connect(mapStateToProps)(Board, GameInfo);
+export default connect(mapStateToProps)(Board, GameInfo, Tile);

@@ -1,3 +1,8 @@
+body{
+  background-image: url("http://bakeshop.carlosbakery.com/media/gallery/Sweet-Treats/Pastries/pastries038.jpg");
+  /* background-size: cover; */
+}
+
 .gameInfo {
   width: 388px;
   height: 250px;
@@ -84,7 +89,7 @@
 
 .newGame{
   margin-top: 25px;
-  margin-left: 33px;
+  margin-left: 15%;
 }
 
 .logo{
@@ -92,7 +97,7 @@
 }
 
 .leftMargin{
-  padding-left: 80px;
+  padding-left: 7%;
 }
 
 .floatRight{
@@ -100,5 +105,18 @@
 }
 
 .p1{
-  padding-left: 220px;
+  padding-left: 42%;
+}
+.p1Board{
+  padding-left: 10%
+}
+
+.pieces{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12;  
+}
+
+.mainCenter{
+  margin-top: 10%;
+  /* width: 50%; */
 }

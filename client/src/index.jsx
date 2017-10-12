@@ -99,7 +99,7 @@ class App extends React.Component {
           </div>
         </div> */}
 
-        <div className="container">
+        <div className="container mainCenter">
           <Provider store={store}>
             <Board />
           </Provider>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import randomInt from 'random-int';
+import { getInfo } from '../actions.js';
 import { connect } from 'react-redux';
 import { range } from 'lodash';
 import { guess } from '../actions.js';
@@ -32,11 +33,12 @@ const Tile = (props) => {
        * Invoke a guess action, iff this tile is on the opponent's board. Then, have the AI guess randomly.
        */
       onClick={() => {
-        if (props.player === 'p2' && !guessed) {
+        console.log('turn', props.turn);
+        if (props.player === 'p2' && !guessed && props.turn === 'p1') {
           guess(player, id);
           const [row, col] = range(2).map(() => randomInt(7));
           const tile = `${row},${col}`;
-          guess('p1', tile);
+          setTimeout(()=>guess('p1', tile), 5000);
         }
       }}
     >
@@ -63,4 +65,8 @@ Tile.propTypes = {
   player: PropTypes.string.isRequired,
 };
 
-export default connect()(Tile);
+
+const mapStateToProps = ({ gameInfo }) => ({ ...gameInfo });
+
+export default connect(mapStateToProps)(Tile);
+// export default connect()(Tile);
