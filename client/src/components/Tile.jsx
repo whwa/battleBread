@@ -18,10 +18,9 @@ import { guess } from '../actions.js';
  * }
  */
 const Tile = (props) => {
-  console.log('PROPS>>>>>>>>', props)
+  // console.log('PROPS>>>>>>>>', props)
   const { id, size, color, guessed } = props.options;
   const player = props.player;
-<<<<<<< HEAD
   let styles = {
     width: size,
     height: size,
@@ -40,12 +39,6 @@ const Tile = (props) => {
   // console.log('props', props)
   // console.log('styles', styles)
 
-||||||| merged common ancestors
-=======
-  if(props.options.hasBread) {
-    props.options.color = 'purple'
-  }
->>>>>>> Change hasBread to val representing ship len
   return (
     <div
       className="card" 
@@ -55,17 +48,8 @@ const Tile = (props) => {
        * Invoke a guess action, iff this tile is on the opponent's board. Then, have the AI guess randomly.
        */
       onClick={() => {
-<<<<<<< HEAD
         console.log('turn', props.turn);
         if (props.player === 'p2' && !guessed && props.turn === 'p1') {
-||||||| merged common ancestors
-        if (props.player === 'p2' && !guessed) {
-=======
-        console.log(props)
-        
-        if (props.player === 'p2' && !guessed) {
-          {/* debugger; */}
->>>>>>> Change hasBread to val representing ship len
           guess(player, id);
           const [row, col] = range(2).map(() => randomInt(7));
           const tile = `${row},${col}`;

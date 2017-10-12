@@ -78,13 +78,7 @@ export const setRandomPieces = (player) => {
   });
 
   for (var ship in occupiedLocations) {
-<<<<<<< HEAD
-    setPiece(player, occupiedLocations[ship]);
-||||||| merged common ancestors
-    setPiece(player, occupiedLocations[ship])
-=======
     setPiece(player, occupiedLocations[ship], +ship)
->>>>>>> Change hasBread to val representing ship len
   }
 };
 
