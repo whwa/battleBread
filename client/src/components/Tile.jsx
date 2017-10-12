@@ -18,6 +18,7 @@ import { guess } from '../actions.js';
  * }
  */
 const Tile = (props) => {
+  // console.log('PROPS>>>>>>>>', props)
   const { id, size, color, guessed } = props.options;
   const player = props.player;
   let styles = {
@@ -54,6 +55,7 @@ const Tile = (props) => {
           const tile = `${row},${col}`;
           guess('p1', tile);
         }
+        //if player = p1 and board state is not ready, this is where logic for placing ships will go
       }}
     >
       <div className="card-text">
