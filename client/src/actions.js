@@ -29,10 +29,10 @@ export const setBoard = board => {
  * @param {string} player either 'p1' or 'p2'
  * @param {array} piece an array of tile ID strings, ex: ['1,1','4,3']
  */
-export const setPiece = (player, piece) => {
+export const setPiece = (player, piece, shipVal) => {
   store.dispatch({
     type: 'setPiece',
-    payload: { player, piece },
+    payload: { player, piece, shipVal },
   });
   store.dispatch({
     type: 'updatePieces',
@@ -78,7 +78,13 @@ export const setRandomPieces = (player) => {
   });
 
   for (var ship in occupiedLocations) {
+<<<<<<< HEAD
     setPiece(player, occupiedLocations[ship]);
+||||||| merged common ancestors
+    setPiece(player, occupiedLocations[ship])
+=======
+    setPiece(player, occupiedLocations[ship], +ship)
+>>>>>>> Change hasBread to val representing ship len
   }
 };
 

@@ -147,14 +147,14 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      *  @property { array } piece array of tile id strings (ex: ['1,1', '2,4'])
      * Place a piece by setting hasBread for each tile to true
      */
-      const { player, piece } = payload;
+      const { player, piece, shipVal } = payload;
       const thePiece = {};
       const numPieces = state[`${player}Pieces`] + piece.length;
 
       piece.forEach(idString => {
         thePiece[idString] = update(
           state[player][idString],
-          { hasBread: { $set: true }}
+          { hasBread: { $set: shipVal }}
         );
       });
 
