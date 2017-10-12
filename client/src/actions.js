@@ -78,7 +78,11 @@ export const setRandomPieces = (player) => {
   });
 
   for (var ship in occupiedLocations) {
+<<<<<<< HEAD
     setPiece(player, occupiedLocations[ship], +ship)
+=======
+    setPiece(player, occupiedLocations[ship], +ship);
+>>>>>>> pre rebase commit
   }
 };
 
