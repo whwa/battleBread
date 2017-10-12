@@ -51,7 +51,7 @@ export const setRandomPieces = (player) => {
   const getStartingLocation = (shipLen) => {
     var rand = randomInt(7);
     var randRangeStart = randomInt(8-shipLen);
-    var randRange = range(randRangeStart, randRangeStart + shipLen)
+    var randRange = range(randRangeStart, randRangeStart + shipLen);
     const rotate = randomInt(0, 1);
     //0 = vertical -> x can be anything, y can be 8-ship len or less
     //1 = horizontal -> x can be 8 - ship len or less, y can be anything
