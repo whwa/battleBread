@@ -9,13 +9,13 @@ class ChatWords extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    }
+    };
   }
 
   render() {
-    return(
-        <button type="button" className="chatWord" onClick={()=>{this.props.updateMessage(this.props.item)}}>{this.props.item}</button>
-    )
+    return (
+      <button type="button" className="chatWord" onClick={()=>{this.props.updateMessage(this.props.item)}}>{this.props.item}</button>
+    );
   }
 }
   

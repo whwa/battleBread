@@ -17,8 +17,12 @@ const defaultGameInfo = {
  * @property { number } state.p2Pieces number of pieces remaining for p2
  * @returns a new state, based on the type of action it receives
  */
+
+
 const gameInfoReducer = (state = { ...defaultGameInfo }, { type, payload } = action) => {
   if (type === 'toggleStatus') {
+    //this can allow us to prevent actions while the user is placing on their board
+    //write board placement code on condition of inactive
     /**
      * Toggles whether the game state is active or not
      * @param { string } payload.status 'active' || 'inactive'
@@ -41,6 +45,7 @@ const gameInfoReducer = (state = { ...defaultGameInfo }, { type, payload } = act
       }
     });
   } else if (type === 'updatePieces') {
+    //this is where we will change state for the ships remaining object
     /**
      * Updates a player's piece count
      * @param { string } payload.player 'p1' || 'p2'

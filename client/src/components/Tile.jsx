@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import randomInt from 'random-int';
+import { getInfo } from '../actions.js';
 import { connect } from 'react-redux';
 import { range } from 'lodash';
 import { guess } from '../actions.js';
@@ -19,20 +20,35 @@ import { guess } from '../actions.js';
 const Tile = (props) => {
   const { id, size, color, guessed } = props.options;
   const player = props.player;
+  let styles = {
+    width: size,
+    height: size,
+    }
+
+  if (props.options.guessed === true && props.options.dispImage === false){
+    styles.backgroundColor = 'red';
+  }
+  if (props.options.guessed === true && props.options.dispImage === true){
+    styles.backgroundImage = `url("${props.options.image}")`;
+    styles.backgroundSize = '100%';
+  }
+  if (props.options.guessed){
+  console.log('props.options.guessed', props.options.guessed)
+  }
+  // console.log('props', props)
+  // console.log('styles', styles)
+
   return (
     <div
-      className="card bg-light"
+      className="card" 
       id={id}
-      style={{
-        width: size,
-        height: size,
-        color,
-      }}
+      style={styles}
       /**
        * Invoke a guess action, iff this tile is on the opponent's board. Then, have the AI guess randomly.
        */
       onClick={() => {
-        if (props.player === 'p2' && !guessed) {
+        console.log('turn', props.turn);
+        if (props.player === 'p2' && !guessed && props.turn === 'p1') {
           guess(player, id);
           const [row, col] = range(2).map(() => randomInt(7));
           const tile = `${row},${col}`;
@@ -41,7 +57,7 @@ const Tile = (props) => {
       }}
     >
       <div className="card-text">
-        {id}
+
       </div>
     </div>
   );
@@ -63,4 +79,8 @@ Tile.propTypes = {
   player: PropTypes.string.isRequired,
 };
 
-export default connect()(Tile);
+
+const mapStateToProps = ({ gameInfo }) => ({ ...gameInfo });
+
+export default connect(mapStateToProps)(Tile);
+// export default connect()(Tile);

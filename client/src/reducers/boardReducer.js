@@ -47,14 +47,18 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      * 1. Generate an 8x8 array for each player
      * 2. Map a tile object to each index by extending the defaults object with row and col info.
      */
+
     
+    //all state on individual tiles goes here
     range(8).map((row) => {
       range(8).map((col) => {
         const defaults = {
           size: '48px',
           guessed: false,
           hasBread: false,
-          color: 'blue',
+          // color: 'blue',
+          image: '../../battlebread/client/images/burned-out-what-to-do-burnt-toast.jpg',
+          dispImage: false
         };
         newState.p1[`${row},${col}`] = {
           ...defaults,
@@ -87,10 +91,14 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      * We update the state for one tile on a particular player's board
      * 1. Increment the turn count
      * 2. Set the guessed property for that tile to true
-     * 3. Change the color property to green if it was a hit, or red if it was a miss
+     * 3. Change the color property to green if it was a hit, or red if it was a miss -- display image from false to true
      * 4. If it was a hit, we decrement that player's piece count
      * 
      */
+
+     //update state of color/displayimage property to display toast
+     //decrement the count in ships object with key of value of ship hit
+
     const { player, id } = payload;
     const { turn } = state;
     const { hasBread } = state[player][id];
@@ -101,7 +109,8 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
       [player]: {
         [id]: {
           guessed: {$set: true},
-          color: {$apply: () => (hasBread) ? 'green' : 'red'}
+          //if guessed is true and hasbread is false 
+          dispImage: {$apply: () => (hasBread) ? true : false}
         }
       },
       [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },

@@ -5,8 +5,8 @@ class ChatHist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        history: []
-    }
+      history: []
+    };
   }
 
   componentDidMount() {
@@ -17,11 +17,11 @@ class ChatHist extends React.Component {
     var messages = getChats();
     this.setState({
       // history: messages
-    })
+    });
   }
 
   render() {
-    return(
+    return ( 
       <div className='chatHist'>
         Display chat history here:
         { this.state.history.map((message, index) => 
@@ -30,7 +30,7 @@ class ChatHist extends React.Component {
             <p>{message.message}</p>
           </div>
         )}
-     </div>)
+      </div>);
   } 
 }
   
