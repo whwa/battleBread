@@ -34,6 +34,8 @@ export const setPiece = (player, piece, shipVal) => {
     type: 'setPiece',
     payload: { player, piece, shipVal },
   });
+  //////////
+  console.log(player)
   store.dispatch({
     type: 'updatePieces',
     payload: { player, pieces: piece.length },
@@ -76,9 +78,8 @@ export const setRandomPieces = (player) => {
   ships.forEach((len) => {
     occupiedLocations[len] = getStartingLocation(len);
   });
-
   for (var ship in occupiedLocations) {
-    setPiece(player, occupiedLocations[ship], +ship)
+    setPiece(player, occupiedLocations[ship], +ship);
   }
 };
 
@@ -120,10 +121,14 @@ export const getInfo = () => store.dispatch({ type: 'getInfo' });
  * @param { string } player 'p1' || 'p2'
  * @param { number } pieces The updated piece count total
  */
-export const updatePieces = (player, pieces) => store.dispatch({
-  type: 'updatePieces',
-  payload: { player, pieces },
-});
+export const updatePieces = (player, pieces) => {
+  console.log(pieces)
+  // debugger;
+  return store.dispatch({
+    type: 'updatePieces',
+    payload: { player, pieces },
+  });
+};
 
 ///////////////////////
 // USER INFO ACTIONS //
@@ -224,6 +229,7 @@ export const newGame = () => {
     setRandomPieces('p2');
     const { p1Pieces, p2Pieces } = store.getState().board;
     updatePieces('p1', p1Pieces);
+    // debugger;
     updatePieces('p2', p2Pieces);
   } else {
     axios.post(`${url}/games`)
@@ -257,10 +263,10 @@ export const newGame = () => {
  * @param {string} player either 'p1' or 'p2'. Represents TARGET player's board.
  * @param {string} id the ID of the guessed tile, ex: '1,1' or '4,3'
  */
-export const guess = (player, id) => {
+export const guess = (player, id, callback) => {
   store.dispatch({
     type: 'guess', 
-    payload: { player, id },
+    payload: { player, id, callback },
   });
   store.dispatch({ type: 'toggleTurn' });
   const { p1Pieces, p2Pieces } = store.getState().board;
@@ -268,6 +274,8 @@ export const guess = (player, id) => {
     type: 'updatePieces',
     payload: { player: 'p1', pieces: p1Pieces },
   });
+  // console.log(p1Pieces)
+  // debugger;
   store.dispatch({
     type: 'updatePieces',
     payload: { player: 'p2', pieces: p2Pieces },

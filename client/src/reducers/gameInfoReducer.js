@@ -5,7 +5,7 @@ const defaultGameInfo = {
   status: 'inactive',
   turn: 'p1',
   p1Pieces: 0,
-  p2Pieces: 0
+  p2Pieces: 0,
 };
 
 /**
@@ -52,9 +52,14 @@ const gameInfoReducer = (state = { ...defaultGameInfo }, { type, payload } = act
      * @param { number } payload.pieces The updated piece count
      */
     const { player, pieces } = payload;
+    console.log('>>>>>>>pieces', pieces)
+
     return update(state, {
+      //set ships
+      // [`${player}Ships`]: {$set: },
       [`${player}Pieces`]: { $set: pieces },
     });
+    // debugger;
   } else if (type === 'getInfo') {
     return state;
   } else if (type === 'setInfo') {

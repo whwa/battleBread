@@ -2,12 +2,24 @@ import update from 'immutability-helper';
 import randomInt from 'random-int';
 import { range } from 'lodash';
 
-const newState = {
-  p1: {},
-  p2: {},
-  turn: 0,
-  p1Pieces: 0,
+const newState = { 
+  p1: {}, 
+  p2: {}, 
+  turn: 0, 
+  p1Pieces:  0,
   p2Pieces: 0,
+  p1Ships: {
+    2 : 2,
+    3 : 3,
+    4 : 4,
+    5 : 5    
+  },
+  p2Ships: {
+    2 : 2,
+    3 : 3,
+    4 : 4,
+    5 : 5    
+  }
 };
 
 /**
@@ -57,7 +69,7 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
           guessed: false,
           hasBread: false,
           // color: 'blue',
-          image: '../../images/burned-out-what-to-do-burnt-toast.jpg',
+          image: '../../battlebread/client/images/burned-out-what-to-do-burnt-toast.jpg',
           dispImage: false
         };
         newState.p1[`${row},${col}`] = {
@@ -99,10 +111,36 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      //update state of color/displayimage property to display toast
      //decrement the count in ships object with key of value of ship hit
 
-    const { player, id, cb } = payload;
+    const { player, id, callback } = payload;
+    console.log('payload',payload);
+  
     const { turn } = state;
     const { hasBread } = state[player][id];
     const numPieces = state[`${player}Pieces`];
+    const ships = state[`${player}Ships`]
+    const cb = payload.callback;
+    console.log('hasbread', hasBread)
+    console.log('player ships state', state[`${player}Ships`])
+    debugger;
+    if (hasBread !== false){
+      console.log('ships count', ships[hasBread] )
+      debugger;
+      ships[hasBread] = ships[hasBread] - 1;
+      console.log('post decrement', ships[hasBread] )
+      //if ships[hasbread] === 0 cb(hasBread)
+    }
+    console.log('cb', cb)
+    if (cb) {
+      if (hasBread !== false) {
+        if (ships[hasBread] === 0) {
+          cb('sunk');
+        } else {
+          cb('hit');
+        }
+      } else {
+        cb('miss');
+      }
+    }
 
 
     const newState = update(state, {
@@ -115,19 +153,10 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
         }
       },
       [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },
+      [`${player}Ships`]: {$set: ships}
     });
     debugger
-    if (cb) {
-      if (hasBread) {
-        if (state[`${player}Pieces`] === 0) {
-          cb('sunk');
-        } else {
-          cb('hit');
-        }
-      } else {
-        cb('miss');
-      }
-    }
+
     // newState[player][id] = tile;
     return newState;
   } else if (type === 'randomPieces') {
@@ -162,15 +191,16 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      */
       const { player, piece, shipVal } = payload;
       const thePiece = {};
-      const numPieces = state[`${player}Pieces`] + piece.length;
-
+      const numPieces = state[`${player}Pieces`]; //whole obj
+      console.log('>>>>>>>>>>...', numPieces[shipVal])
       piece.forEach(idString => {
         thePiece[idString] = update(
           state[player][idString],
           { hasBread: { $set: shipVal }}
         );
       });
-
+      
+      
       return update(state, {
         [player]: { $merge: thePiece },
         [`${player}Pieces`]: { $set: numPieces },
