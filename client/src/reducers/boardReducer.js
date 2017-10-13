@@ -1,24 +1,25 @@
+import path from 'path';
 import update from 'immutability-helper';
 import randomInt from 'random-int';
 import { range } from 'lodash';
 
-const newState = { 
-  p1: {}, 
-  p2: {}, 
-  turn: 0, 
+const newState = {
+  p1: {},
+  p2: {},
+  turn: 0,
   p1Pieces:  0,
   p2Pieces: 0,
   p1Ships: {
     2 : 2,
     3 : 3,
     4 : 4,
-    5 : 5    
+    5 : 5
   },
   p2Ships: {
     2 : 2,
     3 : 3,
     4 : 4,
-    5 : 5    
+    5 : 5
   }
 };
 
@@ -60,7 +61,6 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      * 2. Map a tile object to each index by extending the defaults object with row and col info.
      */
 
-
     //all state on individual tiles goes here
     range(8).map((row) => {
       range(8).map((col) => {
@@ -69,7 +69,7 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
           guessed: false,
           hasBread: false,
           // color: 'blue',
-          image: '../../battlebread/client/images/burned-out-what-to-do-burnt-toast.jpg',
+          image: './images/burned-out-what-to-do-burnt-toast.jpg',
           dispImage: false
         };
         newState.p1[`${row},${col}`] = {
@@ -113,7 +113,7 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
 
     const { player, id, callback } = payload;
     console.log('payload',payload);
-  
+
     const { turn } = state;
     const { hasBread } = state[player][id];
     const numPieces = state[`${player}Pieces`];
@@ -121,10 +121,10 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
     const cb = payload.callback;
     console.log('hasbread', hasBread)
     console.log('player ships state', state[`${player}Ships`])
-    debugger;
+
     if (hasBread !== false){
       console.log('ships count', ships[hasBread] )
-      debugger;
+
       ships[hasBread] = ships[hasBread] - 1;
       console.log('post decrement', ships[hasBread] )
       //if ships[hasbread] === 0 cb(hasBread)
@@ -155,7 +155,7 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
       [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },
       [`${player}Ships`]: {$set: ships}
     });
-    debugger
+
 
     // newState[player][id] = tile;
     return newState;
@@ -199,8 +199,8 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
           { hasBread: { $set: shipVal }}
         );
       });
-      
-      
+
+
       return update(state, {
         [player]: { $merge: thePiece },
         [`${player}Pieces`]: { $set: numPieces },

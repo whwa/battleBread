@@ -57,35 +57,57 @@ export default class SmartPlayer {
 
   splitAreas (prey) {
     const areasR = this.rows[prey[0]];
-    areasR.forEach((area, index) => {
-      if (prey[1] === area[0]) {
-        area[0] += 1;
-      } else if (prey[1] === area[1]) {
-        area[1] -= 1;
-      } else if (prey[1] > area[0]  && prey[1] < area[1]) {
-        areasR.splice(index, 1, [area[0], prey[1] - 1], [prey[1] + 1, area[1]]);
+
+    const areasToRemove = [];
+    if (areasR) {
+      areasR.forEach((area, index) => {
+
+          if (prey[1] === area[0]) {
+            area[0] += 1;
+          } else if (prey[1] === area[1]) {
+            area[1] -= 1;
+          } else if (prey[1] > area[0]  && prey[1] < area[1]) {
+            areasR.splice(index, 1, [area[0], prey[1] - 1], [prey[1] + 1, area[1]]);
+          }
+          if (area[0] >= area[1]) {
+            areasToRemove.push(index);
+          }
+      })
+
+      while (areasToRemove.length) {
+        areasR.splice(areasToRemove.pop(), 1);
       }
-    })
+    }
+
 
     const areasC = this.columns[prey[1]];
-    areasC.forEach((area, index) => {
-      if (prey[0] === area[0]) {
-        area[0] += 1;
-      } else if (prey[0] === area[1]) {
-        area[1] -= 1;
-      } else if (prey[0] > area[0]  && prey[0] < area[1]) {
-        areasC.splice(index, 1, [area[0], prey[0] - 1], [prey[0] + 1, area[1]]);
+    if (areasC) {
+      areasC.forEach((area, index) => {
+          if (prey[0] === area[0]) {
+            area[0] += 1;
+          } else if (prey[0] === area[1]) {
+            area[1] -= 1;
+          } else if (prey[0] > area[0]  && prey[0] < area[1]) {
+            areasC.splice(index, 1, [area[0], prey[0] - 1], [prey[0] + 1, area[1]]);
+          }
+          if (area[0] >= area[1]) {
+            areasToRemove.push(index);
+          }
+      })
+
+      while (areasToRemove.length) {
+        areasC.splice(areasToRemove.pop(), 1);
       }
-    })
+    }
+
   }
 
   hunt () {
-    this.refreshBoard();
 
     for (let ship in this.ships) {
         for (let row in this.rows) {
             this.rows[row].forEach(area => {
-                if (area[1] - area[0] > this.ships[ship]) {
+                if (area[1] - area[0] + 1 >= this.ships[ship]) {
                     _.range(area[0], area[1] + 1).forEach(cell => {
                         let len = Math.min(this.size + 1 - this.ships[ship], this.ships[ship]);
                         if (cell - area[0] >= len && area[1] - cell >= len) {
@@ -101,7 +123,7 @@ export default class SmartPlayer {
     for (let ship in this.ships) {
         for (let col in this.columns) {
             this.columns[col].forEach(area => {
-                if (area[1] - area[0] > this.ships[ship]) {
+                if (area[1] - area[0] + 1 >= this.ships[ship]) {
                     _.range(area[0], area[1] + 1).forEach(cell => {
                         let len = Math.min(this.size + 1 - this.ships[ship], this.ships[ship]);
                         if (cell - area[0] >= len && area[1] - cell >= len) {
@@ -115,9 +137,9 @@ export default class SmartPlayer {
         }
     }
     var row = svg.selectAll(".row")
-    .data(this.board)
-  .enter().append("g")
-    .attr("transform", (d, i) => `translate(0,${y(i)})`);
+      .data(this.board)
+      .enter().append("g")
+        .attr("transform", (d, i) => `translate(0,${y(i)})`);
     row.selectAll(".cell")
         .data(d => d)
       .enter().append("rect")
@@ -125,11 +147,11 @@ export default class SmartPlayer {
         .attr("width", x.bandwidth())
         .attr("height", y.bandwidth())
         .style("fill", d => color(d))
+        .style("fill-opacity", '0.3');
     return this.board;
   }
 
   target () {
-    this.refreshBoard();
 
     this.hitStack.forEach(cell => {
       let row = this.rows[cell[0]];
@@ -141,18 +163,6 @@ export default class SmartPlayer {
         }
       })
 
-      for (let ship in this.ships) {
-        _.range(areaRow[0], Math.max(Math.min(cell[1] + 1, areaRow[1] - this.ships[ship] + 2), 0)).forEach(c => {
-          if (c <= cell[1] && c + this.ships[ship] > cell[1]) {
-            for (let i = c; i < Math.min(c + this.ships[ship], this.size); i++) {
-              if (!this.inStack([cell[0], i])) {
-                this.board[cell[0]][i] += 1;
-              }
-            }
-          }
-        })
-      }
-
       let col = this.columns[cell[1]];
       let areaCol;
 
@@ -162,40 +172,50 @@ export default class SmartPlayer {
         }
       })
 
-      for (let ship in this.ships) {
-        _.range(areaCol[0], Math.max(Math.min(cell[0] + 1, areaCol[1] - this.ships[ship] + 2), 0)).forEach(c => {
-          if (c <= cell[0] && c + this.ships[ship] > cell[0]) {
-            for (let i = c; i < Math.min(c + this.ships[ship], this.size); i++) {
-              if (!this.inStack([i, cell[1]])) {
-                this.board[i][cell[1]] += 1;
+      if (areaRow) {
+        for (let ship in this.ships) {
+          _.range(areaRow[0], Math.max(Math.min(cell[1] + 1, areaRow[1] - this.ships[ship] + 2), areaRow[0])).forEach(c => {
+            if (c <= cell[1] && c + this.ships[ship] >= cell[1]) {
+              for (let i = c; i < Math.min(c + this.ships[ship], this.size); i++) {
+                if (!this.inStack([cell[0], i])) {
+                  this.board[cell[0]][i] += 1;
+                }
               }
             }
-          }
-        })
+          })
+        }
+      }
+
+      if (areaCol) {
+        for (let ship in this.ships) {
+          _.range(areaCol[0], Math.max(Math.min(cell[0] + 1, areaCol[1] - this.ships[ship] + 2), areaCol[0])).forEach(c => {
+            if (c <= cell[0] && c + this.ships[ship] >= cell[0]) {
+              for (let i = c; i < Math.min(c + this.ships[ship], this.size); i++) {
+                if (!this.inStack([i, cell[1]])) {
+                  this.board[i][cell[1]] += 1;
+                }
+              }
+            }
+          })
+        }
       }
 
     })
-  var row = svg.selectAll(".row")
-    .data(this.board)
-  .enter().append("g")
-    .attr("transform", (d, i) => `translate(0,${y(i)})`);
-  row.selectAll(".cell")
-      .data(d => d)
-    .enter().append("rect")
-      .attr("x", (d, i) => x(i))
-      .attr("width", x.bandwidth())
-      .attr("height", y.bandwidth())
-      .style("fill", d => color(d))
+
     return this.board;
   }
 
   hit () {
+    this.refreshBoard();
+
     let prey = [0, 0];
 
+    let heatMap;
+
     if (this.hitStack.length) {
-      this.target();
+      heatMap = this.target();
     } else {
-      this.hunt();
+      heatMap = this.hunt();
     }
 
     for (let i = 0; i < this.size; i++) {
@@ -205,6 +225,22 @@ export default class SmartPlayer {
         }
       }
     }
+    svg.selectAll(".row")
+      .data([]).exit().remove();
+
+    var row = svg.selectAll(".row")
+      .data(this.board)
+      .enter().append("g")
+        .attr("class", "row")
+        .attr("transform", (d, i) => `translate(0,${y(i)})`);
+    row.selectAll(".cell")
+        .data(d => d)
+      .enter().append("rect")
+        .attr("x", (d, i) => x(i))
+        .attr("width", x.bandwidth())
+        .attr("height", y.bandwidth())
+        .style("fill", d => color(d))
+        .style("fill-opacity", '0.4')
 
     return {
       prey: prey,
@@ -223,4 +259,5 @@ export default class SmartPlayer {
       }
     }
   }
+
 }

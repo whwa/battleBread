@@ -14,25 +14,27 @@
 
     <script src="public/bundle.js" type="text/javascript"></script>
     <script>
-      var margin = {top: 100, right: 100, bottom: 0, left: 100},
-      width = 256,
-      height = 256;
+      var margin = {top: 130, right: 100, bottom: 0, left: 80},
+      width = 384,
+      height = 384;
 
       const board = [
           [0,0,0,0,0,0,0,0],
-          [0,2,2,0,0,0,0,0],
-          [0,0,0,4,0,3,0,0],
-          [0,0,0,4,0,3,0,0],
-          [0,0,0,4,0,3,0,0],
-          [0,0,0,4,0,0,0,0],
           [0,0,0,0,0,0,0,0],
-          [0,5,5,5,5,5,0,0]
+          [0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0],
+          [0,0,0,0,0,0,0,0]
         ]
 
       var svg = d3.select("#vis").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
-          .style("margin-left", -margin.left + "px")
+          .style("position", 'absolute')
+          .style("margin-left", margin.left + "px")
+          .style("z-index", "100")
         .append("g")
           .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -50,6 +52,7 @@
       var row = svg.selectAll(".row")
           .data(board)
         .enter().append("g")
+          .attr("class", "row")
           .attr("transform", (d, i) => `translate(0,${y(i)})`);
       row.selectAll(".cell")
           .data(d => d)
@@ -58,6 +61,8 @@
           .attr("width", x.bandwidth())
           .attr("height", y.bandwidth())
           .style("fill", d => color(d))
+          .style("fill-opacity", '0.7')
+
     </script>
   </body>
 </html>
