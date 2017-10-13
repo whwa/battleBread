@@ -36,7 +36,8 @@ const Tile = (props) => {
   }
   if (props.options.guessed === true && props.options.dispImage === true){
     styles.backgroundImage = `url("${props.options.image}")`;
-    styles.backgroundSize = '100%';
+    styles.backgroundSize = '200%';
+    styles.backgroundPosition = player === 'p1' ? '100%' : '0';
   }
   if (props.options.guessed){
   console.log('props.options.guessed', props.options.guessed)
