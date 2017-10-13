@@ -55,19 +55,10 @@ const Tile = (props) => {
       onClick={() => {
         console.log('turn', props.turn);
         if (props.player === 'p2' && !guessed && props.turn === 'p1') {
-<<<<<<< HEAD
           guess(player, id);
           const hit = ai.hit();
           debugger
           guess('p1', hit.prey.toString(), hit.callback);
-=======
-          // debugger;
-          guess('p2', id);
-          const [row, col] = range(2).map(() => randomInt(7));
-          const tile = `${row},${col}`;
-          // debugger;
-          setTimeout(() => guess('p1', tile), 1000);
->>>>>>> implemented ships remaining counter
         }
         //if player = p1 and board state is not ready, this is where logic for placing ships will go
       }}

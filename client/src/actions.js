@@ -266,7 +266,7 @@ export const newGame = () => {
 export const guess = (player, id, callback) => {
   store.dispatch({
     type: 'guess', 
-    payload: { player, id },
+    payload: { player, id, callback },
   });
   store.dispatch({ type: 'toggleTurn' });
   const { p1Pieces, p2Pieces } = store.getState().board;
