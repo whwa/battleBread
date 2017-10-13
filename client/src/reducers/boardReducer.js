@@ -2,12 +2,32 @@ import update from 'immutability-helper';
 import randomInt from 'random-int';
 import { range } from 'lodash';
 
+<<<<<<< HEAD
 const newState = {
   p1: {},
   p2: {},
   turn: 0,
   p1Pieces: 0,
+=======
+const newState = { 
+  p1: {}, 
+  p2: {}, 
+  turn: 0, 
+  p1Pieces:  0,
+>>>>>>> implemented ships remaining counter
   p2Pieces: 0,
+  p1Ships: {
+    2 : 2,
+    3 : 3,
+    4 : 4,
+    5 : 5    
+  },
+  p2Ships: {
+    2 : 2,
+    3 : 3,
+    4 : 4,
+    5 : 5    
+  }
 };
 
 /**
@@ -103,6 +123,18 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
     const { turn } = state;
     const { hasBread } = state[player][id];
     const numPieces = state[`${player}Pieces`];
+    const ships = state[`${player}Ships`]
+    console.log('hasbread', hasBread)
+    console.log('player ships state', state[`${player}Ships`])
+    debugger;
+    if (hasBread !== false){
+      console.log('ships count', ships[hasBread] )
+      debugger;
+      ships[hasBread] = ships[hasBread] - 1;
+      console.log('post decrement', ships[hasBread] )
+      //if ships[hasbread] === 0 cb(hasBread)
+    }
+
 
 
     const newState = update(state, {
@@ -115,6 +147,7 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
         }
       },
       [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },
+      [`${player}Ships`]: {$set: ships}
     });
     debugger
     if (cb) {
@@ -162,15 +195,16 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      */
       const { player, piece, shipVal } = payload;
       const thePiece = {};
-      const numPieces = state[`${player}Pieces`] + piece.length;
-
+      const numPieces = state[`${player}Pieces`]; //whole obj
+      console.log('>>>>>>>>>>...', numPieces[shipVal])
       piece.forEach(idString => {
         thePiece[idString] = update(
           state[player][idString],
           { hasBread: { $set: shipVal }}
         );
       });
-
+      
+      
       return update(state, {
         [player]: { $merge: thePiece },
         [`${player}Pieces`]: { $set: numPieces },
