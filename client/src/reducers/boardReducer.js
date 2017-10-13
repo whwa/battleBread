@@ -2,10 +2,10 @@ import update from 'immutability-helper';
 import randomInt from 'random-int';
 import { range } from 'lodash';
 
-const newState = { 
-  p1: {}, 
-  p2: {}, 
-  turn: 0, 
+const newState = {
+  p1: {},
+  p2: {},
+  turn: 0,
   p1Pieces: 0,
   p2Pieces: 0,
 };
@@ -34,7 +34,7 @@ const newState = {
  * @property { boolean } state.p2[tileId].guessed
  * @property { string } state.p2[tileId].color 'red' || 'green' || 'blue'
  *
- * 
+ *
  * @param { object } action an action dispatched via an action creator from ../actions.js
  * @property { string } type 'guess' || 'randomPieces' || 'setPiece
  * @property { object } payload varies in shape for each action
@@ -43,12 +43,12 @@ const newState = {
 const boardReducer = (state = { ...newState }, { type, payload = {} } = action) => {
   if (type === 'createBoard') {
     /**
-     * We start a new board from scratch. 
+     * We start a new board from scratch.
      * 1. Generate an 8x8 array for each player
      * 2. Map a tile object to each index by extending the defaults object with row and col info.
      */
 
-    
+
     //all state on individual tiles goes here
     range(8).map((row) => {
       range(8).map((col) => {
@@ -57,7 +57,7 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
           guessed: false,
           hasBread: false,
           // color: 'blue',
-          image: '../../battlebread/client/images/burned-out-what-to-do-burnt-toast.jpg',
+          image: '../../images/burned-out-what-to-do-burnt-toast.jpg',
           dispImage: false
         };
         newState.p1[`${row},${col}`] = {
@@ -83,8 +83,8 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      * @param { object } payload
      * @property { string } player 'p1' || 'p2'
      * @property { string } id ex: '1,1' or '3,4'
-     * 
-     * shape: { 
+     *
+     * shape: {
      *  player: {'p1' or 'p2'},
      *  id: { string (ex:'1,1' or '3,4') }
      * }
@@ -93,28 +93,41 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
      * 2. Set the guessed property for that tile to true
      * 3. Change the color property to green if it was a hit, or red if it was a miss -- display image from false to true
      * 4. If it was a hit, we decrement that player's piece count
-     * 
+     *
      */
 
      //update state of color/displayimage property to display toast
      //decrement the count in ships object with key of value of ship hit
 
-    const { player, id } = payload;
+    const { player, id, cb } = payload;
     const { turn } = state;
     const { hasBread } = state[player][id];
     const numPieces = state[`${player}Pieces`];
+
 
     const newState = update(state, {
       turn: {$set: (turn + 1)},
       [player]: {
         [id]: {
           guessed: {$set: true},
-          //if guessed is true and hasbread is false 
+          //if guessed is true and hasbread is false
           dispImage: {$apply: () => (hasBread) ? true : false}
         }
       },
       [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },
     });
+    debugger
+    if (cb) {
+      if (hasBread) {
+        if (state[`${player}Pieces`] === 0) {
+          cb('sunk');
+        } else {
+          cb('hit');
+        }
+      } else {
+        cb('miss');
+      }
+    }
     // newState[player][id] = tile;
     return newState;
   } else if (type === 'randomPieces') {
@@ -126,7 +139,7 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
 
     range(14).forEach(() => {
       const [row1, row2, col1, col2] = range(4).map(() => randomInt(7));
-      
+
       player1[`${row1},${col1}`] = update(state.p1[`${row1},${col1}`], {
         hasBread: {$set: true}
       });
