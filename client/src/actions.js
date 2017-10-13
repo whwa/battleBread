@@ -302,3 +302,62 @@ export const updateBreadPlacementValue = (val) => {
     payload: {selectedBread: val}
   });
 }
+
+export const placeShip = (coord, selectedBreadVal) => {
+  console.log(typeof coord, selectedBreadVal)
+  //setPiece = (player, piece (arr of vals), shipVal)
+  //generate list of coordinates
+
+  //for one click
+  //increment y
+  var currentClicks = store.getState().board.clickCount;
+  var shipPieces = []
+  coord = coord.split(',').map((val) => +val);
+  var x = coord[0];
+  var y = coord[1];
+  var direction;
+  var toChange;
+  var val;
+  
+  if(currentClicks === 0) {
+    direction = '+';
+    toChange = 'y'
+    val = y;
+  }
+  if(currentClicks === 1) {
+    // debugger;
+    direction = '+';
+    toChange = 'x';
+    val = x
+  }
+  if(currentClicks === 2) {
+    direction = '-';
+    toChange = 'y';
+    val = y
+  }
+  if(currentClicks === 3) {
+    direction = '-';
+    toChange = 'x';
+    val = x;
+  }
+  if(currentClicks === 4) {
+   //reset selected bread to null
+   store.dispatch({type: 'removeBread'});
+   //removebread
+  }
+  //removebread
+  store.dispatch({type: 'removeBread'});
+  for(var i = 0; i < selectedBreadVal; i++) {
+    var temp;
+    toChange === 'x' ? temp = [val, y] : temp = [x, val]
+    direction === '-' ? val-- : val++
+    shipPieces.push(temp)
+  }
+  setPiece('p1', shipPieces, selectedBreadVal);
+  store.dispatch({ 
+    type: 'updateShipCount',
+    payload: {value: selectedBreadVal},
+  });
+  store.dispatch({type: 'updateClickCount'})
+};
+
