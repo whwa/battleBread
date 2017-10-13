@@ -65,6 +65,10 @@ const gameInfoReducer = (state = { ...defaultGameInfo }, { type, payload } = act
   } else if (type === 'setInfo') {
     // const { newInfo } = payload;
     return update(state, { $merge: payload });
+  } else if(type === 'updateGameReady') {
+    return update(state, {
+      status: {$set: 'active'}
+    })
   } else {
     return state;
   }

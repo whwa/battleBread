@@ -21,7 +21,8 @@ const newState = {
     4 : 4,
     5 : 5    
   },
-  selectedBread: null
+  selectedBread: null,
+  clickCount: 0
 };
 
 /**
@@ -204,14 +205,39 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
         [player]: { $merge: thePiece },
         [`${player}Pieces`]: { $set: numPieces },
       });
-  } else if (type === 'updateGameReady') {
+  } else if (type === 'updateShipCount') {
+    let shipNum = payload.value;
+    var newShips = state['p1Ships'];
+    newShips[shipNum] = shipNum;
     return update(state, {
-      p1Ships: {$set: ({2 : 2, 3 : 3, 4 : 4, 5 : 5})}
+      // p1Ships: {$set: ({2 : 2, 3 : 3, 4 : 4, 5 : 5})}
+      p1Ships: {$set: newShips}
     })
   } else if(type === 'updateSelectedBread') {
     return update(state, {
       selectedBread: {$set: (payload.selectedBread)}
     })
+  } else if(type === 'updateClickCount') {
+    var count = state['clickCount'];
+    count++
+    console.log('clickcounted', count);
+    return update(state, {
+      clickCount: {$set: count % 5}
+    });
+  }else if(type === 'removeBread') {
+    //get player1 board
+    let board = state['p1'];
+    let selectedBread = state['selectedBread']
+    console.log('board', board)
+    // for ( var tile in board ) {
+    //   console.log('tile', tile)
+    //   if (tile.hasBread === selectedBread){
+    //     tile.hasBread = false;
+    //   }
+    // }
+    return update(state, {
+      p1: {$set: board}
+    });
   } else {
     /**
      * Fallback case
