@@ -38,6 +38,7 @@ const Board = props => {
               <Tile
                 options={props.board.p1[`${row},${col}`]}
                 player="p1"
+                selectedBread={props.board.selectedBread}
               />
             ))}
           </div>
