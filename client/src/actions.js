@@ -225,7 +225,7 @@ export const newGame = () => {
   const { username } = store.getState().user.p1;
   if (username === 'anonymous') {
     createBoard();
-    setRandomPieces('p1');
+    // setRandomPieces('p1');
     setRandomPieces('p2');
     const { p1Pieces, p2Pieces } = store.getState().board;
     updatePieces('p1', p1Pieces);
@@ -240,7 +240,7 @@ export const newGame = () => {
           payload: { id: data },
         });
         createBoard();
-        setRandomPieces('p1');
+        // setRandomPieces('p1');
         setRandomPieces('p2');
         setUser('p1', {games: [data]});
         setUser('p2', {games: [data]});
@@ -284,3 +284,21 @@ export const guess = (player, id, callback) => {
     updateGame(store.getState().gameInfo.id);
   }
 };
+
+export const checkForReadyPlayer = (p1Ships) => {
+  console.log('checking', p1Ships)
+    //emit action to alert reducer to set game status to active props.status
+  if(JSON.stringify(p1Ships) === '{"2":2,"3":3,"4":4,"5":5}') {
+    console.log('let the games begin!')
+    //emit action to set state of board to active
+    store.dispatch({ type: 'updateGameReady' });
+  }
+};
+
+export const updateBreadPlacementValue = (val) => {
+  console.log('selected bread>>>>>', val)
+  store.dispatch({ 
+    type: 'updateSelectedBread',
+    payload: {selectedBread: val}
+  });
+}

@@ -52,7 +52,7 @@ const gameInfoReducer = (state = { ...defaultGameInfo }, { type, payload } = act
      * @param { number } payload.pieces The updated piece count
      */
     const { player, pieces } = payload;
-    console.log('>>>>>>>pieces', pieces)
+    // console.log('>>>>>>>pieces', pieces)
 
     return update(state, {
       //set ships

@@ -9,17 +9,18 @@ const newState = {
   p1Pieces:  0,
   p2Pieces: 0,
   p1Ships: {
-    2 : 2,
-    3 : 3,
-    4 : 4,
-    5 : 5    
+    2 : null,
+    3 : null,
+    4 : null,
+    5 : null    
   },
   p2Ships: {
     2 : 2,
     3 : 3,
     4 : 4,
     5 : 5    
-  }
+  },
+  selectedBread: null
 };
 
 /**
@@ -121,10 +122,9 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
     const cb = payload.callback;
     console.log('hasbread', hasBread)
     console.log('player ships state', state[`${player}Ships`])
-    debugger;
+
     if (hasBread !== false){
       console.log('ships count', ships[hasBread] )
-      debugger;
       ships[hasBread] = ships[hasBread] - 1;
       console.log('post decrement', ships[hasBread] )
       //if ships[hasbread] === 0 cb(hasBread)
@@ -155,7 +155,6 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
       [`${player}Pieces`]: {$apply: () => (hasBread) ? numPieces - 1 : numPieces },
       [`${player}Ships`]: {$set: ships}
     });
-    debugger
 
     // newState[player][id] = tile;
     return newState;
@@ -205,6 +204,14 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
         [player]: { $merge: thePiece },
         [`${player}Pieces`]: { $set: numPieces },
       });
+  } else if (type === 'updateGameReady') {
+    return update(state, {
+      p1Ships: {$set: ({2 : 2, 3 : 3, 4 : 4, 5 : 5})}
+    })
+  } else if(type === 'updateSelectedBread') {
+    return update(state, {
+      selectedBread: {$set: (payload.selectedBread)}
+    })
   } else {
     /**
      * Fallback case

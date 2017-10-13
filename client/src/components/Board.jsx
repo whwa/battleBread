@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { range } from 'lodash';
 import Tile from './Tile.jsx';
 import GameInfo from './GameInfo.jsx';
-import { getInfo, updatePieces, newGame } from '../actions.js';
+import { getInfo, updatePieces, newGame, checkForReadyPlayer } from '../actions.js';
 import ChatInput from './ChatInput.jsx';
+import BreadBasket from './BreadBasket.jsx';
 
 /**
  * Uses bootstrap cards to render 2 8x8 grids of Tile components which receive props from the board state
@@ -14,7 +15,14 @@ import ChatInput from './ChatInput.jsx';
  * @see reducers/boardReducer.js for shape of + more info on the board state
  * @see reducers/chatReducer.js for shape of + more info on the chat state
  */
-const Board = props => (
+const Board = props => {
+
+  var clicker = () => {
+    //should be p1ships!!!
+    checkForReadyPlayer(props.board.p1Ships);
+  }
+
+  return (
   <div className="container">
     <div className="row">
       <div className="col-sm-5">
@@ -38,6 +46,7 @@ const Board = props => (
       <div className="col-sm-2">
         <img src="../client/images/BattleBreadLogo.png" height="75px" className="logo" align="middle"></img>
         <button className ="newGame pieces" onClick={ newGame }>New Game</button>
+        <BreadBasket />
       </div>
       <div className="col-sm-5 leftMargin">
         <div>
@@ -60,8 +69,10 @@ const Board = props => (
       {/* <GameInfo /> */}
       {props.user.p2.username === 'computer' ? null : <ChatInput />}
     </div>
+    {props.status === 'inactive' ? <button onClick={clicker}>play!</button> : ''}
   </div>
-);
+)
+};
 
 /** 
  * mapStateToProps takes a state and defines the data which gets passed into props from the store.
