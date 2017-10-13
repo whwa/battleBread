@@ -6,12 +6,17 @@ import { connect } from 'react-redux';
 import { range } from 'lodash';
 import { guess } from '../actions.js';
 
+import SmartPlayer from '../AI/ai';
+
+const ai = new SmartPlayer();
+
+
 /**
- * The tile is indexed by id in the board state. 
+ * The tile is indexed by id in the board state.
  * When clicked, dispatches a guess action for the player guess, and one for the AI response
  * @param { object } props
  * @property { string } size ex: '48px'
- * @property { boolean } guessed 
+ * @property { boolean } guessed
  * @property { boolean } hasBread
  * @property { string } color 'blue' || 'green' || 'red'
  * @property { string } id ex: '1,2' or '6,3'
@@ -41,7 +46,7 @@ const Tile = (props) => {
 
   return (
     <div
-      className="card" 
+      className="card"
       id={id}
       style={styles}
       /**
@@ -51,9 +56,9 @@ const Tile = (props) => {
         console.log('turn', props.turn);
         if (props.player === 'p2' && !guessed && props.turn === 'p1') {
           guess(player, id);
-          const [row, col] = range(2).map(() => randomInt(7));
-          const tile = `${row},${col}`;
-          guess('p1', tile);
+          const hit = ai.hit();
+          debugger
+          guess('p1', hit.prey.toString(), hit.callback);
         }
         //if player = p1 and board state is not ready, this is where logic for placing ships will go
       }}

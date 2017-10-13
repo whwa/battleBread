@@ -1,7 +1,7 @@
-import { range } from lodash;
+import { range } from 'lodash';
 
-class SmartPlayer {
-	constructor () {
+export default class SmartPlayer {
+  constructor () {
     this.size = 8;
     this.board = [];
     this.ships = {
@@ -114,6 +114,17 @@ class SmartPlayer {
             })
         }
     }
+    var row = svg.selectAll(".row")
+    .data(this.board)
+  .enter().append("g")
+    .attr("transform", (d, i) => `translate(0,${y(i)})`);
+    row.selectAll(".cell")
+        .data(d => d)
+      .enter().append("rect")
+        .attr("x", (d, i) => x(i))
+        .attr("width", x.bandwidth())
+        .attr("height", y.bandwidth())
+        .style("fill", d => color(d))
     return this.board;
   }
 
@@ -131,9 +142,9 @@ class SmartPlayer {
       })
 
       for (let ship in this.ships) {
-        _.range(areaRow[0], Math.min(cell[1] + 1, areaRow[1] - this.ships[ship] + 2)).forEach(c => {
+        _.range(areaRow[0], Math.max(Math.min(cell[1] + 1, areaRow[1] - this.ships[ship] + 2), 0)).forEach(c => {
           if (c <= cell[1] && c + this.ships[ship] > cell[1]) {
-            for (let i = c; i < c + this.ships[ship]; i++) {
+            for (let i = c; i < Math.min(c + this.ships[ship], this.size); i++) {
               if (!this.inStack([cell[0], i])) {
                 this.board[cell[0]][i] += 1;
               }
@@ -152,9 +163,9 @@ class SmartPlayer {
       })
 
       for (let ship in this.ships) {
-        _.range(areaCol[0], Math.min(cell[0] + 1, areaCol[1] - this.ships[ship] + 2)).forEach(c => {
+        _.range(areaCol[0], Math.max(Math.min(cell[0] + 1, areaCol[1] - this.ships[ship] + 2), 0)).forEach(c => {
           if (c <= cell[0] && c + this.ships[ship] > cell[0]) {
-            for (let i = c; i < c + this.ships[ship]; i++) {
+            for (let i = c; i < Math.min(c + this.ships[ship], this.size); i++) {
               if (!this.inStack([i, cell[1]])) {
                 this.board[i][cell[1]] += 1;
               }
@@ -164,6 +175,17 @@ class SmartPlayer {
       }
 
     })
+  var row = svg.selectAll(".row")
+    .data(this.board)
+  .enter().append("g")
+    .attr("transform", (d, i) => `translate(0,${y(i)})`);
+  row.selectAll(".cell")
+      .data(d => d)
+    .enter().append("rect")
+      .attr("x", (d, i) => x(i))
+      .attr("width", x.bandwidth())
+      .attr("height", y.bandwidth())
+      .style("fill", d => color(d))
     return this.board;
   }
 
@@ -187,9 +209,11 @@ class SmartPlayer {
     return {
       prey: prey,
       callback: (response) => {
+        console.log(response)
         if (response === 'hit') {
           this.hitStack.push(prey);
         } else if (response === 'sunk') {
+          this.hitStack.push(prey);
           while (this.hitStack.length) {
             this.splitAreas(this.hitStack.pop());
           }
@@ -198,8 +222,5 @@ class SmartPlayer {
         }
       }
     }
-
-    // TODO: get state of a cell at target: hit or miss
-    // return this.board[prey[0]][prey[1]];
   }
 }
