@@ -218,10 +218,17 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
       selectedBread: {$set: (payload.selectedBread)}
     })
   } else if(type === 'updateClickCount') {
-    var count = state['clickCount'];
-    count++
-    if (count > 4){
+    //if payload === 'reset', set breadcount to 0
+    //CALL THIS WHEN NEW BREAD IS CLICKED
+    if(payload.val === 'reset') {
       count = 0;
+    } else {
+      //if payload is null, do this stuff
+      var count = state['clickCount'];
+      count++
+      if (count > 4){
+        count = 0;
+      }
     }
     console.log('clickcounted>>>>>>>>>>>>', count);
     return update(state, {

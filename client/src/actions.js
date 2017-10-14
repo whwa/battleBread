@@ -303,6 +303,8 @@ export const updateBreadPlacementValue = (val) => {
     type: 'updateSelectedBread',
     payload: {selectedBread: val}
   });
+  store.dispatch({type: 'updateClickCount',
+    payload: {val: 'reset'}})
 }
 
 export const placeShip = (coord, selectedBreadVal) => {
@@ -322,51 +324,85 @@ export const placeShip = (coord, selectedBreadVal) => {
   var val;
   
   if(currentClicks === 0) {
+    removeBread();
+    if(y + selectedBreadVal > 8) {
+      console.log('invalid bread placement');
+      store.dispatch({type: 'updateClickCount'})
+      return;
+    }
     direction = '+';
     toChange = 'y'
     val = y;
-    removeBread();
   }
   if(currentClicks === 1) {
-    // debugger;
+    removeBread();
+    if(x + selectedBreadVal > 8) {
+      console.log('invalid bread placement');
+      store.dispatch({type: 'updateClickCount'})
+      return;
+    }
     direction = '+';
     toChange = 'x';
     val = x
-    removeBread();
   }
   if(currentClicks === 2) {
+    removeBread();
+    if(y - selectedBreadVal < 0) {
+      console.log('invalid bread placement');
+      store.dispatch({type: 'updateClickCount'})
+      return;
+    }
     direction = '-';
     toChange = 'y';
     val = y
-    removeBread();
   }
   if(currentClicks === 3) {
+    removeBread();
+    if(x - selectedBreadVal < 0) {
+      console.log('invalid bread placement');
+      store.dispatch({type: 'updateClickCount'})
+      return;
+    }
     direction = '-';
     toChange = 'x';
     val = x;
-    removeBread();
   }
   if(currentClicks === 4) {
     removeBread();
     store.dispatch({type: 'updateClickCount'})
     return;
   }
-  //removebread
-  // store.dispatch({type: 'removeBread'});
+
   for(var i = 0; i < selectedBreadVal; i++) {
     var temp;
     toChange === 'x' ? temp = [val, y] : temp = [x, val]
     direction === '-' ? val-- : val++
-    shipPieces.push(temp)
+    shipPieces.push(temp);
   }
-  setPiece('p1', shipPieces, selectedBreadVal);
-  store.dispatch({ 
-    type: 'updateShipCount',
-    payload: {value: selectedBreadVal},
-  });
+  console.log('checkoverlap result', checkOverlap(shipPieces))
+  if (checkOverlap(shipPieces)){
+    setPiece('p1', shipPieces, selectedBreadVal);
+    store.dispatch({ 
+      type: 'updateShipCount',
+      payload: {value: selectedBreadVal},
+    });
+  }
   store.dispatch({type: 'updateClickCount'})
 };
 
 export const removeBread = ()=> {
   store.dispatch({type: 'removeBread'});
+}
+
+export const checkOverlap = (shipPieces) =>{
+  let board = store.getState().board.p1;
+  for (var i = 0; i < shipPieces.length; i++){
+    var key = shipPieces[i]
+    console.log('key', key)
+    console.log('board[key]', board[key].hasBread)
+    if (board[key].hasBread !== false){
+      return false
+    }
+  }
+  return true;
 }
