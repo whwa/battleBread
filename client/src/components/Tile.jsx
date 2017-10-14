@@ -70,7 +70,7 @@ const Tile = (props) => {
           }
         } else if (props.status === 'inactive' && props.player === 'p1') {
           {/* console.log('game inactive', props) */}
-          removeBread();
+          {/* removeBread(); */}
           placeShip(props.options.id, props.selectedBread);
         }
         //if player = p1 and board state is not ready, this is where logic for placing ships will go

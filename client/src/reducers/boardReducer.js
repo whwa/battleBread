@@ -220,39 +220,34 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
   } else if(type === 'updateClickCount') {
     var count = state['clickCount'];
     count++
-    console.log('clickcounted', count);
+    if (count > 4){
+      count = 0;
+    }
+    console.log('clickcounted>>>>>>>>>>>>', count);
     return update(state, {
-      ['clickCount']: {$set: count % 5}
+      ['clickCount']: {$set: count}
     });
   }else if(type === 'removeBread') {
     // debugger;
     //get player1 board
     let newBoard = state['p1'];
     let selectedBread = state['selectedBread']
+    const thePiece = {};
     // console.log('board', board)
     for ( var tile in newBoard ) {
 
       
       // console.log('tile', board[tile])
       if (newBoard[tile].hasBread === selectedBread){
-          update(state, {board : {p1: {[tile] : { hasBread : {$set: false}}}}
-          })
+          console.log('got it>>>>>>>>>>>>>>', newBoard)
+          // update(state, {[newBoard] : {[tile] : { hasBread : {$apply: false}}}
+          thePiece[tile] = update(state['p1'][tile],
+          { hasBread: { $set: false }})
       }
     }
-/*
-    [player]: {
-        [id]: {
-          guessed: {$set: true},
-          //if guessed is true and hasbread is false
-          dispImage: {$apply: () => (hasBread) ? true : false}
-        }
-      }
-*/
-
-    return state;
-    // return update(state, {
-    //   [`p1`]: {$merge: board}
-    // });
+      return update(state, {
+        ['p1']: { $merge: thePiece }
+      });
   } else {
     /**
      * Fallback case

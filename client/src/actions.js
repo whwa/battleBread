@@ -163,7 +163,8 @@ export const setUser = (player, userData) => {
 export const getGame = gameId => {
   axios.get(`${url}/games/${gameId}`)
     .then(response => {
-      console.log(response);
+      console.log(response)
+  ;
       const { board, chats } = response.data;
       setBoard(board);
       chats.forEach(chat => {
@@ -202,7 +203,8 @@ export const getUser = username => {
 export const login = (username, password) => {
   axios.post(`${url}/login`, { username, password })
     .then(response => {
-      console.log(response);
+      console.log(response)
+  ;
       if (response.status === 200) {
         setUser('p1', response.data[0]);
         if (response.data[0].games.length) {
@@ -323,27 +325,31 @@ export const placeShip = (coord, selectedBreadVal) => {
     direction = '+';
     toChange = 'y'
     val = y;
+    removeBread();
   }
   if(currentClicks === 1) {
     // debugger;
     direction = '+';
     toChange = 'x';
     val = x
+    removeBread();
   }
   if(currentClicks === 2) {
     direction = '-';
     toChange = 'y';
     val = y
+    removeBread();
   }
   if(currentClicks === 3) {
     direction = '-';
     toChange = 'x';
     val = x;
+    removeBread();
   }
   if(currentClicks === 4) {
-   //reset selected bread to null
-  //  store.dispatch({type: 'removeBread'});
-   //removebread
+    removeBread();
+    store.dispatch({type: 'updateClickCount'})
+    return;
   }
   //removebread
   // store.dispatch({type: 'removeBread'});
