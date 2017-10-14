@@ -342,11 +342,11 @@ export const placeShip = (coord, selectedBreadVal) => {
   }
   if(currentClicks === 4) {
    //reset selected bread to null
-   store.dispatch({type: 'removeBread'});
+  //  store.dispatch({type: 'removeBread'});
    //removebread
   }
   //removebread
-  store.dispatch({type: 'removeBread'});
+  // store.dispatch({type: 'removeBread'});
   for(var i = 0; i < selectedBreadVal; i++) {
     var temp;
     toChange === 'x' ? temp = [val, y] : temp = [x, val]
@@ -361,3 +361,6 @@ export const placeShip = (coord, selectedBreadVal) => {
   store.dispatch({type: 'updateClickCount'})
 };
 
+export const removeBread = ()=> {
+  store.dispatch({type: 'removeBread'});
+}

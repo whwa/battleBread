@@ -193,13 +193,13 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
       const thePiece = {};
       const numPieces = state[`${player}Pieces`]; //whole obj
       console.log('>>>>>>>>>>...', numPieces[shipVal])
+      
       piece.forEach(idString => {
         thePiece[idString] = update(
           state[player][idString],
           { hasBread: { $set: shipVal }}
         );
       });
-
 
       return update(state, {
         [player]: { $merge: thePiece },
@@ -222,22 +222,37 @@ const boardReducer = (state = { ...newState }, { type, payload = {} } = action) 
     count++
     console.log('clickcounted', count);
     return update(state, {
-      clickCount: {$set: count % 5}
+      ['clickCount']: {$set: count % 5}
     });
   }else if(type === 'removeBread') {
+    // debugger;
     //get player1 board
-    let board = state['p1'];
+    let newBoard = state['p1'];
     let selectedBread = state['selectedBread']
-    console.log('board', board)
-    // for ( var tile in board ) {
-    //   console.log('tile', tile)
-    //   if (tile.hasBread === selectedBread){
-    //     tile.hasBread = false;
-    //   }
-    // }
-    return update(state, {
-      p1: {$set: board}
-    });
+    // console.log('board', board)
+    for ( var tile in newBoard ) {
+
+      
+      // console.log('tile', board[tile])
+      if (newBoard[tile].hasBread === selectedBread){
+          update(state, {board : {p1: {[tile] : { hasBread : {$set: false}}}}
+          })
+      }
+    }
+/*
+    [player]: {
+        [id]: {
+          guessed: {$set: true},
+          //if guessed is true and hasbread is false
+          dispImage: {$apply: () => (hasBread) ? true : false}
+        }
+      }
+*/
+
+    return state;
+    // return update(state, {
+    //   [`p1`]: {$merge: board}
+    // });
   } else {
     /**
      * Fallback case

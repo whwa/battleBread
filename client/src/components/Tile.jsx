@@ -4,7 +4,7 @@ import randomInt from 'random-int';
 import { getInfo } from '../actions.js';
 import { connect } from 'react-redux';
 import { range } from 'lodash';
-import { guess, placeShip } from '../actions.js';
+import { guess, placeShip, removeBread } from '../actions.js';
 
 import SmartPlayer from '../AI/ai';
 
@@ -31,9 +31,10 @@ const Tile = (props) => {
     height: size,
     }
 
-  if(props.player === 'p1' && props.options.hasBread) {
-    styles.backgroundColor = 'black'
+  if (props.player === 'p1' && props.options.hasBread) {
+    styles.backgroundColor = 'black';
   }
+
   // console.log(props, '>>>>>>>>>>>>>>>>')
 
   if (props.options.guessed === true && props.options.dispImage === false){
@@ -69,7 +70,8 @@ const Tile = (props) => {
           }
         } else if (props.status === 'inactive' && props.player === 'p1') {
           {/* console.log('game inactive', props) */}
-          placeShip(props.options.id, props.selectedBread)
+          removeBread();
+          placeShip(props.options.id, props.selectedBread);
         }
         //if player = p1 and board state is not ready, this is where logic for placing ships will go
       }}

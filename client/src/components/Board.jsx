@@ -79,12 +79,6 @@ const Board = props => {
  * mapStateToProps takes a state and defines the data which gets passed into props from the store.
  * @param { object } board Here, we destructure the the board property out of the state and set it to props
  */
-///////////////
-//INFO PROPS//
-/////////////
-
-// const mapStateToProps = ({ gameInfo }) => ({ ...gameInfo });
-// export default connect(mapStateToProps)(GameInfo);
 
 ////////////////
 //BOARD PROPS//
